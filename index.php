@@ -57,7 +57,7 @@
 <html>
 
    <head>
-      <title>Login Page</title>
+      <title>IPTV Planner - Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -68,9 +68,9 @@
    </head>
 
    <body bgcolor = "#FFFFFF">
-     <center style="margin-top: -10%;">
-       <img src="img/fundo_lidl.png"/>
-     </center>
+     <center>
+       <img style="width: 30%;" src="img/fundo.png"/>
+     </center><br><br><br><br><br><br><br><br>
 	<div class="page-content container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">

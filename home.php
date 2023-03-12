@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GeoLocator Lidl</title>
+    <title>IPTV Planner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
 
@@ -67,20 +67,12 @@
 	           <div class="col-md-4">
 	              <!-- Logo -->
 	              <div class="logo">
-	                 <h1><a href="home.php">GeoLocator Lidl</a></h1>
+	                 <h1><a href="home.php">IPTV Planner</a></h1>
 	              </div>
 	           </div>
 	           <div class="col-md-8">
 	              <div class="navbar navbar-inverse" role="banner">
 	                  <div class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-	                    <ul class="nav navbar-nav">
-                            <li>
-                                <select  class="styled-select" id="language" name="language">
-                                    <option id="1" value="pt">Português</option>
-                                    <option id="2" value="en">Inglês</option>
-                                </select>
-					        </li>
-	                    </ul>
                           <ul class="nav navbar-nav">
                               <li class="dropdown">
 
@@ -106,7 +98,7 @@
 		  <div class="col-md-2">
                 <section style="width: 200px">
                     <ul class="sidebar-menu">
-                        <li class="sidebar-header">MAIN NAVIGATION</li>
+                        <li class="sidebar-header">NAVEGAÇÂO</li>
                         <li>
                             <a href="#" onClick="getPage('geral');"><i class="fa fa-home" aria-hidden="true"></i>
                                 <span>Geral</span>
@@ -196,8 +188,8 @@
             <div class="col-md-6">
               <span>Bem Vindo</span> <?php echo $users_email; ?>
             </div>
-            <div class="col-md-12" style="margin-top: -6%;">
-              <img src="img/fundo_lidl.png">
+            <div class="col-md-12" style="margin-bottom: 7%; margin-top: 6%;">
+              <img src="img/fundo.png">
             </div>
           </div>
 		  </div>
