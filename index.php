@@ -8,7 +8,7 @@
 		//ASSUME USER IS VALID
 		$_SESSION['isLoggedIn'] = true;
 		/////////////////////////////////////////
-		$_SESSION['timeOut'] = 1800; // time in seconds
+		$_SESSION['timeOut'] = 3600; // time in seconds
 		$logged = time();
 		$_SESSION['loggedAt']= $logged;
 	}
@@ -68,11 +68,14 @@
    </head>
 
    <body bgcolor = "#FFFFFF">
+     <center style="margin-top: -10%;">
+       <img src="img/fundo_lidl.png"/>
+     </center>
 	<div class="page-content container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<div class="login-wrapper">
-			        <div class="box">
+			        <div class="box" style="margin-top: -50%;">
 			            <div class="content-wrap">
 			                <h6>Sign Up</h6>
 			                    <form action = "" method = "post">

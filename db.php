@@ -4,11 +4,11 @@
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_DATABASE', 'airsoftplanner');
+define('DB_DATABASE', 'geolocatorlidl');
 
 define('MAIL_HOST', 'smtp.gmail.com');
 define('MAIL_USERNAME', 'geral.airsoftplanner@gmail.com');
-define('MAIL_PASSWORD', 'fvprsygwdqhanxpr');
+define('MAIL_PASSWORD', 'oexsjtsmiyfkzdtv');
 define('MAIL_PORT', '587');
 define('MAIL_NAME', 'Airsoft Planner');
 

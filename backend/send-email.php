@@ -1,5 +1,5 @@
 <?php
-include('../session.php');
+include('../../session.php');
 require_once('../mailer/PHPMailer.php');
 require_once('../mailer/SMTP.php');
 require_once('../mailer/Exception.php');
@@ -13,6 +13,7 @@ use PHPMailer\PHPMailer\Exception;
     //Variaveis de POST, Alterar somente se necessário
     //====================================================
     $email = $_REQUEST['email'];
+    $mensagem = $_REQUEST['texto'];
 
     $sql = "SELECT users_id FROM users WHERE email = '$email'";
     $result = mysqli_query($db, $sql);
@@ -33,31 +34,12 @@ use PHPMailer\PHPMailer\Exception;
             $mail->addAddress($email); // emails to
 
             $mail->isHTML(true);
-            $mail->Subject = 'Ativacao Airsoft Planner';
-            $mail->Body = 'Ativacao em falta do <strong>Email: </strong>' . $email . '<br>
+            $mail->Subject = 'Geo Locator - Lidl';
+            $mail->Body = '<strong>Email: </strong>' . $email . '<br>
 
                             <br><br>
 
-                            Encontra-se em falta a Ativacao do seu Email para puder usufruir da Aplicação.
-                            <br><br>
-                            Obrigado pelo seu Registo na Airsoft Planner!<br><br>
-
-                            Confirme o seu registo através do link:<br>
-                            http://localhost/cerberus/confirm.php?email='.$email.'
-
-                            <br><br>
-                            Obrigado pelo seu contacto!<br>
-                            Se tiver urgência ou o problema não ficar solucionadoqueira por favor ligar para 22X XXX XXX ou 9XX XXX XXX.<br><br>
-                            NOTA: Não responda a este email, trata-se de uma mensagem automática de confirmação de receção do seu pedido.<br>
-                            Cordiais cumprimentos,<br><br>
-
-                            Airsoft Planner | Airsoft<br><br>
-
-                            Está a receber esta mensagem porque entrou em contacto connosco através do formulário de contacto do nosso site http://www.bolanarede.website.
-    <br>
-                            Declaração de consentimento sobre campanhas:
-    <br>
-                            PROTEÇÃO DE DADOS PESSOAIS: A segurança e a privacidade de seus dados pessoais são importantes para nós. A Bola na Rede está em conformidade com o Regulamento Geral de Proteção de Dados em vigor na UE. Quando nos cede os seus dados pessoais, nós só os utilizaremos para o propósito para o qual foram fornecidos. Pode retirar o seu consentimento a qualquer momento. Por favor, veja nossa Política de Privacidade.';
+                            ' . $mensagem;
 
             //$mail->setFrom('system@cksoftwares.com', 'CKSoftwares System'); // From email and name
             //$mail->addAddress('to@address.com', 'Mr. Brown'); // to email and name

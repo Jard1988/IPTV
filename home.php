@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Airsoft Planner - Cpanel</title>
+    <title>GeoLocator Lidl</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
 
@@ -41,6 +41,15 @@
             });
     	}
 
+      function getPageRaiz(id) {
+            jQuery.ajax({
+                url: id+".php",
+                type: "POST",
+                success:function(data){$('#output').html(data);},
+                beforeSend: function() { $('#loader').show(); },
+                complete: function() { $('#loader').hide(); }
+            });
+    	}
 	   </script>
    </head>
    <body>
@@ -58,7 +67,7 @@
 	           <div class="col-md-4">
 	              <!-- Logo -->
 	              <div class="logo">
-	                 <h1><a href="home.php">Airsoft Planner Cpanel</a></h1>
+	                 <h1><a href="home.php">GeoLocator Lidl</a></h1>
 	              </div>
 	           </div>
 	           <div class="col-md-8">
@@ -99,12 +108,12 @@
                     <ul class="sidebar-menu">
                         <li class="sidebar-header">MAIN NAVIGATION</li>
                         <li>
-                            <a href="#" onClick="getPage('geral');"><i class="fa fa-circle-o text-aqua"></i>
+                            <a href="#" onClick="getPage('geral');"><i class="fa fa-home" aria-hidden="true"></i>
                                 <span>Geral</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="sidebar-submenu" style="display: none;">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Editar Website</a></li>
+                                <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-circle-o"></i> Editar Website</a></li>
                                 </li>
                             </ul>
                         </li>
@@ -116,66 +125,63 @@
                           if ($count >= 1){
                         ?>
                         <li>
-                            <a href="" >
-                                <i class="fa fa-files-o"></i>
+                            <a href="#" onClick="getPage('users/all-users');">
+                                <i class="fa fa-users" aria-hidden="true"></i>
                                 <span>Utilizadores</span>
                                 <i class="fa fa-angle-left pull-right"></i>
 <!--                                <span class="label label-primary pull-right">4</span>-->
                             </a>
                             <ul class="sidebar-submenu" style="display: none;">
-<<<<<<< HEAD
-                                <li><a href="#" onClick="getPage('search-user');"><i class="fa fa-circle-o"></i> Procurar</a></li>
-                                <li><a href="#" onClick="getPage('all_users');"><i class="fa fa-circle-o"></i> Listar Todos</a></li>
-                                <li><a href="#" onClick="getPage('invalid_users');"><i class="fa fa-circle-o"></i> Inativos</a></li>
+                                <li><a href="#" onClick="getPage('users/search-user');"><i class="fa fa-search" aria-hidden="true"></i>Procurar</a></li>
+                                <li><a href="#" onClick="getPage('users/all-users');"><i class="fa fa-list" aria-hidden="true"></i> Listar Todos</a></li>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="" >
-                                <i class="fa fa-files-o"></i>
+                            <a href="#" onClick="getPage('send-email');">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
                                 <span>Email</span>
                                 <i class="fa fa-angle-left pull-right"></i>
 <!--                                <span class="label label-primary pull-right">4</span>-->
                             </a>
                             <ul class="sidebar-submenu" style="display: none;">
-                                <li><a href="#" onClick="getPage('send-email');"><i class="fa fa-circle-o"></i> Enviar Email</a></li>
-                                <li><a href="#" onClick="getPage('send-email-all');"><i class="fa fa-circle-o"></i> Mass Email</a></li>
-=======
-                                <li><a href="#" onClick="getPage('all_users');"><i class="fa fa-circle-o"></i> Visualizar Todos</a></li>
-                                <li><a href="#" onClick="getPage('search-user');"><i class="fa fa-circle-o"></i> Procurar</a></li>
-                                <li><a href="#" onClick="getPage('invalid_users');"><i class="fa fa-circle-o"></i> Inválidos</a></li>
-                                <li><a href="#" onClick="getPage('send-email-all');"><i class="fa fa-circle-o"></i> Enviar Email</a></li>
->>>>>>> 9adbd58bdcf58534e22595f52351bcce59c30c54
-                                </li>
+                                <li><a href="#" onClick="getPage('send-email');"><i class="fa fa-reply" aria-hidden="true"></i>Enviar Email</a></li>
+                                <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-reply-all" aria-hidden="true"></i>Mass Email</a></li>
                             </ul>
                         </li>
                         <?php
                         }
-
-                        $sql = "SELECT * FROM users, users_organizador WHERE email = '$login_session' and users_organizador.users_id=users.users_id or users.permission_id >= '2'";
-                        $result = mysqli_query($db,$sql);
-                        $count = mysqli_num_rows($result);
-
-                        if ($count >= 1){
                         ?>
                         <li>
-                            <a href="#">
+                            <a href="#" onClick="getPage('articles/all-articles');">
                                 <i class="fa fa-files-o"></i>
-                                <span>Eventos</span>
+                                <span>Artigos</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             <ul class="sidebar-submenu" style="display: none;">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Visualizar Todos</a></li>
-                                <li><a href="#" onClick="getPage('novoevento');"><i class="fa fa-circle-o"></i> Novo Evento</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Apagar Evento</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Editar Evento</a></li>
+                                <li><a href="#" onClick="getPage('articles/search-article');"><i class="fa fa-search" aria-hidden="true"></i> Procurar</a></li>
+                                <li><a href="#" onClick="getPage('articles/all-articles');"><i class="fa fa-list" aria-hidden="true"></i> Listar Todos</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-spinner" aria-hidden="true"></i>
+                                <span>Relex</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                              <ul class="sidebar-submenu" style="display: none;">
+                              <li>
+                                <a href="#">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                <span>Encomenda</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                                  <ul class="sidebar-submenu" style="display: none;">
+                                    <li><a href="#" onClick="getPage('relex/calendar');"><i class="fa fa-plus" aria-hidden="true"></i></i>Nova Encomenda</a></li>
+                                    <li><a href="#" onClick="getPage('');"><i class="fa fa-calculator" aria-hidden="true"></i></i>Gerar Encomenda</a></li>
+                                  </ul>
                                 </li>
                             </ul>
                         </li>
-                        <?php
-                        }
-                        ?>
                         <li>
-                            <a href="../widgets.html">
+                            <a href="#" onClick="getPageRaiz('404');">
                                 <i class="fa fa-th"></i> <span>Widgets</span>
                                 <small class="label pull-right label-info">new</small>
                             </a>
@@ -190,8 +196,8 @@
             <div class="col-md-6">
               <span>Bem Vindo</span> <?php echo $users_email; ?>
             </div>
-            <div class="col-md-6">
-              <img src="img/home.png" alt="Italian Trulli">
+            <div class="col-md-12" style="margin-top: -6%;">
+              <img src="img/fundo_lidl.png">
             </div>
           </div>
 		  </div>

@@ -1,5 +1,5 @@
 <?php
-	include('../session.php');
+	include('../../session.php');
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = mysqli_real_escape_string($db,$_POST['data']);

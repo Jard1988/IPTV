@@ -7,34 +7,36 @@ $result_users = mysqli_query($db,$sql);
 ?>
 <script type="text/javascript">
 $('.modal-footer .btn-primary').click(function() {
-  alert("aqui");
-  var id = document.getElementById("deleteID").value;
+  var email = document.getElementById("input-datalist").value;
+  var texto = document.getElementById("exampleFormControlTextarea1").value;
 
- $.ajax({
-   url: "./backend/deleteuser.php",
-   type: "post",
-   data: {
-     id: id
-},
-   datatype: "html",
-   contenttype: 'application/html; charset=utf-8',
-   async: true,
- success : function(response) {
-     if (response == 1){
-          $('#outputDeleteUser').html(response);
-     }else {
-         $('#outputDeleteUser').html(response);
+  $.ajax({
+    url: "./backend/send-email.php",
+    type: "post",
+    data: {
+      email: email,
+      texto: texto
+ },
+    datatype: "html",
+    contenttype: 'application/html; charset=utf-8',
+    async: true,
+  success : function(response) {
+      if (response == 1){
+           $('#outputEmail').html(response);
+      }else {
+          $('#outputEmail').html(response);
 
-     }
-     //$('#outputlogin').html(response);
- },
- beforeSend: function () {
-     $('#loader').show();
- },
- complete: function () {
-     $('#loader').hide();
- }
- });
+      }
+      //$('#outputlogin').html(response);
+  },
+  beforeSend: function () {
+      $('#loader').show();
+  },
+  complete: function () {
+      $('#loader').hide();
+  }
+  });
+
 })
 </script>
 <!-- Modal -->
@@ -45,7 +47,7 @@ $('.modal-footer .btn-primary').click(function() {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Enviar Email</h4>
       </div>
       <div class="modal-body">
         <p>Têm a certeza que pretende enviar o Email?</p>
@@ -54,10 +56,12 @@ $('.modal-footer .btn-primary').click(function() {
         <button type="button" class="btn btn-primary" data-dismiss="modal">Sim</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
+
     </div>
 
   </div>
 </div>
+<!-- End Modal Content -->
 
 <form action="" style="width: 80%; margin-left:5%;">
   <div class="form-group">
@@ -79,7 +83,7 @@ $('.modal-footer .btn-primary').click(function() {
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Enviar</button>
   </div>
 </form>
-
+<div id="outputEmail" style = "font-size:11px; color:#cc0000; left:-10px" align="center"></div>
 <script>
     document.addEventListener('DOMContentLoaded', e => {
         $('#input-datalist').autocomplete()
