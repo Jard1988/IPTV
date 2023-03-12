@@ -1,8 +1,8 @@
 <?php
-	include('../../session.php');
-	require_once('../../mailer/PHPMailer.php');
-	require_once('../../mailer/SMTP.php');
-	require_once('../../mailer/Exception.php');
+	include('../session.php');
+	require_once('../mailer/PHPMailer.php');
+	require_once('../mailer/SMTP.php');
+	require_once('../mailer/Exception.php');
 
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\SMTP;
@@ -47,15 +47,14 @@
 		$apelido = mysqli_real_escape_string($db,$_POST['apelido']);
 		$telefone = mysqli_real_escape_string($db,$_POST['telefone']);
     $nascimento = mysqli_real_escape_string($db,$_POST['nascimento']);
+    $apd = mysqli_real_escape_string($db,$_POST['apd']);
+    $face = mysqli_real_escape_string($db,$_POST['face']);
+    $insta = mysqli_real_escape_string($db,$_POST['insta']);
     $permission = mysqli_real_escape_string($db,$_POST['permission']);
 		$novasenha = gerar_senha(10, true, true, true, true);
     // If result matched $myusername and $mypassword, table row must be 1 row
 
-<<<<<<< HEAD
-      $sql3 = "INSERT INTO `users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `permission_id`) VALUES ('". $email ."','". $novasenha ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "','". $permission . "')";
-=======
-      $sql3 = "INSERT INTO `geolocatorlidl`.`users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `permission_id`) VALUES ('". $email ."','". $novasenha ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "','". $permission . "')";
->>>>>>> 5e00555278730878cd44c94cb32264ec13d846c6
+      $sql3 = "INSERT INTO `airsoftplanner`.`users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `apd`, `facebook`, `instagram`, `permission_id`) VALUES ('". $email ."','". $novasenha ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "', '". $apd . "', '". $face . "', '". $insta . "', '". $permission . "')";
 			$result3 = mysqli_query($db, $sql3);
 			if ($result3){
 				try {
@@ -73,20 +72,20 @@
 						$mail->addAddress($email); // emails to
 
 						$mail->isHTML(true);
-						$mail->Subject = 'Registo na Geo Locator';
-						$mail->Body = 'Registo com Sucesso <strong>Geo Locator</strong><br>
+						$mail->Subject = 'Registo na Airsoft Planner';
+						$mail->Body = 'Registo com Sucesso <strong>Airsoft Planner</strong><br>
 												<br><br>
 
-												Obrigado pelo seu Registo na Geo Locator!<br><br>
+												Obrigado pelo seu Registo na Airsoft Planner!<br><br>
 
 												Confirme o seu registo através do link:<br>
-												http://localhost/geolocator/confirm.php?email='.$email.' <br><br>
+												http://localhost/cerberus/confirm.php?email='.$email.' <br><br>
 
 												Se tiver urgência ou existir algum problema não exite em entrar em contacto por email ou por favor ligar para 22X XXX XXX ou 9XX XXX XXX.<br><br>
 												NOTA: Não responda a este email, trata-se de uma mensagem automática de confirmação de receção do seu pedido.<br>
 												Cordiais cumprimentos,<br><br>
 
-												Geo Locator | Lidl<br><br>
+												Airsoft Planner | Airsoft<br><br>
 
 												Está a receber esta mensagem porque entrou em contacto connosco através do formulário de contacto do nosso site http://www.bolanarede.website.
 <br>
