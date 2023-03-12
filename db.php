@@ -4,13 +4,13 @@
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_DATABASE', 'geolocatorlidl');
+define('DB_DATABASE', 'iptvplanner');
 
 define('MAIL_HOST', 'smtp.gmail.com');
-define('MAIL_USERNAME', 'geral.airsoftplanner@gmail.com');
-define('MAIL_PASSWORD', 'oexsjtsmiyfkzdtv');
+define('MAIL_USERNAME', 'geral.iptvplanner@gmail.com');
+define('MAIL_PASSWORD', 'jpyvtiushigoyazx');
 define('MAIL_PORT', '587');
-define('MAIL_NAME', 'Airsoft Planner');
+define('MAIL_NAME', 'IPTV Planner');
 
 //define('DB_SERVER', '81.88.53.63');
 //define('DB_USERNAME', 'bv56glrq_1060735');
