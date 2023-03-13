@@ -51,11 +51,9 @@
 		$novasenha = gerar_senha(10, true, true, true, true);
     // If result matched $myusername and $mypassword, table row must be 1 row
 
-<<<<<<< HEAD
+
       $sql3 = "INSERT INTO `users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `permission_id`) VALUES ('". $email ."','". $novasenha ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "','". $permission . "')";
-=======
-      $sql3 = "INSERT INTO `geolocatorlidl`.`users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `permission_id`) VALUES ('". $email ."','". $novasenha ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "','". $permission . "')";
->>>>>>> 5e00555278730878cd44c94cb32264ec13d846c6
+
 			$result3 = mysqli_query($db, $sql3);
 			if ($result3){
 				try {

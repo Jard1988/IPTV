@@ -5,6 +5,10 @@ include('../../session.php');
 
 <script type="text/javascript">
 
+$(".close").click(function(){
+  location.reload(true);
+});
+
 $(document).on("click", ".editModal", function () {
    var Id = $(this).data('id');
    var email = $("#myTable").find(".email"+Id+":first").text().trim();
@@ -13,6 +17,7 @@ $(document).on("click", ".editModal", function () {
    var telefone = $("#myTable").find(".telefone"+Id+":first").text().trim();
    var nascimento = $("#myTable").find(".nascimento"+Id+":first").text().trim();
    var permission = $("#myTable").find(".permission"+Id+":first").text().trim();
+   var raw = $("#myTable").find(".raw"+Id+":first").text().trim();
 
     $('#inputEditID').val(Id);
     $('#inputEditEmail').val(email);
@@ -21,7 +26,8 @@ $(document).on("click", ".editModal", function () {
     $('#inputEditTelefone').val(telefone);
     $('#inputEditNascimento').val(nascimento);
     $('#inputEditPermission').val(permission);
-    // document.getElementById('inputEditPermission').selectedIndex = permission-3;
+    $('#inputEditRaw').val(raw);
+    // document.getElementById('inputEditPermission').selectedIndex = 2;
  });
 
  $('.modal-footer .btn-success').click(function() {
@@ -33,6 +39,7 @@ $(document).on("click", ".editModal", function () {
        var telefone = document.getElementById("inputEditTelefone").value;
        var nascimento = document.getElementById("inputEditNascimento").value;
        var permission = document.getElementById("inputEditPermission").value;
+       var raw = document.getElementById("inputEditRaw").value;
 
     $.ajax({
       url: "./backend/users/edituser.php",
@@ -44,7 +51,8 @@ $(document).on("click", ".editModal", function () {
       apelido: apelido,
       telefone: telefone,
       nascimento: nascimento,
-      permission: permission
+      permission: permission,
+      raw: raw
    },
       datatype: "html",
       contenttype: 'application/html; charset=utf-8',
@@ -112,6 +120,7 @@ $(document).on("click", ".editModal", function () {
       var telefone = document.getElementById("inputItemTelefone").value;
       var nascimento = document.getElementById("inputItemNascimento").value;
       var permission = document.getElementById("inputItemPermission").value;
+      var raw = document.getElementById("inputItemRaw").value;
 
      $.ajax({
        url: "./backend/users/newuser.php",
@@ -122,7 +131,8 @@ $(document).on("click", ".editModal", function () {
          apelido: apelido,
          telefone: telefone,
          nascimento: nascimento,
-         permission: permission
+         permission: permission,
+         raw: raw
     },
        datatype: "html",
        contenttype: 'application/html; charset=utf-8',
@@ -166,6 +176,7 @@ $(document).on("click", ".editModal", function () {
 
     $('#delete_records').on('click',
     function(e) {
+
         var employee = [];
         $(".emp_checkbox:checked").each (
             function() {
@@ -176,9 +187,9 @@ $(document).on("click", ".editModal", function () {
       var modalBody = $('<div id="modalContent" style="margin-left: 30px;">Selecione alguma linha...</div>');
     $('.modal-body-all-delete').html(modalBody);
     } else {
+
       var modalBody = $('<div id="modalContent" style="margin-left: 30px;">Deseja Apagar o(s) Utilizador(es)seleccionados?</div>');
       $('.modal-body-all-delete').html(modalBody);
-
       $('.modal-footer .btn-dark').click(function() {
         var selected_values = employee.join(",");
         const myArray = selected_values.split(",");
@@ -220,7 +231,7 @@ $('.btn-light').click(function() {
   var email = $('#input-datalist').val();
   if(email == ""){
     $.ajax({
-      url: "./backend/users/search-user.php",
+      url: "./backend/users/all-users.php",
       type: "post",
       data: {
         email: ""
@@ -318,7 +329,7 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Criar Utilizador</h4>
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">× </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body-2">
@@ -343,8 +354,12 @@ $('.btn-light').click(function() {
                   </tr>
                   <tr>
                   <td>Data Nascimento</td>
-                  <td><input id="inputItemNascimento" class="form-control" type = "date" name = "data" class = "box" /></td>
+                  <td><input id="inputItemNascimento" class="form-control" class = "box" /></td>
                 </tr>
+                <tr>
+                <td>Raw</td>
+                <td><input id="inputItemRaw" class="form-control" class = "box" /></td>
+              </tr>
                   <td>Permissão</td>
                   <td>
                     <select id="inputItemPermission" name="cars" class="form-control">
@@ -359,7 +374,6 @@ $('.btn-light').click(function() {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Guardar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
             <div id="outputNewUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
@@ -403,6 +417,11 @@ $('.btn-light').click(function() {
                   <td>Data Nascimento</td>
                   <td><input id="inputEditNascimento" class="form-control" type = "date" name = "data" class = "box" /></td>
                 </tr>
+                <tr>
+                <td>Raw</td>
+                <td><input id="inputEditRaw" class="form-control" class = "box" /></td>
+              </tr>
+                <tr>
                   <td>Permissão</td>
                   <td>
                     <select id="inputEditPermission" name="inputEditPermission" class="form-control">
@@ -417,7 +436,6 @@ $('.btn-light').click(function() {
            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success">Guardar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
             <div id="outputEditUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
@@ -436,8 +454,7 @@ $('.btn-light').click(function() {
             </div>
             <div class="modal-body-1"></div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Sim</button>
-                <button type="button" class="btn btn-info" data-dismiss="modal">Não</button>
+                <button type="button" class="btn btn-danger">OK</button>
             </div>
             <div id="outputDeleteUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>

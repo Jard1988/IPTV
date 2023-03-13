@@ -99,6 +99,19 @@
                 <section style="width: 200px">
                     <ul class="sidebar-menu">
                         <li class="sidebar-header">NAVEGAÇÂO</li>
+                        <?php
+                          $sql = "SELECT * FROM users WHERE email = '$login_session' and permission_id >= '3'";
+                          $result = mysqli_query($db,$sql);
+                          $count = mysqli_num_rows($result);
+
+                          if ($count >= 1){
+                        ?>
+                        <li>
+                            <a href="#" onClick="getPageRaiz('refresh');">
+                                <i class="fa fa-spinner" aria-hidden="true"></i>
+                                <span><b>Atualizar</b></span>
+                              </a>
+                        </li>
                         <li>
                             <a href="#" onClick="getPage('geral');"><i class="fa fa-home" aria-hidden="true"></i>
                                 <span>Geral</span>
@@ -109,13 +122,6 @@
                                 </li>
                             </ul>
                         </li>
-                        <?php
-                          $sql = "SELECT * FROM users WHERE email = '$login_session' and permission_id >= '3'";
-                          $result = mysqli_query($db,$sql);
-                          $count = mysqli_num_rows($result);
-
-                          if ($count >= 1){
-                        ?>
                         <li>
                             <a href="#" onClick="getPage('users/all-users');">
                                 <i class="fa fa-users" aria-hidden="true"></i>
@@ -145,34 +151,6 @@
                         }
                         ?>
                         <li>
-                            <a href="#" onClick="getPage('articles/all-articles');">
-                                <i class="fa fa-files-o"></i>
-                                <span>Artigos</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            <ul class="sidebar-submenu" style="display: none;">
-                                <li><a href="#" onClick="getPage('articles/search-article');"><i class="fa fa-search" aria-hidden="true"></i> Procurar</a></li>
-                                <li><a href="#" onClick="getPage('articles/all-articles');"><i class="fa fa-list" aria-hidden="true"></i> Listar Todos</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-spinner" aria-hidden="true"></i>
-                                <span>Relex</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                              <ul class="sidebar-submenu" style="display: none;">
-                              <li>
-                                <a href="#">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <span>Encomenda</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                                  <ul class="sidebar-submenu" style="display: none;">
-                                    <li><a href="#" onClick="getPage('relex/calendar');"><i class="fa fa-plus" aria-hidden="true"></i></i>Nova Encomenda</a></li>
-                                    <li><a href="#" onClick="getPage('');"><i class="fa fa-calculator" aria-hidden="true"></i></i>Gerar Encomenda</a></li>
-                                  </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
                             <a href="#" onClick="getPageRaiz('404');">
                                 <i class="fa fa-th"></i> <span>Widgets</span>
                                 <small class="label pull-right label-info">new</small>
@@ -184,13 +162,13 @@
 		  </div>
 		  <div class="col-md-10">
 				<div id="output">
-          <div style="font-size: 30px; text-align: center;">
-            <div class="col-md-6">
-              <span>Bem Vindo</span> <?php echo $users_email; ?>
+          <div style="font-size: 30px; text-align: left;">
+            <div class="col-md-10">
+              <span>Bem Vindo</span> <b><?php echo $users_email; ?></b>
             </div>
-            <div class="col-md-12" style="margin-bottom: 7%; margin-top: 6%;">
-              <img src="img/fundo.png">
-            </div>
+          </div>
+          <div class="col-md-12" style="margin-bottom: 7%; margin-top: 6%; text-align: center;">
+            <img src="img/fundo.png">
           </div>
 		  </div>
 		</div>

@@ -7,13 +7,8 @@ define('DB_PASSWORD', '');
 define('DB_DATABASE', 'iptvplanner');
 
 define('MAIL_HOST', 'smtp.gmail.com');
-<<<<<<< HEAD
 define('MAIL_USERNAME', 'geraliptvplanner@gmail.com');
 define('MAIL_PASSWORD', 'vwscapohsysmhsia');
-=======
-define('MAIL_USERNAME', 'geral.iptvplanner@gmail.com');
-define('MAIL_PASSWORD', 'jpyvtiushigoyazx');
->>>>>>> 5e00555278730878cd44c94cb32264ec13d846c6
 define('MAIL_PORT', '587');
 define('MAIL_NAME', 'IPTV Planner');
 

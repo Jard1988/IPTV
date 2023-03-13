@@ -8,6 +8,7 @@
 		$apelido = mysqli_real_escape_string($db,$_POST['apelido']);
 		$telefone = mysqli_real_escape_string($db,$_POST['telefone']);
     $nascimento = mysqli_real_escape_string($db,$_POST['nascimento']);
+		$raw = mysqli_real_escape_string($db,$_POST['raw']);
     $permission = mysqli_real_escape_string($db,$_POST['permission']);
 
     $sql1 = "SELECT * FROM users WHERE users_id = '$id'";
@@ -17,7 +18,7 @@
     // If result matched $myusername and $mypassword, table row must be 1 row
 
     if($row1 >=1) {
-      $sql3 = "UPDATE users SET email = '". $email . "', nome = '". $nome . "', apelido = '". $apelido . "', telefone = '". $telefone . "', data_nascimento = '". $nascimento . "',
+      $sql3 = "UPDATE users SET email = '". $email . "', nome = '". $nome . "', apelido = '". $apelido . "', raw = '". $raw . "', telefone = '". $telefone . "', data_nascimento = '". $nascimento . "',
        permission_id = '". $permission . "'
        WHERE users_id='". $id."'";
       $result3 = mysqli_query($db, $sql3);

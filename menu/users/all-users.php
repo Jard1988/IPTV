@@ -5,6 +5,10 @@ include('../../session.php');
 
 <script type="text/javascript">
 
+$(".close").click(function(){
+  location.reload(true);
+});
+
 $(document).on("click", ".editModal", function () {
    var Id = $(this).data('id');
    var email = $("#myTable").find(".email"+Id+":first").text().trim();
@@ -13,6 +17,7 @@ $(document).on("click", ".editModal", function () {
    var telefone = $("#myTable").find(".telefone"+Id+":first").text().trim();
    var nascimento = $("#myTable").find(".nascimento"+Id+":first").text().trim();
    var permission = $("#myTable").find(".permission"+Id+":first").text().trim();
+   var raw = $("#myTable").find(".raw"+Id+":first").text().trim();
 
     $('#inputEditID').val(Id);
     $('#inputEditEmail').val(email);
@@ -21,6 +26,7 @@ $(document).on("click", ".editModal", function () {
     $('#inputEditTelefone').val(telefone);
     $('#inputEditNascimento').val(nascimento);
     $('#inputEditPermission').val(permission);
+    $('#inputEditRaw').val(raw);
     // document.getElementById('inputEditPermission').selectedIndex = 2;
  });
 
@@ -33,6 +39,7 @@ $(document).on("click", ".editModal", function () {
        var telefone = document.getElementById("inputEditTelefone").value;
        var nascimento = document.getElementById("inputEditNascimento").value;
        var permission = document.getElementById("inputEditPermission").value;
+       var raw = document.getElementById("inputEditRaw").value;
 
     $.ajax({
       url: "./backend/users/edituser.php",
@@ -44,7 +51,8 @@ $(document).on("click", ".editModal", function () {
       apelido: apelido,
       telefone: telefone,
       nascimento: nascimento,
-      permission: permission
+      permission: permission,
+      raw: raw
    },
       datatype: "html",
       contenttype: 'application/html; charset=utf-8',
@@ -112,6 +120,7 @@ $(document).on("click", ".editModal", function () {
       var telefone = document.getElementById("inputItemTelefone").value;
       var nascimento = document.getElementById("inputItemNascimento").value;
       var permission = document.getElementById("inputItemPermission").value;
+      var raw = document.getElementById("inputItemRaw").value;
 
      $.ajax({
        url: "./backend/users/newuser.php",
@@ -122,7 +131,8 @@ $(document).on("click", ".editModal", function () {
          apelido: apelido,
          telefone: telefone,
          nascimento: nascimento,
-         permission: permission
+         permission: permission,
+         raw: raw
     },
        datatype: "html",
        contenttype: 'application/html; charset=utf-8',
@@ -281,7 +291,7 @@ $('.btn-light').click(function() {
   <br><br><form action="" style="width: 30%;">
 
     <?php
-      $sql="SELECT *, users.nome AS n1, permissions.nome as n1 FROM users,permissions where valid=1 && users.permission_id = permissions.permissions_id";
+      $sql="SELECT *, users.nome AS n, permissions.nome as n1 FROM users,permissions where valid=1 && users.permission_id = permissions.permissions_id";
       $result_users = mysqli_query($db,$sql);
 
           echo '  <table id="myTable" class="table" id="myTable">
@@ -294,7 +304,8 @@ $('.btn-light').click(function() {
                       <th scope="col" onclick="sortTable(3)">Apelido</th>
                       <th scope="col" onclick="sortTable(4)">Telefone</th>
                       <th scope="col" onclick="sortTable(5)">Nascimento</th>
-                      <th scope="col"  onclick="sortTable(6)">Permissão</th>
+                      <th scope="col" onclick="sortTable(6)">Raw</th>
+                      <th scope="col"  onclick="sortTable(7)">Permissão</th>
                     </tr>
                 </thead>
                 <tbody>';
@@ -303,10 +314,11 @@ $('.btn-light').click(function() {
               <td scope="row"> <input type="checkbox" class="emp_checkbox" data-emp-id="'. $table_geral['email'].'"></td>
               <td scope="row"> '. $table_geral['users_id'].' </td>
               <td scope="row" class="email'. $table_geral['users_id'].'" value="'. $table_geral['email'].'"> '. $table_geral['email'].' </td>
-              <td scope="row" class="nome'. $table_geral['users_id'].'" > '. $table_geral['n1'].' </td>
+              <td scope="row" class="nome'. $table_geral['users_id'].'" > '. $table_geral['n'].' </td>
               <td scope="row" class="apelido'. $table_geral['users_id'].'" > '. $table_geral['apelido'].' </td>
               <td scope="row" class="telefone'. $table_geral['users_id'].'" > '. $table_geral['telefone'].' </td>
               <td scope="row" class="nascimento'. $table_geral['users_id'].'"> '. $table_geral['data_nascimento'].' </td>
+              <td scope="row" class="raw'. $table_geral['users_id'].'"> '. $table_geral['raw'].' </td>
               <td scope="row" class=""> '. $table_geral['n1'].' </td>
               <td scope="row" style="visibility:hidden;" class="permission'. $table_geral['users_id'].'"> '. $table_geral['permission_id'].' </td>
               ';
@@ -359,8 +371,12 @@ $('.btn-light').click(function() {
                   </tr>
                   <tr>
                   <td>Data Nascimento</td>
-                  <td><input id="inputItemNascimento" class="form-control" type = "date" name = "data" class = "box" /></td>
+                  <td><input id="inputItemNascimento" class="form-control" class = "box" /></td>
                 </tr>
+                <tr>
+                <td>Raw</td>
+                <td><input id="inputItemRaw" class="form-control" class = "box" /></td>
+              </tr>
                   <td>Permissão</td>
                   <td>
                     <select id="inputItemPermission" name="cars" class="form-control">
@@ -375,7 +391,6 @@ $('.btn-light').click(function() {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Guardar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
             <div id="outputNewUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
@@ -420,6 +435,10 @@ $('.btn-light').click(function() {
                   <td><input id="inputEditNascimento" class="form-control" type = "date" name = "data" class = "box" /></td>
                 </tr>
                 <tr>
+                <td>Raw</td>
+                <td><input id="inputEditRaw" class="form-control" class = "box" /></td>
+              </tr>
+                <tr>
                   <td>Permissão</td>
                   <td>
                     <select id="inputEditPermission" name="inputEditPermission" class="form-control">
@@ -434,7 +453,6 @@ $('.btn-light').click(function() {
            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success">Guardar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
             <div id="outputEditUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
@@ -453,8 +471,7 @@ $('.btn-light').click(function() {
             </div>
             <div class="modal-body-1"></div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Sim</button>
-                <button type="button" class="btn btn-info" data-dismiss="modal">Não</button>
+                <button type="button" class="btn btn-danger">OK</button>
             </div>
             <div id="outputDeleteUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
@@ -479,8 +496,7 @@ $('.btn-light').click(function() {
             </div>
             <div class="modal-body-all-delete"></div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark">Sim</button>
-                <button type="button" class="btn btn-info" data-dismiss="modal">Não</button>
+                <button type="button" class="btn btn-dark">OK</button>
             </div>
             <div id="outputDeleteAllUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
