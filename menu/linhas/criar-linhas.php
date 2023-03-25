@@ -276,43 +276,56 @@ $('.btn-light').click(function() {
 })
 </script>
 
-<?php
-  $sql="SELECT * FROM users where valid=1";
-  $result_users = mysqli_query($db,$sql);
-?>
-
 <div class="tabela" id="tabela">
   <button class="btn btn-primary" data-toggle="modal" data-target="#newModal"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
+  <button id="delete_records" class="btn btn-danger" data-toggle="modal" data-target="#deleteAllModal"><i class="fa fa-user-times" aria-hidden="true"></i></button>
   <br><br><form action="" style="width: 30%;">
-    <div class="card-body">
-<label>Email</label>
-  <div class="row">
-    <div class="col-md-10">
-      <div class="file-loading">
-        <input type="text" class="form-control" list="list-timezone" id="input-datalist"/>
-      </div>
-     </div>
-     <div class="col-md-2">
-       <button type="button" class="btn btn-light"><i class="fa fa-search" aria-hidden="true"></i></button>
-     </div>
 
-  </div>
-</div>
-    <div class="form-group">
-      <datalist id="list-timezone">
-        <?php while ($table_geral = mysqli_fetch_assoc($result_users)){  ?>
-          <option id="<?php echo $table_geral['users_id']; ?> " value="<?php echo $table_geral['email']; ?>"><?php echo $table_geral['email']; ?></option>
-          <?php
-          }
-          ?>
-      </datalist>
-    </div>
-<div id="outputSearchUser" style="width: 90%;">
-    </div>
-  </form>
+    <?php
+      $sql="SELECT *, users.nome AS n, permissions.nome as n1 FROM users,permissions where valid=1 && users.permission_id = permissions.permissions_id";
+      $result_users = mysqli_query($db,$sql);
 
+          echo '  <table id="myTable" class="table" id="myTable">
+                <thead>
+                    <tr>
+                      <th scope="col"><input type="checkbox" id="select_all">#</th>
+                      <th scope="col" onclick="sortTable(1)">Email</th>
+                      <th scope="col" onclick="sortTable(2)">Nome</th>
+                      <th scope="col" onclick="sortTable(3)">Apelido</th>
+                      <th scope="col" onclick="sortTable(4)">Telefone</th>
+                      <th scope="col" onclick="sortTable(5)">Nascimento</th>
+                      <th scope="col"  onclick="sortTable(6)">Permissão</th>
+                    </tr>
+                </thead>
+                <tbody>';
+            while ($table_geral = mysqli_fetch_assoc($result_users)){
+             echo '<tr>
+              <td scope="row"> <input type="checkbox" class="emp_checkbox" data-emp-id="'. $table_geral['email'].'"></td>
+              <td scope="row" class="email'. $table_geral['users_id'].'" value="'. $table_geral['email'].'"> '. $table_geral['email'].' </td>
+              <td scope="row" class="nome'. $table_geral['users_id'].'" > '. $table_geral['n'].' </td>
+              <td scope="row" class="apelido'. $table_geral['users_id'].'" > '. $table_geral['apelido'].' </td>
+              <td scope="row" class="telefone'. $table_geral['users_id'].'" > '. $table_geral['telefone'].' </td>
+              <td scope="row" class="nascimento'. $table_geral['users_id'].'"> '. $table_geral['data_nascimento'].' </td>
+              <td scope="row" class=""> '. $table_geral['n1'].' </td>
+              <td scope="row" style="visibility:hidden;" class="permission'. $table_geral['users_id'].'"> '. $table_geral['permission_id'].' </td>
+              ';
+
+             echo '<td scope="row"></td>';
+             echo '<td scope="row"> <button class="editModal btn btn-success" data-id="'. $table_geral['users_id'].'" data-toggle="modal" data-target="#editModal">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button></td>
+              <td scope="row"> <button class="deleteModal btn btn-danger" data-id="'. $table_geral['users_id'].'" data-toggle="modal" data-target="#deleteModal">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button></td>
+              </tr>';
+              }
+              echo '</tbody>
+            </table>';
+    ?>
 </div>
 </div>
+
+<span class="rows_selected" id="select_count">0 Selected</span>
 
 <!-- New Modal -->
 <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -320,7 +333,7 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Criar Utilizador</h4>
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">× </span><span class="sr-only">Close</span>
+                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body-2">
@@ -444,6 +457,31 @@ $('.btn-light').click(function() {
     </div>
 </div>
 <!-- End Delete Modal -->
+
+<!-- DeleteAll Modal -->
+<div class="modal fade" id="deleteAllModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Apagar Utilizador(es)</h4>
+                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                </button>
+            </div>
+            <div class="modal-body-all-delete"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark">OK</button>
+            </div>
+            <div id="outputDeleteAllUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
+        </div>
+    </div>
+</div>
+<!-- End ReminderAll Modal -->
 
 <script>
 function sortTable(n) {

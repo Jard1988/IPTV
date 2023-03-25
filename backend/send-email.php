@@ -1,9 +1,6 @@
 <?php
-<<<<<<< HEAD
 include('../session.php');
-=======
-include('../../session.php');
->>>>>>> 5e00555278730878cd44c94cb32264ec13d846c6
+
 require_once('../mailer/PHPMailer.php');
 require_once('../mailer/SMTP.php');
 require_once('../mailer/Exception.php');
@@ -38,7 +35,7 @@ use PHPMailer\PHPMailer\Exception;
             $mail->addAddress($email); // emails to
 
             $mail->isHTML(true);
-            $mail->Subject = 'Geo Locator - Lidl';
+            $mail->Subject = 'IPTV Planner';
             $mail->Body = '<strong>Email: </strong>' . $email . '<br>
 
                             <br><br>

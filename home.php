@@ -147,6 +147,19 @@
                                 <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-reply-all" aria-hidden="true"></i>Mass Email</a></li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="#" onClick="getPage('linhas/all-lines');">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span>Linhas</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+<!--                                <span class="label label-primary pull-right">4</span>-->
+                            </a>
+                            <ul class="sidebar-submenu" style="display: none;">
+                                <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-search" aria-hidden="true"></i>Procurar</a></li>
+                                <li><a href="#" onClick="getPage('linhas/all-lines');"><i class="fa fa-list" aria-hidden="true"></i> Listar Todos</a></li>
+                                </li>
+                            </ul>
+                        </li>
                         <?php
                         }
                         ?>

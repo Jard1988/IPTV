@@ -5,23 +5,22 @@ include('../../session.php');
 
 <script type="text/javascript">
 
-
 $(document).on("click", ".editModal", function () {
    var Id = $(this).data('id');
    var email = $("#myTable").find(".email"+Id+":first").text().trim();
-   var nome = $("#myTable").find(".nome"+Id+":first").text().trim();
-   var apelido = $("#myTable").find(".apelido"+Id+":first").text().trim();
-   var telefone = $("#myTable").find(".telefone"+Id+":first").text().trim();
-   var nascimento = $("#myTable").find(".nascimento"+Id+":first").text().trim();
-   var permission = $("#myTable").find(".permission"+Id+":first").text().trim();
+   var linha = $("#myTable").find(".linha"+Id+":first").text().trim();
+   var inicio = $("#myTable").find(".data_ini"+Id+":first").text().trim();
+   var fim = $("#myTable").find(".data_fim"+Id+":first").text().trim();
+   var pago = $("#myTable").find(".pago"+Id+":first").text().trim();
+   var caminho = $("#myTable").find(".caminho"+Id+":first").text().trim();
 
     $('#inputEditID').val(Id);
     $('#inputEditEmail').val(email);
-    $('#inputEditNome').val(nome);
-    $('#inputEditApelido').val(apelido);
-    $('#inputEditTelefone').val(telefone);
-    $('#inputEditNascimento').val(nascimento);
-    $('#inputEditPermission').val(permission);
+    $('#inputEditLinha').val(linha);
+    $('#inputEditDateIni').val(inicio);
+    $('#inputEditDateFim').val(fim);
+    $('#inputEditPago').val(pago);
+    $('#inputEditCaminho').val(caminho);
     // document.getElementById('inputEditPermission').selectedIndex = 2;
  });
 
@@ -29,32 +28,32 @@ $(document).on("click", ".editModal", function () {
 
        var id = document.getElementById("inputEditID").value;
        var email = document.getElementById("inputEditEmail").value;
-       var nome = document.getElementById("inputEditNome").value;
-       var apelido = document.getElementById("inputEditApelido").value;
-       var telefone = document.getElementById("inputEditTelefone").value;
-       var nascimento = document.getElementById("inputEditNascimento").value;
-       var permission = document.getElementById("inputEditPermission").value;
+       var linha = document.getElementById("inputEditLinha").value;
+       var inicio = document.getElementById("inputEditDateIni").value;
+       var fim = document.getElementById("inputEditDateFim").value;
+       var pago = document.getElementById("inputEditPago").value;
+       var caminho = document.getElementById("inputEditCaminho").value;
 
     $.ajax({
-      url: "./backend/users/edituser.php",
+      url: "./backend/linhas/editLine.php",
       type: "post",
       data: {
       id: id,
       email: email,
-      nome: nome,
-      apelido: apelido,
-      telefone: telefone,
-      nascimento: nascimento,
-      permission: permission
+      linha: linha,
+      inicio: inicio,
+      fim: fim,
+      pago: pago,
+      caminho: caminho
    },
       datatype: "html",
       contenttype: 'application/html; charset=utf-8',
       async: true,
     success : function(response) {
         if (response == 1){
-             $('#outputEditUser').html(response);
+             $('#outputEditLine').html(response);
         }else {
-            $('#outputEditUser').html(response);
+            $('#outputEditLine').html(response);
 
         }
         //$('#outputlogin').html(response);
@@ -71,7 +70,7 @@ $(document).on("click", ".editModal", function () {
   $(document).on("click", ".deleteModal", function () {
      var Id = $(this).data('id');
 
-     var modalBody = $('<div id="modalContent" style="margin-left: 30px;">Deseja apagar o Utilizador <input id="deleteID" style="border: none;" value="' + Id + '" disabled="disabled" /></div>');
+     var modalBody = $('<div id="modalContent" style="margin-left: 30px;">Deseja apagar o Linha <input id="deleteID" style="border: none;" value="' + Id + '" disabled="disabled" /></div>');
      $('.modal-body-1').html(modalBody);
    });
 
@@ -179,7 +178,7 @@ $(document).on("click", ".editModal", function () {
     $('.modal-body-all-delete').html(modalBody);
     } else {
 
-      var modalBody = $('<div id="modalContent" style="margin-left: 30px;">Deseja Apagar o(s) Utilizador(es)seleccionados?</div>');
+      var modalBody = $('<div id="modalContent" style="margin-left: 30px;">Deseja Apagar o(s) Linha(as)seleccionados?</div>');
       $('.modal-body-all-delete').html(modalBody);
       $('.modal-footer .btn-dark').click(function() {
         var selected_values = employee.join(",");
@@ -276,51 +275,69 @@ $('.btn-light').click(function() {
 })
 </script>
 
-<?php
-  $sql="SELECT * FROM users where valid=1";
-  $result_users = mysqli_query($db,$sql);
-?>
-
 <div class="tabela" id="tabela">
   <button class="btn btn-primary" data-toggle="modal" data-target="#newModal"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
+  <button id="delete_records" class="btn btn-danger" data-toggle="modal" data-target="#deleteAllModal"><i class="fa fa-user-times" aria-hidden="true"></i></button>
   <br><br><form action="" style="width: 30%;">
-    <div class="card-body">
-<label>Email</label>
-  <div class="row">
-    <div class="col-md-10">
-      <div class="file-loading">
-        <input type="text" class="form-control" list="list-timezone" id="input-datalist"/>
-      </div>
-     </div>
-     <div class="col-md-2">
-       <button type="button" class="btn btn-light"><i class="fa fa-search" aria-hidden="true"></i></button>
-     </div>
 
-  </div>
-</div>
-    <div class="form-group">
-      <datalist id="list-timezone">
-        <?php while ($table_geral = mysqli_fetch_assoc($result_users)){  ?>
-          <option id="<?php echo $table_geral['users_id']; ?> " value="<?php echo $table_geral['email']; ?>"><?php echo $table_geral['email']; ?></option>
-          <?php
-          }
-          ?>
-      </datalist>
-    </div>
-<div id="outputSearchUser" style="width: 90%;">
-    </div>
-  </form>
+    <?php
+      $sql="SELECT *
+          FROM users
+          INNER JOIN users_linhas
+          ON users.users_id = users_linhas.users_id
+          INNER JOIN linhas
+          ON users_linhas.linhas_id = linhas.linhas_id";
 
+      $result_users = mysqli_query($db,$sql);
+
+          echo '  <table id="myTable" class="table" id="myTable">
+                <thead>
+                    <tr>
+                      <th scope="col"><input type="checkbox" id="select_all">#</th>
+                      <th scope="col" onclick="sortTable(1)">Email</th>
+                      <th scope="col" onclick="sortTable(2)">Linha</th>
+                      <th scope="col" onclick="sortTable(3)">Inicio</th>
+                      <th scope="col" onclick="sortTable(4)">Fim</th>
+                      <th scope="col" onclick="sortTable(5)">Pago</th>
+                      <th scope="col" onclick="sortTable(6)">Caminho</th>
+                    </tr>
+                </thead>
+                <tbody>';
+            while ($table_geral = mysqli_fetch_assoc($result_users)){
+             echo '<tr>
+              <td scope="row"> <input type="checkbox" class="emp_checkbox" data-emp-id="'. $table_geral['email'].'"></td>
+              <td scope="row" class="email'. $table_geral['users_id'].'" value="'. $table_geral['email'].'"> '. $table_geral['email'].' </td>
+              <td scope="row" class="linha'. $table_geral['users_id'].'" > '. $table_geral['nome_linha'].' </td>
+              <td scope="row" class="data_ini'. $table_geral['users_id'].'" > '. $table_geral['data_ini'].' </td>
+              <td scope="row" class="data_fim'. $table_geral['users_id'].'" > '. $table_geral['data_fim'].' </td>
+              <td scope="row" class="pago'. $table_geral['users_id'].'"> '. $table_geral['pago'].' </td>
+              <td scope="row" class="caminho"> '. $table_geral['caminho'].' </td>
+              ';
+
+             echo '<td scope="row"></td>';
+             echo '<td scope="row"> <button class="editModal btn btn-success" data-id="'. $table_geral['users_id'].'" data-toggle="modal" data-target="#editModal">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button></td>
+              <td scope="row"> <button class="deleteModal btn btn-danger" data-id="'. $table_geral['users_id'].'" data-toggle="modal" data-target="#deleteModal">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button></td>
+              </tr>';
+              }
+              echo '</tbody>
+            </table>';
+    ?>
 </div>
 </div>
+
+<span class="rows_selected" id="select_count">0 Selected</span>
 
 <!-- New Modal -->
 <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Criar Utilizador</h4>
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">× </span><span class="sr-only">Close</span>
+              <h4 class="modal-title" id="myModalLabel">Criar Linha</h4>
+                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body-2">
@@ -331,30 +348,29 @@ $('.btn-light').click(function() {
                   <td><input type="text" class="form-control" id="inputItemEmail" value=""></td>
                 </tr>
                 <tr>
-                  <td>Nome</td>
-                  <td><input type="text" class="form-control" id="inputItemNome" value=""></td>
+                  <td>Linha</td>
+                  <td><input type="text" class="form-control" id="inputItemLinha" value=""></td>
                 </tr>
                 <tr>
-                  <td>Apelido</td>
-                  <td><input type="text" class="form-control" id="inputItemApelido" value=""></td>
+                  <td>Data de Inicio</td>
+                  <td><input type="date" class="form-control" id="inputItemDateIni" value=""></td>
                 </tr>
                 <tr>
                   <tr>
-                    <td>Telefone</td>
-                    <td><input type="text" class="form-control" id="inputItemTelefone" value=""></td>
+                    <td>Date de Fim</td>
+                    <td><input type="text" class="form-control" id="inputItemDateFim" value=""></td>
                   </tr>
-                  <tr>
-                  <td>Data Nascimento</td>
-                  <td><input id="inputItemNascimento" class="form-control" class = "box" /></td>
-                </tr>
-                  <td>Permissão</td>
+                  <td>Pagamento</td>
                   <td>
-                    <select id="inputItemPermission" name="cars" class="form-control">
-                      <option selected value="1">User</option>
-                      <option value="2">Team</option>
-                      <option value="3">Admin</option>
+                    <select id="inputItemPago" name="cars" class="form-control">
+                      <option selected value="1">Não</option>
+                      <option value="2">Sim</option>
                     </select>
                   </td>
+                </tr>
+                <tr>
+                  <td>Caminho</td>
+                  <td><input type="text" class="form-control" id="inputItemCaminho" value=""></td>
                 </tr>
                 </tbody>
               </table>
@@ -373,46 +389,41 @@ $('.btn-light').click(function() {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Editar Utilizador</h4>
+            <h4 class="modal-title" id="myModalLabel">Editar Linha</h4>
                 <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body">
               <table class="table table-hover">
                 <tbody>
-                  <tr>
-                    <td>ID</td>
-                    <td><input type="text" class="form-control" id="inputEditID" value="" readonly></td>
-                  </tr>
+                <tr>
                   <td>Email</td>
                   <td><input type="text" class="form-control" id="inputEditEmail" value=""></td>
                 </tr>
                 <tr>
-                  <td>Nome</td>
-                  <td><input type="text" class="form-control" id="inputEditNome" value=""></td>
+                  <td>Linha</td>
+                  <td><input type="text" class="form-control" id="inputEditLinha" value=""></td>
                 </tr>
                 <tr>
-                  <td>Apelido</td>
-                  <td><input type="text" class="form-control" id="inputEditApelido" value=""></td>
+                  <td>Data de Inicio</td>
+                  <td><input type="date" class="form-control" id="inputEditDateIni" value=""></td>
                 </tr>
                 <tr>
                   <tr>
-                    <td>Telefone</td>
-                    <td><input type="text" class="form-control" id="inputEditTelefone" value=""></td>
+                    <td>Date de Fim</td>
+                    <td><input type="date" class="form-control" id="inputEditDateFim" value=""></td>
                   </tr>
-                  <tr>
-                  <td>Data Nascimento</td>
-                  <td><input id="inputEditNascimento" class="form-control" type = "date" name = "data" class = "box" /></td>
-                </tr>
-                <tr>
-                  <td>Permissão</td>
+                  <td>Pagamento</td>
                   <td>
-                    <select id="inputEditPermission" name="inputEditPermission" class="form-control">
-                      <option value="1">User</option>
-                      <option value="2">Team</option>
-                      <option value="3">Admin</option>
+                    <select id="inputEditPago" name="cars" class="form-control">
+                      <option value="False">Não</option>
+                      <option value="True">Sim</option>
                     </select>
                   </td>
+                </tr>
+                <tr>
+                  <td>Caminho</td>
+                  <td><input type="text" class="form-control" id="inputEditCaminho" value=""></td>
                 </tr>
                 </tbody>
               </table>
@@ -420,7 +431,7 @@ $('.btn-light').click(function() {
             <div class="modal-footer">
                 <button type="button" class="btn btn-success">Guardar</button>
             </div>
-            <div id="outputEditUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
+            <div id="outputEditLine" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
     </div>
 </div>
@@ -431,7 +442,7 @@ $('.btn-light').click(function() {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Apagar Utilizador</h4>
+              <h4 class="modal-title" id="myModalLabel">Apagar Linha</h4>
                 <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
@@ -444,6 +455,31 @@ $('.btn-light').click(function() {
     </div>
 </div>
 <!-- End Delete Modal -->
+
+<!-- DeleteAll Modal -->
+<div class="modal fade" id="deleteAllModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Apagar Linha(as)</h4>
+                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                </button>
+            </div>
+            <div class="modal-body-all-delete"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark">OK</button>
+            </div>
+            <div id="outputDeleteAllUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
+        </div>
+    </div>
+</div>
+<!-- End ReminderAll Modal -->
 
 <script>
 function sortTable(n) {
