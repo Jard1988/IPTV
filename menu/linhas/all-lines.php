@@ -8,7 +8,6 @@ include('../../session.php');
 $(document).on("click", ".editModal", function () {
    var Id = $(this).data('id');
    var email = $("#myTable").find(".email"+Id+":first").text().trim();
-   var linha = $("#myTable").find(".linha"+Id+":first").text().trim();
    var inicio = $("#myTable").find(".data_ini"+Id+":first").text().trim();
    var fim = $("#myTable").find(".data_fim"+Id+":first").text().trim();
    var pago = $("#myTable").find(".pago"+Id+":first").text().trim();
@@ -16,7 +15,6 @@ $(document).on("click", ".editModal", function () {
 
     $('#inputEditID').val(Id);
     $('#inputEditEmail').val(email);
-    $('#inputEditLinha').val(linha);
     $('#inputEditDateIni').val(inicio);
     $('#inputEditDateFim').val(fim);
     $('#inputEditPago').val(pago);
@@ -26,7 +24,6 @@ $(document).on("click", ".editModal", function () {
  $('.modal-footer .btn-success').click(function() {
        var id = document.getElementById("inputEditID").value;
        var email = document.getElementById("inputEditEmail").value;
-       var linha = document.getElementById("inputEditLinha").value;
        var inicio = document.getElementById("inputEditDateIni").value;
        var fim = document.getElementById("inputEditDateFim").value;
        var pago = document.getElementById("inputEditPago").value;
@@ -38,7 +35,6 @@ $(document).on("click", ".editModal", function () {
       data: {
       id: id,
       email: email,
-      linha: linha,
       inicio: inicio,
       fim: fim,
       pago: pago,
@@ -348,7 +344,13 @@ $('.btn-light').click(function() {
                 </tr>
                 <tr>
                   <td>Linha</td>
-                  <td><input type="text" class="form-control" id="inputItemLinha" value=""></td>
+                  <td>
+                    <select id="inputEditLinha" name="inputEditLinha" class="form-control">
+                      <option value="1">User</option>
+                      <option value="2">Team</option>
+                      <option value="3">Admin</option>
+                    </select>
+                  </td>
                 </tr>
                 <tr>
                   <td>Data de Inicio</td>
@@ -362,7 +364,7 @@ $('.btn-light').click(function() {
                   <td>Pagamento</td>
                   <td>
                     <select id="inputItemPago" name="cars" class="form-control">
-                      <option selected value="1">Não</option>
+                      <option value="1">Não</option>
                       <option value="2">Sim</option>
                     </select>
                   </td>
@@ -401,11 +403,7 @@ $('.btn-light').click(function() {
                   </tr>
                 <tr>
                   <td>Email</td>
-                  <td><input type="text" class="form-control" id="inputEditEmail" value=""></td>
-                </tr>
-                <tr>
-                  <td>Linha</td>
-                  <td><input type="text" class="form-control" id="inputEditLinha" value=""></td>
+                  <td><input type="text" class="form-control" id="inputEditEmail" value="" readonly></td>
                 </tr>
                 <tr>
                   <td>Data de Inicio</td>
@@ -419,14 +417,14 @@ $('.btn-light').click(function() {
                   <td>Pagamento</td>
                   <td>
                     <select id="inputEditPago" name="cars" class="form-control">
-                      <option value="False">Não</option>
-                      <option value="True">Sim</option>
+                      <option value="Nao">Não</option>
+                      <option value="Sim">Sim</option>
                     </select>
                   </td>
                 </tr>
                 <tr>
                   <td>Caminho</td>
-                  <td><input type="text" class="form-control" id="inputEditCaminho" value=""></td>
+                  <td><input type="text" class="form-control" id="inputEditCaminho" value="" readonly></td>
                 </tr>
                 </tbody>
               </table>
