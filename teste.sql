@@ -30,7 +30,10 @@ CREATE TABLE IF NOT EXISTS `linhas` (
   PRIMARY KEY (`linhas_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportação de dados não seleccionada.
+-- A despejar dados para tabela iptvplanner.linhas: ~2 rows (aproximadamente)
+REPLACE INTO `linhas` (`nome_linha`, `linhas_id`, `pago`, `caminho`) VALUES
+	('Teste', 1, 'True', NULL),
+	('AllList', 2, 'True', NULL);
 
 -- A despejar estrutura para tabela iptvplanner.permissions
 DROP TABLE IF EXISTS `permissions`;
@@ -40,7 +43,11 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   PRIMARY KEY (`permissions_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportação de dados não seleccionada.
+-- A despejar dados para tabela iptvplanner.permissions: ~3 rows (aproximadamente)
+REPLACE INTO `permissions` (`permissions_id`, `nome`) VALUES
+	(1, 'user'),
+	(2, 'retail'),
+	(3, 'admin');
 
 -- A despejar estrutura para tabela iptvplanner.users
 DROP TABLE IF EXISTS `users`;
@@ -57,7 +64,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`users_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportação de dados não seleccionada.
+-- A despejar dados para tabela iptvplanner.users: ~0 rows (aproximadamente)
+REPLACE INTO `users` (`users_id`, `email`, `password`, `permission_id`, `valid`, `nome`, `apelido`, `data_nascimento`, `telefone`) VALUES
+	(1, 'teixeira.nuno88@gmail.com', '1234', 3, 1, 'Nuno', 'Teixeira', '1988-08-27', '+351917737010');
 
 -- A despejar estrutura para tabela iptvplanner.users_linhas
 DROP TABLE IF EXISTS `users_linhas`;
@@ -69,7 +78,10 @@ CREATE TABLE IF NOT EXISTS `users_linhas` (
   PRIMARY KEY (`users_id`,`linhas_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportação de dados não seleccionada.
+-- A despejar dados para tabela iptvplanner.users_linhas: ~1 rows (aproximadamente)
+REPLACE INTO `users_linhas` (`users_id`, `linhas_id`, `data_ini`, `data_fim`) VALUES
+	(1, 1, '2023-03-24', NULL),
+	(1, 2, '2023-03-24', NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
