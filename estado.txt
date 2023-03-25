@@ -1,0 +1,9 @@
+Conclusao Edit..
+Criar Linha/Utilizador e associar a utilizador/linha com pergunta.
+
+Verificar Asssunto em Email
+Terminar Mass Email
+
+Remover Eliminar Linha e Utilizador, em All List
+
+Criar Linha!
