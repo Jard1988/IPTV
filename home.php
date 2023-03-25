@@ -148,7 +148,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" onClick="getPage('linhas/all-lines');">
+                            <a href="#"">
                                 <i class="fa fa-users" aria-hidden="true"></i>
                                 <span>Linhas</span>
                                 <i class="fa fa-angle-left pull-right"></i>

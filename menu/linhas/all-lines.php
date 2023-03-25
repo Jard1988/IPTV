@@ -21,11 +21,9 @@ $(document).on("click", ".editModal", function () {
     $('#inputEditDateFim').val(fim);
     $('#inputEditPago').val(pago);
     $('#inputEditCaminho').val(caminho);
-    // document.getElementById('inputEditPermission').selectedIndex = 2;
  });
 
  $('.modal-footer .btn-success').click(function() {
-
        var id = document.getElementById("inputEditID").value;
        var email = document.getElementById("inputEditEmail").value;
        var linha = document.getElementById("inputEditLinha").value;
@@ -51,6 +49,7 @@ $(document).on("click", ".editModal", function () {
       async: true,
     success : function(response) {
         if (response == 1){
+
              $('#outputEditLine').html(response);
         }else {
             $('#outputEditLine').html(response);
@@ -396,6 +395,10 @@ $('.btn-light').click(function() {
             <div class="modal-body">
               <table class="table table-hover">
                 <tbody>
+                  <tr>
+                    <td>ID</td>
+                    <td><input type="text" class="form-control" id="inputEditID" value="" readonly></td>
+                  </tr>
                 <tr>
                   <td>Email</td>
                   <td><input type="text" class="form-control" id="inputEditEmail" value=""></td>
