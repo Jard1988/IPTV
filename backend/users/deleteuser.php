@@ -12,7 +12,9 @@
 
     if($row1 >=1) {
       $sql3 = "DELETE FROM users WHERE users_id='". $id."'";
+			$sql4 = "DELETE FROM users_linhas WHERE users_id='". $id."';";
       $result3 = mysqli_query($db, $sql3);
+			$result4 = mysqli_query($db, $sql4);
       echo "User Apagado";
     }else {
         echo "Não foi possivel Apagar o User. Tente Novamente.";

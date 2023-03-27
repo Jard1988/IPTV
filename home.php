@@ -155,8 +155,9 @@
 <!--                                <span class="label label-primary pull-right">4</span>-->
                             </a>
                             <ul class="sidebar-submenu" style="display: none;">
-                                <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-search" aria-hidden="true"></i>Procurar</a></li>
+                                <li><a href="#" onClick="getPage('linhas/search-line');"><i class="fa fa-search" aria-hidden="true"></i>Procurar</a></li>
                                 <li><a href="#" onClick="getPage('linhas/all-lines');"><i class="fa fa-list" aria-hidden="true"></i> Listar Todos</a></li>
+                                <li><a href="#" onClick="getPage('linhas/criar-linhas');"><i class="fa fa-list" aria-hidden="true"></i> Criar Linha</a></li>
                                 </li>
                             </ul>
                         </li>

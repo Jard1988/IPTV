@@ -8,6 +8,7 @@ $result_users = mysqli_query($db,$sql);
 <script type="text/javascript">
 $('.modal-footer .btn-primary').click(function() {
   var email = document.getElementById("input-datalist").value;
+  var assunto = document.getElementById("input-assunto").value;
   var texto = document.getElementById("exampleFormControlTextarea1").value;
 
   $.ajax({
@@ -15,6 +16,7 @@ $('.modal-footer .btn-primary').click(function() {
     type: "post",
     data: {
       email: email,
+      assunto: assunto,
       texto: texto
  },
     datatype: "html",
@@ -74,6 +76,10 @@ $('.modal-footer .btn-primary').click(function() {
         }
         ?>
     </datalist>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput2">Assunto</label>
+    <input type="text" class="form-control" id="input-assunto">
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Mensagem</label>

@@ -14,6 +14,7 @@ use PHPMailer\PHPMailer\Exception;
     //Variaveis de POST, Alterar somente se necessário
     //====================================================
     $email = $_REQUEST['email'];
+    $assunto = $_REQUEST['assunto'];
     $mensagem = $_REQUEST['texto'];
 
     $sql = "SELECT users_id FROM users WHERE email = '$email'";
@@ -35,7 +36,7 @@ use PHPMailer\PHPMailer\Exception;
             $mail->addAddress($email); // emails to
 
             $mail->isHTML(true);
-            $mail->Subject = 'IPTV Planner';
+            $mail->Subject = $assunto;
             $mail->Body = '<strong>Email: </strong>' . $email . '<br>
 
                             <br><br>

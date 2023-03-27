@@ -10,11 +10,10 @@
 
 	$mail = new PHPMailer(true);
 
-	function gerar_senha($tamanho, $maiusculas, $minusculas, $numeros, $simbolos){
+	function gerar_linha($tamanho, $maiusculas, $minusculas, $numeros){
 	    $ma = "ABCDEFGHIJKLMNOPQRSTUVYXWZ"; // $ma contem as letras maiúsculas
 	    $mi = "abcdefghijklmnopqrstuvyxwz"; // $mi contem as letras minusculas
 	    $nu = "0123456789"; // $nu contem os números
-	    $si = "!@#$%¨&*()_+="; // $si contem os símbolos
 
 	    $senha="";
 	    if ($maiusculas){
@@ -32,30 +31,34 @@
 	        $senha .= str_shuffle($nu);
 	    }
 
-	    if ($simbolos){
-	        // se $simbolos for "true", a variável $si é embaralhada e adicionada para a variável $senha
-	        $senha .= str_shuffle($si);
-	    }
-
 	    // retorna a senha embaralhada com "str_shuffle" com o tamanho definido pela variável $tamanho
 	    return substr(str_shuffle($senha),0,$tamanho);
 	}
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = mysqli_real_escape_string($db,$_POST['email']);
-    $nome = mysqli_real_escape_string($db,$_POST['nome']);
-		$apelido = mysqli_real_escape_string($db,$_POST['apelido']);
-		$telefone = mysqli_real_escape_string($db,$_POST['telefone']);
-    $nascimento = mysqli_real_escape_string($db,$_POST['nascimento']);
-    $permission = mysqli_real_escape_string($db,$_POST['permission']);
-		$novasenha = gerar_senha(10, true, true, true, true);
+    $pago = mysqli_real_escape_string($db,$_POST['pago']);
+		$data_ini = mysqli_real_escape_string($db,$_POST['data_ini']);
+		$data_fim = mysqli_real_escape_string($db,$_POST['data_fim']);
+		$novalinha = gerar_linha(10, true, true, true);
     // If result matched $myusername and $mypassword, table row must be 1 row
-
-
-      $sql3 = "INSERT INTO `users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `permission_id`) VALUES ('". $email ."','". $novasenha ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "','". $permission . "')";
-
+		$caminho = $caminho_git . $novalinha . ".m3u";
+		echo "<b><font color='#FF0000'>  $caminho </font></b><br><br>";
+      $sql3 = "INSERT INTO `linhas` (`nome_linha`,`pago`, `caminho`) VALUES ('". $novalinha ."','". $pago ."','". $caminho . "')";
 			$result3 = mysqli_query($db, $sql3);
-			if ($result3){
+
+			$sql = "SELECT users_id from users where email='". $email ."'";
+			$result_users = mysqli_query($db,$sql);
+			$table_users = mysqli_fetch_assoc($result_users);
+
+			$sql6 = "SELECT linhas_id from linhas where nome_linha='". $novalinha ."'";
+			$result_lines = mysqli_query($db,$sql6);
+			$table_lines = mysqli_fetch_assoc($result_lines);
+
+			$sql4 = "INSERT INTO `iptvplanner`.`users_linhas` (`users_id`, `linhas_id`, `data_ini`, `data_fim`) VALUES ('".$table_users['users_id']."', '".$table_lines['linhas_id']."', '".date("Y/m/d")."', '');";
+			$result4 = mysqli_query($db, $sql4);
+
+			if ($result3 && $result4 && $result_users && $result_lines){
 				try {
 						//$mail->SMTPDebug = SMTP::DEBUG_SERVER; // apresenta o DEBUG
 						$mail->isSMTP();
@@ -71,14 +74,14 @@
 						$mail->addAddress($email); // emails to
 
 						$mail->isHTML(true);
-						$mail->Subject = 'Registo na Geo Locator';
-						$mail->Body = 'Registo com Sucesso <strong>Geo Locator</strong><br>
+						$mail->Subject = 'Linha';
+						$mail->Body = 'Registo com Sucesso <strong>IPTV Planner</strong><br>
 												<br><br>
 
-												Obrigado pelo seu Registo na Geo Locator!<br><br>
+												Obrigado pelo sua Compra na IPTV Planner!<br><br>
 
-												Confirme o seu registo através do link:<br>
-												http://localhost/geolocator/confirm.php?email='.$email.' <br><br>
+												Segue a ligação m3u da sua linha:
+												'.$caminho.' <br><br>
 
 												Se tiver urgência ou existir algum problema não exite em entrar em contacto por email ou por favor ligar para 22X XXX XXX ou 9XX XXX XXX.<br><br>
 												NOTA: Não responda a este email, trata-se de uma mensagem automática de confirmação de receção do seu pedido.<br>

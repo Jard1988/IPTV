@@ -100,7 +100,6 @@ $(document).on("click", ".editModal", function () {
   });
 
     $('.modal-footer .btn-primary').click(function() {
-
       var email = document.getElementById("inputItemEmail").value;
       var pago = document.getElementById("inputItemPago").value;
       var data_ini = document.getElementById("inputItemDataIni").value;
@@ -208,13 +207,13 @@ $(document).on("click", ".editModal", function () {
 });
 
 $('.btn-light').click(function() {
-  var email = $('#input-datalist').val();
-  if(email == ""){
+  var linha = $('#input-datalist').val();
+  if(linha == ""){
     $.ajax({
-      url: "./backend/users/all-users.php",
+      url: "./backend/linhas/all-lines.php",
       type: "post",
       data: {
-        email: ""
+        linhas: ""
    },
       datatype: "html",
       contenttype: 'application/html; charset=utf-8',
@@ -237,10 +236,10 @@ $('.btn-light').click(function() {
     });
   }else {
     $.ajax({
-      url: "./backend/users/search-user.php",
+      url: "./backend/linhas/search-line.php",
       type: "post",
       data: {
-        email: email
+        linha: linha
    },
       datatype: "html",
       contenttype: 'application/html; charset=utf-8',
@@ -265,68 +264,43 @@ $('.btn-light').click(function() {
 })
 </script>
 
+<?php
+  $sql="SELECT * FROM linhas";
+  $result_users = mysqli_query($db,$sql);
+?>
+
 <div class="tabela" id="tabela">
   <button class="btn btn-primary" data-toggle="modal" data-target="#newModal"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
-  <button id="delete_records" class="btn btn-danger" data-toggle="modal" data-target="#deleteAllModal"><i class="fa fa-user-times" aria-hidden="true"></i></button>
   <br><br><form action="" style="width: 30%;">
+    <div class="card-body">
+<label>Linha</label>
+  <div class="row">
+    <div class="col-md-10">
+      <div class="file-loading">
+        <input type="text" class="form-control" list="list-timezone" id="input-datalist"/>
+      </div>
+     </div>
+     <div class="col-md-2">
+       <button type="button" class="btn btn-light"><i class="fa fa-search" aria-hidden="true"></i></button>
+     </div>
 
-    <?php
-    $sql="SELECT *
-        FROM users
-        INNER JOIN users_linhas
-        ON users.users_id = users_linhas.users_id
-        INNER JOIN linhas
-        ON users_linhas.linhas_id = linhas.linhas_id";
+  </div>
+</div>
+    <div class="form-group">
+      <datalist id="list-timezone">
+        <?php while ($table_geral = mysqli_fetch_assoc($result_users)){  ?>
+          <option id="<?php echo $table_geral['linhas_id']; ?> " value="<?php echo $table_geral['nome_linha']; ?>"><?php echo $table_geral['nome_linha']; ?></option>
+          <?php
+          }
+          ?>
+      </datalist>
+    </div>
+<div id="outputSearchUser" style="width: 90%;">
+    </div>
+  </form>
 
-      $result_users = mysqli_query($db,$sql);
-
-          echo '  <table id="myTable" class="table" id="myTable">
-                <thead>
-                    <tr>
-                      <th scope="col"><input type="checkbox" id="select_all">#</th>
-                      <th scope="col" onclick="sortTable(1)">Email</th>
-                      <th scope="col" onclick="sortTable(2)">Linha</th>
-                      <th scope="col" onclick="sortTable(3)">Inicio</th>
-                      <th scope="col" onclick="sortTable(4)">Fim</th>
-                      <th scope="col" onclick="sortTable(5)">Pago</th>
-                      <th scope="col" onclick="sortTable(6)">Caminho</th>
-                    </tr>
-                </thead>
-                <tbody>';
-            while ($table_geral = mysqli_fetch_assoc($result_users)){
-             echo '<tr>
-              <td scope="row"> <input type="checkbox" class="emp_checkbox" data-emp-id="'. $table_geral['linhas_id'].'"></td>
-              <td scope="row" class="email'. $table_geral['linhas_id'].'" value="'. $table_geral['email'].'"> '. $table_geral['email'].' </td>
-              <td scope="row" class="linha'. $table_geral['linhas_id'].'" > '. $table_geral['nome_linha'].' </td>
-              <td scope="row" class="data_ini'. $table_geral['linhas_id'].'" > '. $table_geral['data_ini'].' </td>
-              <td scope="row" class="data_fim'. $table_geral['linhas_id'].'" > '. $table_geral['data_fim'].' </td>';
-
-              if ($table_geral['pago'] == 1) {
-                echo '<td scope="row" class="pago'. $table_geral['linhas_id'].'">Sim</td>';
-              }else {
-                  echo '<td scope="row" class="pago'. $table_geral['linhas_id'].'">Não</td>';
-              }
-
-              echo '<td scope="row" class="caminho"> '. $table_geral['caminho'].' </td>
-              ';
-
-             echo '<td scope="row"></td>';
-             echo '<td scope="row"> <button class="editModal btn btn-success" data-id="'. $table_geral['linhas_id'].'" data-toggle="modal" data-target="#editModal">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-              </button></td>
-              <td scope="row"> <button class="deleteModal btn btn-danger" data-id="'. $table_geral['linhas_id'].'" data-toggle="modal" data-target="#deleteModal">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-              </button></td>
-              </tr>';
-              }
-              echo '</tbody>
-            </table>';
-    ?>
 </div>
 </div>
-
-<span class="rows_selected" id="select_count">0 Selected</span>
-
 <!-- New Modal -->
 <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -371,7 +345,6 @@ $('.btn-light').click(function() {
         </div>
     </div>
 </div>
-<!-- End New Modal -->
 
 <!-- Edit Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
