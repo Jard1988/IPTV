@@ -41,6 +41,23 @@
 	    return substr(str_shuffle($senha),0,$tamanho);
 	}
 
+	function createAvatarImage($string)
+{
+    $imageFilePath = "../../images/".$string . ".png";
+
+    //base avatar image that we use to center our text string on top of it.
+    $avatar = imagecreatetruecolor(60,60);
+    $bg_color = imagecolorallocate($avatar, 211, 211, 211);
+    imagefill($avatar,0,0,$bg_color);
+    $avatar_text_color = imagecolorallocate($avatar, 0, 0, 0);
+	// Load the gd font and write
+    $font = imageloadfont('../../gd-files/gd-font.gdf');
+    imagestring($avatar, $font, 10, 10, $string, $avatar_text_color);
+    imagepng($avatar, $imageFilePath);
+    imagedestroy($avatar);
+    return $imageFilePath;
+}
+
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = mysqli_real_escape_string($db,$_POST['email']);
     $nome = mysqli_real_escape_string($db,$_POST['nome']);
@@ -49,10 +66,10 @@
     $nascimento = mysqli_real_escape_string($db,$_POST['nascimento']);
     $permission = mysqli_real_escape_string($db,$_POST['permission']);
 		$novasenha = gerar_senha(10, true, true, true, true);
+		$target_path = createAvatarImage($nome);
     // If result matched $myusername and $mypassword, table row must be 1 row
 
-
-      $sql3 = "INSERT INTO `users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `permission_id`) VALUES ('". $email ."','". $novasenha ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "','". $permission . "')";
+      $sql3 = "INSERT INTO `users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `permission_id`,`avatar_path`) VALUES ('". $email ."','". $novasenha ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "','". $permission . "','". $target_path . "')";
 
 			$result3 = mysqli_query($db, $sql3);
 			if ($result3){

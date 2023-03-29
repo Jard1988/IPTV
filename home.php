@@ -70,21 +70,42 @@
 	                 <h1><a href="home.php">IPTV Planner</a></h1>
 	              </div>
 	           </div>
+
+             <?php
+             $sql5 = "SELECT * FROM users WHERE email = '$login_session'";
+             $result5 = mysqli_query($db,$sql5);
+             $row5 = mysqli_fetch_array($result5,MYSQLI_ASSOC);
+             ?>
+
 	           <div class="col-md-8">
 	              <div class="navbar navbar-inverse" role="banner">
 	                  <div class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-                          <ul class="nav navbar-nav">
-                              <li class="dropdown">
+                          <ul class="nav navbar-nav" style="padding-left: 20px;">
+                            <li class="dropdown">
+                              <div class="logo">
+                                 <h1>
+                                                       <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                                                         <img style="margin-right: 0px; border-radius: 50%;" width="40px" height="40px" src="images/notification.jpg" class="icon_logo">
+                                                          <span class="badge badge-light">4</span><span style="margin-right: 10px;" class="caret"></span>
+                                                                      <ul class="dropdown-menu">
+                                                                          <li><a href="#">notificacao 1</a></li>
+                                                                          <li><a href="#">notificacao 2</a></li>
+                                                                      </ul></a></h1>
+                              </div>
+                            </li>
 
-                                      <a class="dropdown-toggle" type="button" data-toggle="dropdown">Notifications
-                                          <span class="badge badge-light">4</span>&nbsp;<span class="caret"></span></a>
-                                      <ul class="dropdown-menu">
-                                          <li><a href="#">notificacao 1</a></li>
-                                          <li><a href="#">notificacao 2</a></li>
-                                          <li><a href="#">notificacao 3</a></li>
-                                      </ul>
+                              <li class="dropdown">
+                                <div class="logo">
+                                   <h1>
+                                                         <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                                                           <img style="border-radius: 50%;" width="40px" height="40px" src="<?php echo $row['avatar_path']; ?>" class="icon_logo">
+                                                           <span class="caret"></span>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a href="#" onClick="getPage('geral/edit_profile');">Editar Perfil</a></li>
+                                                                            <li><a style="color: red;" href="logout.php"><b>Logout</b></a></li>
+                                                                        </ul></a></h1>
+                                </div>
                               </li>
-                              <li><a href="logout.php">Logout</a></li>
                           </ul>
 	                  </div>
 	              </div>
@@ -148,16 +169,28 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"">
-                                <i class="fa fa-users" aria-hidden="true"></i>
+                            <a href="#" onClick="getPage('send-email');">
+                                <i class="fa fa-mobile" aria-hidden="true"></i>
+                                <span>SMS</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+<!--                                <span class="label label-primary pull-right">4</span>-->
+                            </a>
+                            <ul class="sidebar-submenu" style="display: none;">
+                                <li><a href="#" onClick="getPage('send-message');"><i class="fa fa-comments" aria-hidden="true"></i>Enviar SMS</a></li>
+                                <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-commenting" aria-hidden="true"></i>Mass SMS</a></li>
+                                </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-external-link" aria-hidden="true"></i>
                                 <span>Linhas</span>
                                 <i class="fa fa-angle-left pull-right"></i>
 <!--                                <span class="label label-primary pull-right">4</span>-->
                             </a>
                             <ul class="sidebar-submenu" style="display: none;">
                                 <li><a href="#" onClick="getPage('linhas/search-line');"><i class="fa fa-search" aria-hidden="true"></i>Procurar</a></li>
-                                <li><a href="#" onClick="getPage('linhas/all-lines');"><i class="fa fa-list" aria-hidden="true"></i> Listar Todos</a></li>
-                                <li><a href="#" onClick="getPage('linhas/criar-linhas');"><i class="fa fa-list" aria-hidden="true"></i> Criar Linha</a></li>
+                                <li><a href="#" onClick="getPage('linhas/all-lines');"><i class="fa fa-list-alt" aria-hidden="true"></i> Listar Todos</a></li>
+                                <li><a href="#" onClick="getPage('linhas/criar-linhas');"><i class="fa fa-link" aria-hidden="true"></i> Criar Linha</a></li>
                                 </li>
                             </ul>
                         </li>
@@ -187,7 +220,7 @@
 		  </div>
 		</div>
     </div>
-	<a href="#0" class="cd-top">Top</a>
+	   <a href="#0" class="cd-top">Top</a>
     <footer>
          <div class="container">
 
