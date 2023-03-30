@@ -139,7 +139,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="sidebar-submenu" style="display: none;">
-                                <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-circle-o"></i> Editar Website</a></li>
+                                <li><a href="#" onClick="getPage('geral/edit_website');"><i class="fa fa-circle-o"></i> Editar Website</a></li>
                                 </li>
                             </ul>
                         </li>
@@ -178,7 +178,7 @@
                             <ul class="sidebar-submenu" style="display: none;">
                                 <li><a href="#" onClick="getPage('send-message');"><i class="fa fa-comments" aria-hidden="true"></i>Enviar SMS</a></li>
                                 <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-commenting" aria-hidden="true"></i>Mass SMS</a></li>
-                                </ul>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">

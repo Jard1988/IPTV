@@ -12,6 +12,10 @@ define('MAIL_PASSWORD', 'vwscapohsysmhsia');
 define('MAIL_PORT', '587');
 define('MAIL_NAME', 'IPTV Planner');
 
+define('TWILIO_ACCOUNT_SID', 'ACef846a8f5f3a07ae3246486fef91e8bf');
+define('TWILIO_AUTH_TOKEN', '03eff5324631e0d38e91ed2f9c56651e');
+define('TWILIO_AUTH_PHONE', '+14345973989');
+
 //define('DB_SERVER', '81.88.53.63');
 //define('DB_USERNAME', 'bv56glrq_1060735');
 //define('DB_PASSWORD', '90#P1pr)kB&C');
