@@ -11,6 +11,7 @@ $telefone = basename($_POST["phone"]);
 $avatar = basename($_POST["avatar"]);
 $file = basename($_FILES["fileToUpload"]["name"]);
 echo $file;
+echo $email;
 
 $target_dir = "../images/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
