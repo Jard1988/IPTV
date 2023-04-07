@@ -1,7 +1,23 @@
 #EXTM3U
+#EXTINF:-1 tvg-id="BenficaTV.pt" tvg-name="PT: BENFICA TV FHD" tvg-logo="https://www.monpetitforfait.com/comparateur-box-internet/wp-content/uploads/2020/06/benfica-tv.png" group-title="SLBvsFCP",SL Benfica vs FC Porto 07/04 FHD
+http://376138780359435840.opword.xyz:80/play/hu0114472/N7bjC$qjWh9/435840.ts
+#EXTINF:-1 tvg-id="" tvg-name=" BENFICA TV  " tvg-logo="https://www.monpetitforfait.com/comparateur-box-internet/wp-content/uploads/2020/06/benfica-tv.png" group-title="SLBvsFCP",  SL Benfica vs FC Porto 07/04 HD
+http://685937380728408651.stonehuge.xyz:80/play/hu0114472/N7bjC$qjWh9/408651.ts
+#EXTINF:-1 tvg-id="" tvg-name="PT: BENFICA TV SD" tvg-logo="https://www.monpetitforfait.com/comparateur-box-internet/wp-content/uploads/2020/06/benfica-tv.png" group-title="SLBvsFCP",SL Benfica vs FC Porto 07/04 SD
+http://376138780359408651.opword.xyz:80/play/hu0114472/N7bjC$qjWh9/408651.ts
+#EXTINF:-1 tvg-id="BenficaTV.pt" tvg-name="PT: BENFICA TV HD" tvg-logo="http://tudoaqui.xyz/LOGOS/picons/Benfica_TV_1.png" group-title="SLBvsFCP",SL Benfica vs FC Porto 07/04 HD
+http://376138780359449150.opword.xyz:80/play/hu0114472/N7bjC$qjWh9/449150.ts
+#EXTINF:-1 tvg-id="BenficaTV.pt" tvg-name="PT: BENFICA HD" tvg-logo="http://tudoaqui.xyz/LOGOS/picons/Benfica_TV_1.png" group-title="SLBvsFCP",SL Benfica vs FC Porto 07/04 HD
+http://376138780359449151.opword.xyz:80/play/hu0114472/N7bjC$qjWh9/449151.ts
+#EXTINF:-1 tvg-id="BenficaTV.pt" tvg-name="PT: BENFICA SD" tvg-logo="http://tudoaqui.xyz/LOGOS/picons/Benfica_TV_1.png" group-title="SLBvsFCP",SL Benfica vs FC Porto 07/04 SD
+http://376138780359449152.opword.xyz:80/play/hu0114472/N7bjC$qjWh9/449152.ts
+#EXTINF:-1 tvg-id="" tvg-name="PT: BENFICA TV SD" tvg-logo="https://www.monpetitforfait.com/comparateur-box-internet/wp-content/uploads/2020/06/benfica-tv.png" group-title="SLBvsFCP",SL Benfica vs FC Porto 07/04 SD
+http://376138780359408651.opword.xyz:80/play/hu0114472/N7bjC$qjWh9/408651.ts
+
+
 #EXTINF:-1 tvg-id="" tvg-name="  RTP 1  " tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/7c/RTP.png" group-title="Portugal",  RTP 1
 http://120972280412318326.nicesbt.xyz:80/play/hu0114472/N7bjC$qjWh9/318326.ts
-#EXTINF:-1 tvg-id="" tvg-name=" RTP 2 " tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/RTP2.png/500px-RTP2.png" group-title="Portugal",  RTP 2
+#EXTINF:-1 tvg-id="" tvg-name="  RTP 2 " tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/RTP2.png/500px-RTP2.png" group-title="Portugal",  RTP 2
 http://352610080792380837.discoveryapp.xyz:80/play/hu0114472/N7bjC$qjWh9/380837.ts
 #EXTINF:-1 tvg-id="" tvg-name="  SIC  " tvg-logo="https://upload.wikimedia.org/wikipedia/fr/3/31/SIC_logo_2018.png" group-title="Portugal",  SIC
 http://352610080792339540.discoveryapp.xyz:80/play/hu0114472/N7bjC$qjWh9/339540.ts
@@ -54,9 +70,9 @@ http://555473780228416381.stonehuge.xyz:80/play/hu0114472/N7bjC$qjWh9/416381.ts
 #EXTINF:-1 tvg-id="" tvg-name="  SPORT TV NBA  " tvg-logo="http://s3.i3ns.net/portal/picon/2022-02/45d618d3296d49449610eccddda0f2b3.png" group-title="Portugal",  SPORT TV NBA
 http://555473780228356329.stonehuge.xyz:80/play/hu0114472/N7bjC$qjWh9/356329.ts
 #EXTINF:-1 tvg-id="" tvg-name="  BENFICA TV HD " tvg-logo="https://www.monpetitforfait.com/comparateur-box-internet/wp-content/uploads/2020/06/benfica-tv.png" group-title="Portugal",  BENFICA TV HD
-http://998585080719431497.onames.xyz:80/play/hu0114472/N7bjC$qjWh9/431497.ts
+http://376138780359435840.opword.xyz:80/play/hu0114472/N7bjC$qjWh9/435840.ts
 #EXTINF:-1 tvg-id="" tvg-name="  BENFICA TV  " tvg-logo="https://www.monpetitforfait.com/comparateur-box-internet/wp-content/uploads/2020/06/benfica-tv.png" group-title="Portugal",  BENFICA TV
-http://685937380728408651.stonehuge.xyz:80/play/hu0114472/N7bjC$qjWh9/408651.ts
+http://376138780359449150.opword.xyz:80/play/hu0114472/N7bjC$qjWh9/449150.ts
 #EXTINF:-1 tvg-id="" tvg-name="  PORTO CANAL  " tvg-logo="https://rotaportoliberal.pt/media/2017/07/logo-porto-canal.png" group-title="Portugal",  PORTO CANAL
 http://555473780228416363.stonehuge.xyz:80/play/hu0114472/N7bjC$qjWh9/416363.ts
 #EXTINF:-1 tvg-id="" tvg-name="  ELEVEN SPORTS 1 HD " tvg-logo="https://tv-radio-web.com/wp-content/uploads/2020/11/eleven-sports-1.png" group-title="Portugal",  ELEVEN SPORTS 1 HD

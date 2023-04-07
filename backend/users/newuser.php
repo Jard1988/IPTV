@@ -69,6 +69,13 @@
 		$target_path = createAvatarImage($nome);
     // If result matched $myusername and $mypassword, table row must be 1 row
 
+		$sql = "select * from users where email='". $email."'";
+		
+					$result = mysqli_query($db, $sql);
+					$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+					if ($row >=1) {
+						echo "Já Existe esse Utilizador";
+					} else {
       $sql3 = "INSERT INTO `users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `permission_id`,`avatar_path`) VALUES ('". $email ."','". $novasenha ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "','". $permission . "','". $target_path . "')";
 
 			$result3 = mysqli_query($db, $sql3);
@@ -128,5 +135,6 @@
 			} else{
 				 echo "Utilizador não Criado. Tente Novamente.";
 			 }
+		 }
 		}
 ?>

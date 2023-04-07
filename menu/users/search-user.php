@@ -328,7 +328,7 @@ $('.btn-light').click(function() {
                 <tbody>
                 <tr>
                   <td>Email</td>
-                  <td><input type="text" class="form-control" id="inputItemEmail" value=""></td>
+                  <td><input type="email" class="form-control" id="inputItemEmail" value=""></td>
                 </tr>
                 <tr>
                   <td>Nome</td>
@@ -345,7 +345,7 @@ $('.btn-light').click(function() {
                   </tr>
                   <tr>
                   <td>Data Nascimento</td>
-                  <td><input id="inputItemNascimento" class="form-control" class = "box" /></td>
+                  <td><input type="date" id="inputItemNascimento" class="form-control" class = "box" /></td>
                 </tr>
                   <td>Permissão</td>
                   <td>
