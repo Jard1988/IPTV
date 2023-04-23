@@ -1,5 +1,4 @@
 #EXTM3U
-
 #EXTINF:-1 tvg-id="" tvg-name="  RTP 1  " tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/7c/RTP.png" group-title="Portugal",  RTP 1
 http://120972280412318326.nicesbt.xyz:80/play/hu0114472/N7bjC$qjWh9/318326.ts
 #EXTINF:-1 tvg-id="" tvg-name="  RTP 2 " tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/RTP2.png/500px-RTP2.png" group-title="Portugal",  RTP 2
