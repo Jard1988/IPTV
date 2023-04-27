@@ -70,7 +70,7 @@
    <body bgcolor = "#FFFFFF">
      <center>
        <img style="width: 30%;" src="img/fundo.png"/>
-     </center><br><br><br><br><br><br><br><br>
+     </center><br><br><br><br><br><br><br><br><br><br>
 	<div class="page-content container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
@@ -81,16 +81,19 @@
 			                    <form action = "" method = "post">
 									<input class="form-control" type = "text" name = "email" class = "box"/><br /><br />
 									<input class="form-control" type = "password" name = "password" class = "box" /><br/><br />
-									<input class="btn btn-primary signup" type = "submit" value = " Submit "/><br />
+									<input class="btn btn-primary signup" type = "submit" value = " Submit "/>
 								</form>
 
-								<div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
-
+								<div style = "font-size:11px; color:#cc0000; margin-top:0px"><?php echo $error; ?></div>
 						</div>
 					</div>
+          <a href="contact.php"> Contato </a> | <a href="faq"> FAQ </a>
 				</div>
+        <div>
+        </div>
 			</div>
 		</div>
 	</div>
+
    </body>
 </html>
