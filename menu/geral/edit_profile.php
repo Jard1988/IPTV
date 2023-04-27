@@ -38,17 +38,9 @@ $(document).ready(function (e) {
 });
 
 </script>
-
-<ul class="nav nav-tabs nav-justified">
-  <li class="active"><a data-toggle="tab" href="#geral">Geral</a></li>
-  <li><a data-toggle="tab" href="#db">Menu 1</a></li>
-  <li><a data-toggle="tab" href="#email">Menu 2</a></li>
-  <li><a data-toggle="tab" href="#sms">Menu 2</a></li>
-</ul>
-
-<div class="tab-content">
-  <div id="geral" class="tab-pane fade in active">
-    <h3>Geral</h3>
+<div class="logo">
+   <h1><a>Editar Perfil</a></h1>
+</div>
     <?php
 
     $sql = "SELECT * FROM users WHERE email = '$login_session'";
@@ -64,7 +56,7 @@ $(document).ready(function (e) {
           </div>
           <div class="form-outline md-4">
             <label class="form-label" for="form2Example2">Password</label>
-            <input type="text" name="password" id="password" class="form-control" value="<?php echo $row['password']; ?>"/>
+            <input type="password" name="password" id="password" class="form-control" value="<?php echo $row['password']; ?>"/>
           </div>
           <div class="form-outline md-4">
             <label class="form-label" for="form2Example3">Nome</label>
@@ -92,19 +84,3 @@ $(document).ready(function (e) {
         </form><br>
       </div>
     </p>
-  </div>
-  <div id="db" class="tab-pane fade">
-    <h3>Base de Dados</h3>
-    <p>
-      teste
-    </p>
-  </div>
-  <div id="email" class="tab-pane fade">
-    <h3>Email</h3>
-    <p>Some content in menu 2.</p>
-  </div>
-  <div id="sms" class="tab-pane fade">
-    <h3>Mensagens - SMS</h3>
-    <p>Some content in menu 2.</p>
-  </div>
-</div>

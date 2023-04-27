@@ -280,7 +280,9 @@ $('.btn-light').click(function() {
   $sql="SELECT * FROM users where valid=1";
   $result_users = mysqli_query($db,$sql);
 ?>
-
+<div class="logo">
+   <h1><a>Procurar Utilizadores</a></h1>
+</div>
 <div class="tabela" id="tabela">
   <button class="btn btn-primary" data-toggle="modal" data-target="#newModal"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
   <br><br><form action="" style="width: 30%;">

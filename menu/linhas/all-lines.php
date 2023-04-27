@@ -264,7 +264,9 @@ $('.btn-light').click(function() {
   }
 })
 </script>
-
+<div class="logo">
+   <h1><a>Lista de Linhas</a></h1>
+</div>
 <div class="tabela" id="tabela">
   <button class="btn btn-primary" data-toggle="modal" data-target="#newModal"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
   <button id="delete_records" class="btn btn-danger" data-toggle="modal" data-target="#deleteAllModal"><i class="fa fa-user-times" aria-hidden="true"></i></button>

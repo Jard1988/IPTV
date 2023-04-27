@@ -32,11 +32,13 @@
 
     <script type="text/javascript">
 
-      function refresh() {
-
+      function refresh(id) {
         jQuery.ajax({
             url: "backend/file_download.php",
             type: "post",
+            data: {
+            id: id
+          },
             datatype: "html",
             contenttype: 'application/html; charset=utf-8',
             async: true,
@@ -140,15 +142,16 @@
                           $sql = "SELECT * FROM users WHERE email = '$login_session' and permission_id >= '3'";
                           $result = mysqli_query($db,$sql);
                           $count = mysqli_num_rows($result);
-
-                          if ($count >= 1){
                         ?>
                         <li>
-                            <a href="#" onClick="refresh();">
+                            <a href="#" onClick="refresh('<?php echo $users_id; ?>');">
                                 <i class="fa fa-spinner" aria-hidden="true"></i>
                                 <span><b>Atualizar</b></span>
                               </a>
                         </li>
+                        <?php
+                          if ($count >= 1){
+                        ?>
                         <li>
                             <a href="#" onClick="getPage('geral');"><i class="fa fa-home" aria-hidden="true"></i>
                                 <span>Geral</span>
@@ -181,7 +184,7 @@
                             </a>
                             <ul class="sidebar-submenu" style="display: none;">
                                 <li><a href="#" onClick="getPage('linhas/search-line');"><i class="fa fa-search" aria-hidden="true"></i>Procurar</a></li>
-                                <li><a href="#" onClick="getPage('linhas/all-lines');"><i class="fa fa-list-alt" aria-hidden="true"></i> Listar Todos</a></li>                                
+                                <li><a href="#" onClick="getPage('linhas/all-lines');"><i class="fa fa-list-alt" aria-hidden="true"></i> Listar Todos</a></li>
                                 </li>
                             </ul>
                         </li>
@@ -195,18 +198,6 @@
                             <ul class="sidebar-submenu" style="display: none;">
                                 <li><a href="#" onClick="getPage('send-email');"><i class="fa fa-reply" aria-hidden="true"></i>Enviar Email</a></li>
                                 <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-reply-all" aria-hidden="true"></i>Mass Email</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" onClick="getPage('send-email');">
-                                <i class="fa fa-mobile" aria-hidden="true"></i>
-                                <span>SMS</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-<!--                                <span class="label label-primary pull-right">4</span>-->
-                            </a>
-                            <ul class="sidebar-submenu" style="display: none;">
-                                <li><a href="#" onClick="getPage('send-message');"><i class="fa fa-comments" aria-hidden="true"></i>Enviar SMS</a></li>
-                                <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-commenting" aria-hidden="true"></i>Mass SMS</a></li>
                             </ul>
                         </li>
                         <?php

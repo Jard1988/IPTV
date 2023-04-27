@@ -10,6 +10,7 @@ user: iptvplanner
 password: #waO58eP*p&qaSQ%%aeR
 
 filezilla:
+
 server: files.000webhost.com
 port: 21
 user: iptvplanner

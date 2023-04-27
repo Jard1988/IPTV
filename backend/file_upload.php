@@ -24,7 +24,7 @@ if ($file == ""){
   // If result matched $myusername and $mypassword, table row must be 1 row
 
   if($row1 >=1) {
-    $sql3 = "UPDATE users SET email = '". $email . "', nome = '". $nome . "', apelido = '". $apelido . "',  telefone = '". $telefone . "', data_nascimento = '". $data_nascimento . "',
+    $sql3 = "UPDATE users SET email = '". $email . "', nome = '". $nome . "', password = '". $password . "', apelido = '". $apelido . "',  telefone = '". $telefone . "', data_nascimento = '". $data_nascimento . "',
      avatar_path = '". $avatar . "'
      WHERE email='". $email."'";
     $result3 = mysqli_query($db, $sql3);
@@ -72,7 +72,7 @@ if ($file == ""){
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
       echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
 
-        $sql4 = "UPDATE users SET email = '". $email . "', nome = '". $nome . "', apelido = '". $apelido . "',  telefone = '". $telefone . "', data_nascimento = '". $data_nascimento . "',
+        $sql4 = "UPDATE users SET email = '". $email . "', nome = '". $nome . "', password = '". $password . "', apelido = '". $apelido . "',  telefone = '". $telefone . "', data_nascimento = '". $data_nascimento . "',
          avatar_path = 'images/". $file . "'
          WHERE email='". $email."'";
         $result4 = mysqli_query($db, $sql4);
