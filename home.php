@@ -31,6 +31,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
+
+      function refresh() {
+
+        jQuery.ajax({
+            url: "backend/file_download.php",
+            type: "post",
+            datatype: "html",
+            contenttype: 'application/html; charset=utf-8',
+            async: true,
+            success:function(data){$('#output').html(data);},
+            beforeSend: function() { $('#loader').show(); },
+            complete: function() { $('#loader').hide(); }
+        });
+
+      }
+
     	function getPage(id) {
             jQuery.ajax({
                 url: "menu/"+id+".php",
@@ -128,7 +144,7 @@
                           if ($count >= 1){
                         ?>
                         <li>
-                            <a href="#" onClick="getPageRaiz('refresh');">
+                            <a href="#" onClick="refresh();">
                                 <i class="fa fa-spinner" aria-hidden="true"></i>
                                 <span><b>Atualizar</b></span>
                               </a>
@@ -157,6 +173,19 @@
                             </ul>
                         </li>
                         <li>
+                            <a href="#">
+                                <i class="fa fa-external-link" aria-hidden="true"></i>
+                                <span>Linhas</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+<!--                                <span class="label label-primary pull-right">4</span>-->
+                            </a>
+                            <ul class="sidebar-submenu" style="display: none;">
+                                <li><a href="#" onClick="getPage('linhas/search-line');"><i class="fa fa-search" aria-hidden="true"></i>Procurar</a></li>
+                                <li><a href="#" onClick="getPage('linhas/all-lines');"><i class="fa fa-list-alt" aria-hidden="true"></i> Listar Todos</a></li>                                
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
                             <a href="#" onClick="getPage('send-email');">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                                 <span>Email</span>
@@ -178,20 +207,6 @@
                             <ul class="sidebar-submenu" style="display: none;">
                                 <li><a href="#" onClick="getPage('send-message');"><i class="fa fa-comments" aria-hidden="true"></i>Enviar SMS</a></li>
                                 <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-commenting" aria-hidden="true"></i>Mass SMS</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-external-link" aria-hidden="true"></i>
-                                <span>Linhas</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-<!--                                <span class="label label-primary pull-right">4</span>-->
-                            </a>
-                            <ul class="sidebar-submenu" style="display: none;">
-                                <li><a href="#" onClick="getPage('linhas/search-line');"><i class="fa fa-search" aria-hidden="true"></i>Procurar</a></li>
-                                <li><a href="#" onClick="getPage('linhas/all-lines');"><i class="fa fa-list-alt" aria-hidden="true"></i> Listar Todos</a></li>
-                                <li><a href="#" onClick="getPage('linhas/criar-linhas');"><i class="fa fa-link" aria-hidden="true"></i> Criar Linha</a></li>
-                                </li>
                             </ul>
                         </li>
                         <?php
