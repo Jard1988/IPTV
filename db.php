@@ -1,15 +1,15 @@
 <?php
 
 
-//define('DB_SERVER', 'localhost');
-//define('DB_USERNAME', 'root');
-//define('DB_PASSWORD', '');
-//define('DB_DATABASE', 'iptvplanner');
-
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'id20666029_iptvplanner');
-define('DB_PASSWORD', '#waO58eP*p&qaSQ%%aeR');
-define('DB_DATABASE', 'id20666029_iptvplanner_db');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_DATABASE', 'iptvplanner');
+
+//define('DB_SERVER', 'localhost');
+//define('DB_USERNAME', 'id20666029_iptvplanner');
+//define('DB_PASSWORD', '#waO58eP*p&qaSQ%%aeR');
+//define('DB_DATABASE', 'id20666029_iptvplanner_db');
 
 define('MAIL_HOST', 'smtp.gmail.com');
 define('MAIL_USERNAME', 'geraliptvplanner@gmail.com');
