@@ -41,6 +41,11 @@ $('.modal-footer .btn-primary').click(function() {
 
 })
 </script>
+
+<div class="logo">
+   <h1><a>Enviar Email</a></h1>
+</div>
+
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">

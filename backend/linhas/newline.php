@@ -87,13 +87,13 @@
 												NOTA: Não responda a este email, trata-se de uma mensagem automática de confirmação de receção do seu pedido.<br>
 												Cordiais cumprimentos,<br><br>
 
-												Geo Locator | Lidl<br><br>
+												IPTV Planner @ 2023<br><br>
 
-												Está a receber esta mensagem porque entrou em contacto connosco através do formulário de contacto do nosso site http://www.bolanarede.website.
+												Está a receber esta mensagem porque entrou em contacto connosco através do formulário de contacto do nosso site http://www.iptvplanner.pt.
 <br>
 												Declaração de consentimento sobre campanhas:
 <br>
-												PROTEÇÃO DE DADOS PESSOAIS: A segurança e a privacidade de seus dados pessoais são importantes para nós. A Bola na Rede está em conformidade com o Regulamento Geral de Proteção de Dados em vigor na UE. Quando nos cede os seus dados pessoais, nós só os utilizaremos para o propósito para o qual foram fornecidos. Pode retirar o seu consentimento a qualquer momento. Por favor, veja nossa Política de Privacidade.';
+												PROTEÇÃO DE DADOS PESSOAIS: A segurança e a privacidade de seus dados pessoais são importantes para nós. A IPTV Planner está em conformidade com o Regulamento Geral de Proteção de Dados em vigor na UE. Quando nos cede os seus dados pessoais, nós só os utilizaremos para o propósito para o qual foram fornecidos. Pode retirar o seu consentimento a qualquer momento. Por favor, veja nossa Política de Privacidade.';
 
 						//$mail->setFrom('system@cksoftwares.com', 'CKSoftwares System'); // From email and name
 						//$mail->addAddress('to@address.com', 'Mr. Brown'); // to email and name
@@ -101,7 +101,7 @@
 						//$mail->msgHTML("test body"); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
 						//$mail->AltBody = ''; // If html emails is not supported by the receiver, show this body
 						// $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
-							echo "User Criado. ";
+							echo "Linha Criado. ";
 							if ($mail->send()) {
 								echo "Email Enviado ao Utilizador. ";
 							} else {
@@ -112,7 +112,7 @@
 					}
 
 			} else{
-				 echo "Utilizador não Criado. Tente Novamente.";
+				 echo "Linha não Criado. Tente Novamente.";
 			 }
 		}
 ?>

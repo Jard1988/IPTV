@@ -55,7 +55,7 @@
     imagestring($avatar, $font, 10, 10, $string, $avatar_text_color);
     imagepng($avatar, $imageFilePath);
     imagedestroy($avatar);
-    return $imageFilePath;
+    return "images/".$string.".png";
 }
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -66,11 +66,11 @@
     $nascimento = mysqli_real_escape_string($db,$_POST['nascimento']);
     $permission = mysqli_real_escape_string($db,$_POST['permission']);
 		$novasenha = gerar_senha(10, true, true, true, true);
-		$target_path = createAvatarImage($nome);
+		$target_path = createAvatarImage($email);
     // If result matched $myusername and $mypassword, table row must be 1 row
 
 		$sql = "select * from users where email='". $email."'";
-		
+
 					$result = mysqli_query($db, $sql);
 					$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 					if ($row >=1) {
@@ -95,26 +95,33 @@
 						$mail->addAddress($email); // emails to
 
 						$mail->isHTML(true);
-						$mail->Subject = 'Registo na Geo Locator';
-						$mail->Body = 'Registo com Sucesso <strong>Geo Locator</strong><br>
+						$mail->Subject = 'Registo na IPTV Planner';
+						$mail->Body = 'Registo com Sucesso <strong>IPTV Planner</strong><br>
 												<br><br>
 
-												Obrigado pelo seu Registo na Geo Locator!<br><br>
+												Obrigado pelo seu contributo na IPTV Planner!<br><br>
+
+	 											Os dados gerados para acesso são:  <br><br>
+												Utilizador: ' .  $email . '<br>
+												Password: ' . $novasenha . '<br>
+												Estado: <b>Falta confirmação</b><br><br>
 
 												Confirme o seu registo através do link:<br>
-												http://localhost/geolocator/confirm.php?email='.$email.' <br><br>
+												http://localhost/IPTV/confirm.php?email='.$email.' <br><br>
+
+												Após a confirmação irá receber um email já pode iniciar a sessão e usufruir dos nossos serviços!
 
 												Se tiver urgência ou existir algum problema não exite em entrar em contacto por email ou por favor ligar para 22X XXX XXX ou 9XX XXX XXX.<br><br>
 												NOTA: Não responda a este email, trata-se de uma mensagem automática de confirmação de receção do seu pedido.<br>
 												Cordiais cumprimentos,<br><br>
 
-												Geo Locator | Lidl<br><br>
+												IPTV Planner @ 2023<br><br>
 
-												Está a receber esta mensagem porque entrou em contacto connosco através do formulário de contacto do nosso site http://www.bolanarede.website.
+												Está a receber esta mensagem porque entrou em contacto connosco através do formulário de contacto do nosso site http://www.iptvplanner.pt.
 <br>
 												Declaração de consentimento sobre campanhas:
 <br>
-												PROTEÇÃO DE DADOS PESSOAIS: A segurança e a privacidade de seus dados pessoais são importantes para nós. A Bola na Rede está em conformidade com o Regulamento Geral de Proteção de Dados em vigor na UE. Quando nos cede os seus dados pessoais, nós só os utilizaremos para o propósito para o qual foram fornecidos. Pode retirar o seu consentimento a qualquer momento. Por favor, veja nossa Política de Privacidade.';
+												PROTEÇÃO DE DADOS PESSOAIS: A segurança e a privacidade de seus dados pessoais são importantes para nós. A IPTV Planner está em conformidade com o Regulamento Geral de Proteção de Dados em vigor na UE. Quando nos cede os seus dados pessoais, nós só os utilizaremos para o propósito para o qual foram fornecidos. Pode retirar o seu consentimento a qualquer momento. Por favor, veja nossa Política de Privacidade.';
 
 						//$mail->setFrom('system@cksoftwares.com', 'CKSoftwares System'); // From email and name
 						//$mail->addAddress('to@address.com', 'Mr. Brown'); // to email and name
