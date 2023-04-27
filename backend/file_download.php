@@ -5,6 +5,21 @@ include('../session.php');
 // set_time_limit(300);
 $id = mysqli_real_escape_string($db,$_POST['id']);
 
+function execPrint($command) {
+    $result = array();
+    exec($command, $result);
+    print("<pre>");
+    foreach ($result as $line) {
+        print($line . "\n");
+    }
+    print("</pre>");
+}
+
+execPrint("git pull https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
+execPrint("git status");
+execPrint("git commit -a");
+
+
 ?>
 
 <script type="text/javascript">
