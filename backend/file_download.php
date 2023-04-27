@@ -14,12 +14,6 @@ function execPrint($command) {
     }
     print("</pre>");
 }
-execPrint("git commit -m 'teste'");
-execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
-execPrint("git status");
-execPrint("git pull");
-
-
 ?>
 
 <script type="text/javascript">
@@ -74,7 +68,10 @@ if ($count >= 1){
             fclose($newf);
           }
           echo ("<b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por ". $users_email ." <br>");
-
+          execPrint("git commit -m 'asfafasfasfasf'");
+          execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
+          execPrint("git status");
+          execPrint("git pull");
         }
         else {
             echo ("<b>". $table_lines['nome_linha'] . "</b> has been deleted<br>");
@@ -99,7 +96,11 @@ if ($count >= 1){
               fclose($newf);
             }
             echo ("<b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por " . $users_email. "<br>");
-        }
+            execPrint("git commit -m 'asfafasfasfasf'");
+            execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
+            execPrint("git status");
+            execPrint("git pull");
+          }
     }
 }else {
 
