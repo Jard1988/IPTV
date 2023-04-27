@@ -15,10 +15,9 @@ function execPrint($command) {
     print("</pre>");
 }
 execPrint("git commit -m 'teste'");
-execPrint("git pull https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
+execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
 execPrint("git status");
-execPrint("git commit -a");
-execPrint("git push");
+execPrint("git pull");
 
 
 ?>
