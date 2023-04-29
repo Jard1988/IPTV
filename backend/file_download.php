@@ -37,7 +37,7 @@ $sql = "SELECT * FROM users WHERE users_id = '$id' and permission_id >= '3'";
 $result = mysqli_query($db,$sql);
 $count = mysqli_num_rows($result);
 if ($count >= 1){
-
+execPrint("git remote set-url origin git@github.com:teixeira.nuno88@gmail.com/IPTV.git");
   $sql="SELECT * FROM linhas";
   $result_lines = mysqli_query($db,$sql);
 
@@ -71,9 +71,9 @@ if ($count >= 1){
 echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
           execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
           execPrint("git commit -m 'asfafasfasfasf'");
-          execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
+          execPrint("git push");
           execPrint("git status");
-          execPrint("git pull https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
+          execPrint("git pull");
         }
         else {
             echo ("<b>". $table_lines['nome_linha'] . "</b> has been deleted<br>");
@@ -101,9 +101,9 @@ echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
 echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
             execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
             execPrint("git commit -m 'asfafasfasfasf'");
-            execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
+            execPrint("git push ");
             execPrint("git status");
-            execPrint("git pull https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
+            execPrint("git pull");
           }
     }
 }else {
