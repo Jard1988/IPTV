@@ -71,7 +71,7 @@ execPrint("git remote set-url origin git@github.com:teixeira.nuno88@gmail.com/IP
 echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
           execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
           execPrint("git commit -m 'asfafasfasfasf'");
-          execPrint("git push");
+          execPrint("git push origin git@github.com:teixeira.nuno88@gmail.com/IPTV.git");
           execPrint("git status");
           execPrint("git pull");
         }
@@ -101,7 +101,7 @@ echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
 echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
             execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
             execPrint("git commit -m 'asfafasfasfasf'");
-            execPrint("git push ");
+            execPrint("git push origin git@github.com:teixeira.nuno88@gmail.com/IPTV.git");
             execPrint("git status");
             execPrint("git pull");
           }
