@@ -1,8 +1,8 @@
 <?php
 error_reporting (E_ALL ^ E_NOTICE ^ E_WARNING);
 include('../session.php');
-// ini_set('max_execution_time', '300'); //300 seconds = 5 minutes
-// set_time_limit(300);
+ini_set('max_execution_time', '300'); //300 seconds = 5 minutes
+set_time_limit(300);
 $id = mysqli_real_escape_string($db,$_POST['id']);
 
 function execPrint($command) {
@@ -29,7 +29,8 @@ function execPrint($command) {
 <?php
 $url = M3U;
 
-$destination_folder = $_SERVER['DOCUMENT_ROOT'].'/IPTV/Listas/';
+$destination_folder = $caminho_git;
+echo $destination_folder;
 
 $sql = "SELECT * FROM users WHERE users_id = '$id' and permission_id >= '3'";
 
@@ -37,7 +38,7 @@ $sql = "SELECT * FROM users WHERE users_id = '$id' and permission_id >= '3'";
 $result = mysqli_query($db,$sql);
 $count = mysqli_num_rows($result);
 if ($count >= 1){
- execPrint("git remote add dest https://github.com/Jard1988/IPTV.git");
+ // execPrint("git remote add dest https://github.com/Jard1988/IPTV.git");
   $sql="SELECT * FROM linhas";
   $result_lines = mysqli_query($db,$sql);
 
@@ -68,11 +69,11 @@ if ($count >= 1){
             fclose($newf);
           }
           echo ("<b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por ". $users_email ." <br>");
-          execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
-          execPrint("git commit -m 'teste'");
-          execPrint("git push dest");
-          execPrint("git status");
-          execPrint("git pull dest origin");
+          // execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
+          // execPrint("git commit -m 'teste'");
+          // execPrint("git push dest");
+          // execPrint("git status");
+          // execPrint("git pull dest origin");
         }
         else {
            execPrint("git remote add dest https://github.com/Jard1988/IPTV.git");
@@ -98,12 +99,12 @@ if ($count >= 1){
               fclose($newf);
             }
             echo ("<b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por " . $users_email. "<br>");
-echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
-            execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
-            execPrint("git commit -m 'teste1'");
-            execPrint("git push dest");
-            execPrint("git status");
-            execPrint("git pull dest origin");
+// echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
+//             execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
+//             execPrint("git commit -m 'teste1'");
+//             execPrint("git push dest");
+//             execPrint("git status");
+//             execPrint("git pull dest origin");
           }
     }
 }else {

@@ -23,6 +23,9 @@ define('TWILIO_AUTH_PHONE', '+14345973989');
 
 define('M3U', 'http://smart.niceed.xyz:80/get.php?username=hu0114472&password=N7bjC$qjWh9&type=m3u_plus&output=mpegts');
 
+define('CAMINHO_URL', 'https://localhost/iptv/Listas/');
+// define('CAMINHO_URL', 'https://iptvplanner.pt/iptv/Listas/');
+
 //define('DB_SERVER', '81.88.53.63');
 //define('DB_USERNAME', 'bv56glrq_1060735');
 //define('DB_PASSWORD', '90#P1pr)kB&C');

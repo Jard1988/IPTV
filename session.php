@@ -15,7 +15,9 @@
    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
    $users_id = $row['users_id'];
    $users_email = $row['email'];
-   $caminho_git = "https://raw.githubusercontent.com/Jard1988/IPTV/main/Listas/";
+   // $caminho_git = "https://raw.githubusercontent.com/Jard1988/IPTV/main/Listas/";
+   $caminho_git = CAMINHO_URL;
+
 
    if(!isset($_SESSION['login_user'])){
       header("location:index.php");
