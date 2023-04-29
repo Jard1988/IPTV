@@ -37,7 +37,7 @@ $sql = "SELECT * FROM users WHERE users_id = '$id' and permission_id >= '3'";
 $result = mysqli_query($db,$sql);
 $count = mysqli_num_rows($result);
 if ($count >= 1){
- execPrint(" git remote add dest https://github.com/Jard1988/IPTV.git");
+ execPrint("git remote add dest https://github.com/Jard1988/IPTV.git");
   $sql="SELECT * FROM linhas";
   $result_lines = mysqli_query($db,$sql);
 
@@ -75,6 +75,7 @@ if ($count >= 1){
           execPrint("git pull dest origin");
         }
         else {
+           execPrint("git remote add dest https://github.com/Jard1988/IPTV.git");
             echo ("<b>". $table_lines['nome_linha'] . "</b> has been deleted<br>");
 
             $file = fopen ($url, "rb");
