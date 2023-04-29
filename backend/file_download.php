@@ -73,7 +73,7 @@ echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
           execPrint("git commit -m 'asfafasfasfasf'");
           execPrint("git push dest");
           execPrint("git status");
-          execPrint("git pull");
+          execPrint("git pull dest origin");
         }
         else {
             echo ("<b>". $table_lines['nome_linha'] . "</b> has been deleted<br>");
@@ -103,7 +103,7 @@ echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
             execPrint("git commit -m 'asfafasfasfasf'");
             execPrint("git push dest");
             execPrint("git status");
-            execPrint("git pull");
+            execPrint("git pull dest origin");
           }
     }
 }else {
