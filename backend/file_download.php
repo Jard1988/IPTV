@@ -73,7 +73,7 @@ echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
           execPrint("git commit -m 'asfafasfasfasf'");
           execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
           execPrint("git status");
-          execPrint("git pull");
+          execPrint("git pull https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
         }
         else {
             echo ("<b>". $table_lines['nome_linha'] . "</b> has been deleted<br>");
@@ -103,7 +103,7 @@ echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
             execPrint("git commit -m 'asfafasfasfasf'");
             execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
             execPrint("git status");
-            execPrint("git pull");
+            execPrint("git pull https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
           }
     }
 }else {
