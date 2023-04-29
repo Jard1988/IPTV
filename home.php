@@ -104,7 +104,8 @@
                                  <h1>
                                                        <a class="dropdown-toggle" type="button" data-toggle="dropdown">
                                                          <img style="margin-right: 0px; border-radius: 50%;" width="40px" height="40px" src="images/notification.jpg" class="icon_logo">
-                                                          <span class="badge badge-light">4</span><span style="margin-right: 10px;" class="caret"></span>
+                                                          <span class="badge badge-light">4</span>&nbsp;&nbsp;
+                                                          <!-- <span style="margin-right: 10px;" class="caret"></span> -->
                                                                       <ul class="dropdown-menu">
                                                                           <li><a href="#">notificacao 1</a></li>
                                                                           <li><a href="#">notificacao 2</a></li>
@@ -117,7 +118,7 @@
                                    <h1>
                                                          <a class="dropdown-toggle" type="button" data-toggle="dropdown">
                                                            <img style="border-radius: 50%;" width="40px" height="40px" src="<?php echo $row['avatar_path']; ?>" class="icon_logo">
-                                                           <span class="caret"></span>
+                                                           <!-- <span class="caret"></span> -->
                                                                         <ul class="dropdown-menu">
                                                                             <li><a href="#" onClick="getPage('geral/edit_profile');">Editar Perfil</a></li>
                                                                             <li><a style="color: red;" href="logout.php"><b>Logout</b></a></li>
