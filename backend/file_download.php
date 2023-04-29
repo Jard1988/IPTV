@@ -37,7 +37,7 @@ $sql = "SELECT * FROM users WHERE users_id = '$id' and permission_id >= '3'";
 $result = mysqli_query($db,$sql);
 $count = mysqli_num_rows($result);
 if ($count >= 1){
-execPrint("git remote set-url dest git@github.com:Jard1988/IPTV.git");
+// execPrint(" git remote add dest https://github.com/Jard1988/IPTV.git");
   $sql="SELECT * FROM linhas";
   $result_lines = mysqli_query($db,$sql);
 
@@ -71,7 +71,7 @@ execPrint("git remote set-url dest git@github.com:Jard1988/IPTV.git");
 echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
           execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
           execPrint("git commit -m 'asfafasfasfasf'");
-          execPrint("git push origin git@github.com:teixeira.nuno88@gmail.com/IPTV.git");
+          execPrint("git push dest");
           execPrint("git status");
           execPrint("git pull");
         }
@@ -101,7 +101,7 @@ echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
 echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
             execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
             execPrint("git commit -m 'asfafasfasfasf'");
-            execPrint("git push origin git@github.com:teixeira.nuno88@gmail.com/IPTV.git");
+            execPrint("git push dest");
             execPrint("git status");
             execPrint("git pull");
           }
