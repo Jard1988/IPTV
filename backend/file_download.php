@@ -71,7 +71,7 @@ if ($count >= 1){
 echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
           execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
           execPrint("git commit -m 'asfafasfasfasf'");
-          execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
+          execPrint("git push");
           execPrint("git status");
           execPrint("git pull");
         }
@@ -101,7 +101,7 @@ echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
 echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
             execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
             execPrint("git commit -m 'asfafasfasfasf'");
-            execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
+            execPrint("git push");
             execPrint("git status");
             execPrint("git pull");
           }
