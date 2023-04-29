@@ -37,7 +37,7 @@ $sql = "SELECT * FROM users WHERE users_id = '$id' and permission_id >= '3'";
 $result = mysqli_query($db,$sql);
 $count = mysqli_num_rows($result);
 if ($count >= 1){
-execPrint("git remote set-url origin git@github.com:teixeira.nuno88@gmail.com/IPTV.git");
+execPrint("git remote set-url dest git@github.com:Jard1988/IPTV.git");
   $sql="SELECT * FROM linhas";
   $result_lines = mysqli_query($db,$sql);
 
