@@ -68,16 +68,13 @@ if ($count >= 1){
             fclose($newf);
           }
           echo ("<b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por ". $users_email ." <br>");
-echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
           execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
-          execPrint("git commit -m 'asfafasfasfasf'");
-          execPrint("git push");
+          execPrint("git commit -m '" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por " . $users_email. "'");
           execPrint("git status");
+          execPrint("git push");
           execPrint("git pull");
         }
         else {
-            echo ("<b>". $table_lines['nome_linha'] . "</b> has been deleted<br>");
-
             $file = fopen ($url, "rb");
 
             if ($file) {
@@ -98,11 +95,10 @@ echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
               fclose($newf);
             }
             echo ("<b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por " . $users_email. "<br>");
-echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
             execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
-            execPrint("git commit -m 'asfafasfasfasf'");
-            execPrint("git push");
+            execPrint("git commit -m '" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por " . $users_email. "'");
             execPrint("git status");
+            execPrint("git push");
             execPrint("git pull");
           }
     }
@@ -142,8 +138,6 @@ echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
 
         }
         else {
-            echo ("<b>". $table_lines['nome_linha'] . "</b> has been deleted<br>");
-
             $file = fopen ($url, "rb");
 
             if ($file) {
