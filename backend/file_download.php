@@ -68,13 +68,16 @@ if ($count >= 1){
             fclose($newf);
           }
           echo ("<b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por ". $users_email ." <br>");
+echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
           execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
-          execPrint("git commit -m '" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por " . $users_email. "'");
+          execPrint("git commit -m 'asfafasfasfasf'");
+          execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
           execPrint("git status");
-          execPrint("git push");
           execPrint("git pull");
         }
         else {
+            echo ("<b>". $table_lines['nome_linha'] . "</b> has been deleted<br>");
+
             $file = fopen ($url, "rb");
 
             if ($file) {
@@ -95,10 +98,11 @@ if ($count >= 1){
               fclose($newf);
             }
             echo ("<b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por " . $users_email. "<br>");
+echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
             execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
-            execPrint("git commit -m '" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por " . $users_email. "'");
+            execPrint("git commit -m 'asfafasfasfasf'");
+            execPrint("git push https://teixeira.nuno88@gmail.com:Nteixeira_10%@github.com:Jard1988/IPTV.git master");
             execPrint("git status");
-            execPrint("git push");
             execPrint("git pull");
           }
     }
@@ -138,6 +142,8 @@ if ($count >= 1){
 
         }
         else {
+            echo ("<b>". $table_lines['nome_linha'] . "</b> has been deleted<br>");
+
             $file = fopen ($url, "rb");
 
             if ($file) {
