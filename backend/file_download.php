@@ -69,7 +69,7 @@ if ($count >= 1){
           }
           echo ("<b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por ". $users_email ." <br>");
           execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
-          execPrint("git commit -m 'asfafasfasfasf'");
+          execPrint("git commit -m 'teste'");
           execPrint("git push dest");
           execPrint("git status");
           execPrint("git pull dest origin");
@@ -99,7 +99,7 @@ if ($count >= 1){
             echo ("<b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por " . $users_email. "<br>");
 echo "COMANDO: git add ../Listas/" . $table_lines['nome_linha'] . ".m3u";
             execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
-            execPrint("git commit -m 'asfafasfasfasf'");
+            execPrint("git commit -m 'teste1'");
             execPrint("git push dest");
             execPrint("git status");
             execPrint("git pull dest origin");
