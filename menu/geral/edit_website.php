@@ -2,6 +2,43 @@
 error_reporting (E_ALL ^ E_NOTICE);
 include('../../session.php');
 ?>
+
+<script type="text/javascript">
+
+$(document).on("click", ".editURL", function () {
+  var caminho = document.getElementById('caminho_m3u').value;
+  alert(caminho);
+
+  $.ajax({
+    url: "./backend/editgeral.php",
+    type: "post",
+    data: {
+    opt: "1",
+    caminho: caminho
+ },
+    datatype: "html",
+    contenttype: 'application/html; charset=utf-8',
+    async: true,
+  success : function(response) {
+      if (response == 1){
+           $('#outputEditGeral').html(response);
+      }else {
+          $('#outputEditGeral').html(response);
+
+      }
+      //$('#outputlogin').html(response);
+  },
+  beforeSend: function () {
+      $('#loader').show();
+  },
+  complete: function () {
+      $('#loader').hide();
+  }
+  });
+});
+
+</script>
+
 <div class="logo">
    <h1><a>Editar Website</a></h1>
 </div><br>
@@ -16,16 +53,16 @@ include('../../session.php');
 <div class="tab-content">
   <div id="geral" class="tab-pane fade in active">
     <p>
-      <form id="form" action="backend/edit_geral.php?opt=1" method="post" enctype="multipart/form-data">
+      <form id="form" action="<?php echo $PHP_SELF; ?>" method="post" enctype="multipart/form-data">
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example2">URL M3U:</label>
-          <input type="text" name="caminho_m3u" id="caminho_m3u" class="form-control" value="localhost" readonly/>
+          <input type="text" name="caminho_m3u" id="caminho_m3u" class="form-control" value=""/>
         </div><p>
         <div class="form-outline md-4">
               <label class="form-label" for="form2Example1">URL das Listas: </label>
               <input type="text" name="list_url" id="list_url" class="form-control" value=""  />
         </div><p>
-        <br><button class="btn btn-success" style="text-align: center;">Guardar</button><br>
+        <br><button class="editURL btn btn-success" style="text-align: center;">Guardar</button><br>
         <div id="outputEditGeral" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div><br>
       </form><br>
     </p>
