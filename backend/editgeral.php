@@ -6,37 +6,36 @@ set_time_limit(300);
 $opt = mysqli_real_escape_string($db,$_POST['opt']);
 $caminho = mysqli_real_escape_string($db,$_POST['caminho']);
 
-$file = fopen("../db.php", "r+");
+$linhas = explode("\n", file_get_contents("../db.php"));
 
-if (!$file) {
-  echo "Falha ao abrir o arquivo";
+//Ler somente o conteudo da linha [0]do array ou seja linha 1 do texto
+$linha_n = $linhas[23];
+// abre o arquivo colocando o ponteiro de escrita no final
+$arquivo = fopen('../db.php','r+');
+
+if ($arquivo) {
+
+  //Output lines until EOF is reached
+  while(!feof($arquivo)) {
+    $linha = fgets($arquivo);
+
+ if(strcmp(trim($linha_n), trim($linha))) {
+  $string.= $linha;
+}else {
+  $string .= str_replace("$linha_n", "define('M3U', '". $caminho."');", $linha);
 }
-
-if ($opt == '1'){
-  $i = 1
-  echo $opt;
-
-  while (($line = fgets($file)) !== false) {
-
-      if ($i == 24) {
-
-              echo "i: " . $i;
-      }
-      $i++;
-      echo $line;
-
   }
 
-  if (!feof($file)) {
-      exit("Falha inesperada do fgets()");
-  }
+    // move o ponteiro para o inicio do arquivo
+    rewind($arquivo);
 
-}elseif($opt == "2"){
+    // Apaga o conteudo
+    //ftruncate($arquivo, 0);
 
-}elseif ($opt == "3"){
+    // reescreve o conteudo dentro do arquivo
+    if (!fwrite($arquivo, $string)) die('Não foi possível atualizar o arquivo.');
+    echo 'Arquivo atualizado com sucesso';
+    fclose($arquivo);
 
 }
-
-fclose($file);
-
 ?>

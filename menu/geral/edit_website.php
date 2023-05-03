@@ -7,7 +7,6 @@ include('../../session.php');
 
 $(document).on("click", ".editURL", function () {
   var caminho = document.getElementById('caminho_m3u').value;
-  alert(caminho);
 
   $.ajax({
     url: "./backend/editgeral.php",

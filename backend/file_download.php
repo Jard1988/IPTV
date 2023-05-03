@@ -50,7 +50,9 @@ if ($count >= 1){
 
           $file = fopen ($url, "rb");
 
-          if ($file) {
+          if (!$file) {
+            exit("Falha ao abrir o arquivo");
+          }else {
             $newf = fopen ($newfname, "w"); // to overwrite existing file
 
             if ($newf)
