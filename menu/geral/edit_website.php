@@ -43,10 +43,8 @@ $(document).on("click", ".editURL", function () {
 <!--LER DO FICHEIRO DB.PHP -->
 <?php
 $linhas = explode("\n", file_get_contents("../../db.php"));
-$geral_m3u = $linhas[23];
-$pieces = explode("'", $geral_m3u);
-$list_url = $linhas[25];
-$pieces2 = explode("'", $list_url);
+$pieces = explode("'", $$linhas[23]);
+$pieces2 = explode("'", $$linhas[25]);
 
  ?>
 
