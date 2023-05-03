@@ -5,6 +5,45 @@ include('../../session.php');
 
 <script type="text/javascript">
 
+$(document).on("click", ".editEmail", function () {
+
+  var email_host = document.getElementById('email_host').value;
+  var email_name = document.getElementById('email_name').value;
+  var email_pass = document.getElementById('email_pass').value;
+  var email_port = document.getElementById('email_port').value;
+  var email_user = document.getElementById('email_user').value;
+
+  $.ajax({
+    url: "./backend/editemail.php",
+    type: "post",
+    data: {
+    email_host: email_host,
+    email_name: email_name,
+    email_pass: email_pass,
+    email_port: email_port,
+    email_user: email_user
+ },
+    datatype: "html",
+    contenttype: 'application/html; charset=utf-8',
+    async: true,
+  success : function(response) {
+      if (response == 1){
+           $('#outputEditEmail').html(response);
+      }else {
+          $('#outputEditEmail').html(response);
+
+      }
+      //$('#outputlogin').html(response);
+  },
+  beforeSend: function () {
+      $('#loader').show();
+  },
+  complete: function () {
+      $('#loader').hide();
+  }
+  });
+});
+
 $(document).on("click", ".editDB", function () {
 
   var dbname = document.getElementById('name_db').value;
@@ -84,6 +123,12 @@ $dbuser = explode("'", $linhas[4]);
 $dbpass = explode("'", $linhas[5]);
 $dbname = explode("'", $linhas[6]);
 
+$email_user = explode("'", $linhas[14]);
+$email_pass = explode("'", $linhas[15]);
+$email_host = explode("'", $linhas[13]);
+$email_name = explode("'", $linhas[17]);
+$email_port = explode("'", $linhas[16]);
+
  ?>
 
 <div class="logo">
@@ -139,30 +184,30 @@ $dbname = explode("'", $linhas[6]);
   </div>
   <div id="email" class="tab-pane fade">
     <p>
-      <form id="form" action="backend/edit_geral.php?opt=3" method="post" enctype="multipart/form-data">
+
         <div class="form-outline md-4">
               <label class="form-label" for="form2Example1">Host</label>
-              <input type="text" name="host" id="host" class="form-control" value="<?php echo $row['email']; ?>" readonly />
+              <input type="text" name="host" id="host" class="form-control" value="<?php echo trim($email_host[3]); ?>" readonly />
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example2">Username</label>
-          <input type="text" name="mail_username" id="mail_username" class="form-control" value="<?php echo $row['password']; ?>"/>
+          <input type="text" name="mail_username" id="mail_username" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example3">Password</label>
-          <input type="text" id="mail_password" name="mail_password" class="form-control" value="<?php echo $row['nome']; ?>"/>
+          <input type="text" id="mail_password" name="mail_password" class="form-control" value="<?php echo trim($email_pass[3]); ?>"/>
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example4">Porta</label>
-          <input type="text" id="port" name="port" class="form-control" value="<?php echo $row['apelido']; ?>"/>
+          <input type="text" id="port" name="port" class="form-control" value="<?php echo trim($email_port[3]); ?>"/>
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example5">Nome DB</label>
-          <input type="text" id="database" name="database" class="form-control" value="<?php echo $row['data_nascimento']; ?>"/>
+          <input type="text" id="database" name="database" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
         </div><p>
-            <br><button class="btn btn-success" >Guardar</button><br>
+            <br><button class="editEmail btn btn-success" style="text-align: center;">Guardar</button><br>
             <div id="outputEditEmail" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
-      </form><br>
+      <br>
     </p>
   </div>
 </div>

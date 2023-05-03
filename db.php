@@ -2,9 +2,9 @@
 //ATENÇÃO AOS NUMEROS DAS LINHAS PODE ALTERAR CODIGO NO MENU/GERAL/EDIT_WEBSITE.PHP
 
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root123');
-define('DB_PASSWORD', '123');
-define('DB_DATABASE', 'iptvplanner1');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_DATABASE', 'iptvplanner');
 
 // define('DB_SERVER', 'localhost');
 // define('DB_USERNAME', 'id20666029_iptvplanner');
