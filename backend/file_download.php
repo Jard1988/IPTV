@@ -44,22 +44,22 @@ if ($count >= 1){
 
         $newfname = $destination_folder .$table_lines['nome_linha']. ".m3u"; //set your file ext
 
+        $file = fopen ($url, "rb");
+
+        if (!$file) {
+          exit("<b>Falha ao abrir o arquivo. Verifique o seu Caminho M3U nas definições do seu Site</b>");
+        }else {
         // Use unlink() function to delete a file
         if (!unlink($newfname)) {
           echo ("Ficheiro <b> ". $table_lines['nome_linha'] . " </b> não existe. Criado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por ".$users_email."<br>");
 
-          $file = fopen ($url, "rb");
 
-          if (!$file) {
-            exit("Falha ao abrir o arquivo");
-          }else {
             $newf = fopen ($newfname, "w"); // to overwrite existing file
 
             if ($newf)
             while(!feof($file)) {
               fwrite($newf, fread($file, 1024 * 8 ), 1024 * 8 );
             }
-          }
 
           if ($file) {
             fclose($file);
@@ -105,6 +105,7 @@ if ($count >= 1){
 //             execPrint("git pull dest origin");
           }
     }
+  }
 }else {
 
   $sql="SELECT * FROM linhas, users_linhas where users_linhas.linhas_id = linhas.linhas_id && users_linhas.users_id =  " . $id;

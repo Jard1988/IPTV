@@ -7,13 +7,15 @@ include('../../session.php');
 
 $(document).on("click", ".editURL", function () {
   var caminho = document.getElementById('caminho_m3u').value;
+  var list_url = document.getElementById('list_url').value;
 
   $.ajax({
     url: "./backend/editgeral.php",
     type: "post",
     data: {
     opt: "1",
-    caminho: caminho
+    caminho: caminho,
+    list_url: list_url
  },
     datatype: "html",
     contenttype: 'application/html; charset=utf-8',
@@ -38,6 +40,16 @@ $(document).on("click", ".editURL", function () {
 
 </script>
 
+<!--LER DO FICHEIRO DB.PHP -->
+<?php
+$linhas = explode("\n", file_get_contents("../../db.php"));
+$geral_m3u = $linhas[23];
+$pieces = explode("'", $geral_m3u);
+$list_url = $linhas[25];
+$pieces2 = explode("'", $list_url);
+
+ ?>
+
 <div class="logo">
    <h1><a>Editar Website</a></h1>
 </div><br>
@@ -52,18 +64,17 @@ $(document).on("click", ".editURL", function () {
 <div class="tab-content">
   <div id="geral" class="tab-pane fade in active">
     <p>
-      <form id="form" action="<?php echo $PHP_SELF; ?>" method="post" enctype="multipart/form-data">
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example2">URL M3U:</label>
-          <input type="text" name="caminho_m3u" id="caminho_m3u" class="form-control" value=""/>
+          <input type="text" name="caminho_m3u" id="caminho_m3u" class="form-control" value=" <?php echo trim($pieces[3]); ?>"/>
         </div><p>
         <div class="form-outline md-4">
               <label class="form-label" for="form2Example1">URL das Listas: </label>
-              <input type="text" name="list_url" id="list_url" class="form-control" value=""  />
+              <input type="text" name="list_url" id="list_url" class="form-control" value="  <?php echo trim($pieces2[3]); ?>"  />
         </div><p>
         <br><button class="editURL btn btn-success" style="text-align: center;">Guardar</button><br>
         <div id="outputEditGeral" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div><br>
-      </form><br>
+        <br>
     </p>
   </div>
   <div id="db" class="tab-pane fade">
