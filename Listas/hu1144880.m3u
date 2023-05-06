@@ -1,4 +1,12 @@
 #EXTM3U
+#EXTINF:-1 tvg-id="BenficaTV.pt" tvg-name="PT: BENFICA TV FHD" tvg-logo="https://www.monpetitforfait.com/comparateur-box-internet/wp-content/uploads/2020/06/benfica-tv.png" group-title="SLB vs SCB",PT: BENFICA vs BRAGA FHD
+http://109925180689435840.ofio.xyz:80/play/hu0114472/N7bjC$qjWh9/435840.ts
+#EXTINF:-1 tvg-id="BenficaTV.pt" tvg-name="PT: BENFICA FHD" tvg-logo="http://tudoaqui.xyz/LOGOS/picons/Benfica_TV_1.png" group-title="SLB vs SCB",BENFICA vs BRAGA HD
+http://109925180689472986.ofio.xyz:80/play/hu0114472/N7bjC$qjWh9/472986.ts
+#EXTINF:-1 tvg-id="" tvg-name="PT: BENFICA TV SD" tvg-logo="https://www.monpetitforfait.com/comparateur-box-internet/wp-content/uploads/2020/06/benfica-tv.png" group-title="SLB vs SCB",BENFICA vs BRAGA SD
+http://109925180689408651.ofio.xyz:80/play/hu0114472/N7bjC$qjWh9/408651.ts
+#EXTINF:-1 tvg-id="" tvg-name="PT: BTV FHD" tvg-logo="" group-title="Portugal",PT: BTV FHD
+http://109925180689472491.ofio.xyz:80/play/hu0114472/N7bjC$qjWh9/472491.ts
 
 #EXTINF:-1 tvg-id="" tvg-name="  RTP 1  " tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/7c/RTP.png" group-title="Portugal",  RTP 1
 http://120972280412318326.nicesbt.xyz:80/play/hu0114472/N7bjC$qjWh9/318326.ts
