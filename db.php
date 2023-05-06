@@ -7,9 +7,9 @@ define('DB_PASSWORD', '');
 define('DB_DATABASE', 'iptvplanner');
 
 // define('DB_SERVER', 'localhost');
-// define('DB_USERNAME', 'id20666029_iptvplanner');
-// define('DB_PASSWORD', '#waO58eP*p&qaSQ%%aeR');
-// define('DB_DATABASE', 'id20666029_iptvplanner_db');
+// define('DB_USERNAME', 'u615300448_geral');
+// define('DB_PASSWORD', 'AdminAdmin1+');
+// define('DB_DATABASE', 'u615300448_iptvplanner');
 
 define('MAIL_HOST', 'smtp.gmail.com');
 define('MAIL_USERNAME', 'geraliptvplanner@gmail.com');
@@ -21,9 +21,9 @@ define('MAIL_NAME', 'IPTV Planner');
 // define('TWILIO_AUTH_TOKEN', '03eff5324631e0d38e91ed2f9c56651e');
 // define('TWILIO_AUTH_PHONE', '+14345973989');
 
-define('M3U', 'HttpDeflateStream');
+define('M3U', 'HttpDeflateStreamsafsaf');
 
-define('CAMINHO_URL', '');
+define('CAMINHO_URL', '1323');
 // define('CAMINHO_URL', 'https://iptvplanner.pt/iptv/Listas/');
 
 // Create connection

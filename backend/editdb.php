@@ -21,7 +21,6 @@ if ($arquivo) {
   //Output lines until EOF is reached
   while(!feof($arquivo)) {
     $linha = fgets($arquivo);
-echo "LinhaLida: ". $linha ."<br><br>";
  if(strcmp(trim($linha_n), trim($linha)) == 0) {
    $string .= str_replace("$linha_n", "define('DB_DATABASE', '". trim($dbname)."');", $linha);
  }elseif(strcmp(trim($linha_n1), trim($linha)) == 0) {

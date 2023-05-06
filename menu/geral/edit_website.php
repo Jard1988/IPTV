@@ -187,23 +187,23 @@ $email_port = explode("'", $linhas[16]);
 
         <div class="form-outline md-4">
               <label class="form-label" for="form2Example1">Host</label>
-              <input type="text" name="host" id="host" class="form-control" value="<?php echo trim($email_host[3]); ?>" readonly />
+              <input type="text" name="email_host" id="email_host" class="form-control" value="<?php echo trim($email_host[3]); ?>" />
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example2">Username</label>
-          <input type="text" name="mail_username" id="mail_username" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
+          <input type="text" name="email_name" id="email_name" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example3">Password</label>
-          <input type="text" id="mail_password" name="mail_password" class="form-control" value="<?php echo trim($email_pass[3]); ?>"/>
+          <input type="text" id="email_pass" name="email_pass" class="form-control" value="<?php echo trim($email_pass[3]); ?>"/>
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example4">Porta</label>
-          <input type="text" id="port" name="port" class="form-control" value="<?php echo trim($email_port[3]); ?>"/>
+          <input type="text" id="email_port" name="email_port" class="form-control" value="<?php echo trim($email_port[3]); ?>"/>
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example5">Nome DB</label>
-          <input type="text" id="database" name="database" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
+          <input type="text" id="email_user" name="email_user" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
         </div><p>
             <br><button class="editEmail btn btn-success" style="text-align: center;">Guardar</button><br>
             <div id="outputEditEmail" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>

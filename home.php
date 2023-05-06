@@ -79,59 +79,53 @@
 	</p>
 	</div>
 
-  	<div class="header">
-	     <div class="container">
-	        <div class="row">
-	           <div class="col-md-4">
-	              <!-- Logo -->
-	              <div class="logo">
-	                 <h1><a href="home.php">IPTV Planner</a></h1>
-	              </div>
-	           </div>
+  <?php
+  $sql5 = "SELECT * FROM users WHERE email = '$login_session'";
+  $result5 = mysqli_query($db,$sql5);
+  $row5 = mysqli_fetch_array($result5,MYSQLI_ASSOC);
+  ?>
 
-             <?php
-             $sql5 = "SELECT * FROM users WHERE email = '$login_session'";
-             $result5 = mysqli_query($db,$sql5);
-             $row5 = mysqli_fetch_array($result5,MYSQLI_ASSOC);
-             ?>
-
-	           <div class="col-md-8">
-	              <div class="navbar navbar-inverse" role="banner">
+	        <div class="header">
+	              <div class="navbar navbar-inverse" role="banner" style="background-color:#2c3742; top:-5px;  border: 0;">
 	                  <div class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-                          <ul class="nav navbar-nav" style="padding-left: 20px;">
+                          <ul class="nav navbar-nav">
                             <li class="dropdown">
-                              <div class="logo">
-                                 <h1>
+                              <div class="notification">
+
                                                        <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                                                         <img style="margin-right: 0px; border-radius: 50%;" width="40px" height="40px" src="images/notification.jpg" class="icon_logo">
-                                                          <span class="badge badge-light">4</span>&nbsp;&nbsp;
+                                                         <img style="margin-right: -20px; border-radius: 50%;" width="40px" height="40px" src="images/notification.jpg">
+                                                          <span class="badge">4 </span>&nbsp;&nbsp;
                                                           <!-- <span style="margin-right: 10px;" class="caret"></span> -->
                                                                       <ul class="dropdown-menu">
                                                                           <li><a href="#">notificacao 1</a></li>
                                                                           <li><a href="#">notificacao 2</a></li>
-                                                                      </ul></a></h1>
+                                                                      </ul></a>
                               </div>
                             </li>
 
                               <li class="dropdown">
-                                <div class="logo">
-                                   <h1>
+                                <div class="notification">
+
                                                          <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                                                           <img style="border-radius: 50%;" width="40px" height="40px" src="<?php echo $row['avatar_path']; ?>" class="icon_logo">
-                                                           <!-- <span class="caret"></span> -->
+                                                           <img style="margin-right: 10%; border-radius: 50%;" width="40px" height="40px" src="<?php echo $row['avatar_path']; ?>">
                                                                         <ul class="dropdown-menu">
                                                                             <li><a href="#" onClick="getPage('geral/edit_profile');">Editar Perfil</a></li>
                                                                             <li><a style="color: red;" href="logout.php"><b>Logout</b></a></li>
-                                                                        </ul></a></h1>
+                                                                        </ul></a>
+                                </div>
+                              </li>
+                              <li class="dropdown">
+                                <div class="logo">
+
+                              <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                      </a>
                                 </div>
                               </li>
                           </ul>
 	                  </div>
+                    <div class="logo">IPTV Planner</div>
 	              </div>
-	           </div>
 	        </div>
-	     </div>
-	</div>
 
     <div class="page-content" id="page-content">
     	<div class="row">

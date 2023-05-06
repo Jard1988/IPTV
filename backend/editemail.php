@@ -9,13 +9,15 @@ $name = mysqli_real_escape_string($db,$_POST['email_name']);
 $pass = mysqli_real_escape_string($db,$_POST['email_pass']);
 $port = mysqli_real_escape_string($db,$_POST['email_port']);
 $user = mysqli_real_escape_string($db,$_POST['email_user']);
-
+ 
 $linhas = explode("\n", file_get_contents("../db.php"));
 
 //Ler somente o conteudo da linha [0]do array ou seja linha 1 do texto
-$linha_n = $linhas[6]; // name
-$linha_n1 = $linhas[5]; //pass
-$linha_n3 = $linhas[4]; //user
+$linha_n = $linhas[13]; // host
+$linha_n1 = $linhas[14]; //user
+$linha_n2 = $linhas[15]; //pass
+$linha_n3 = $linhas[16]; //port
+$linha_n4 = $linhas[17]; //name
 // abre o arquivo colocando o ponteiro de escrita no final
 $arquivo = fopen('../db.php','r+');
 if ($arquivo) {
@@ -23,13 +25,16 @@ if ($arquivo) {
   //Output lines until EOF is reached
   while(!feof($arquivo)) {
     $linha = fgets($arquivo);
-echo "LinhaLida: ". $linha ."<br><br>";
  if(strcmp(trim($linha_n), trim($linha)) == 0) {
-   $string .= str_replace("$linha_n", "define('DB_DATABASE', '". trim($dbname)."');", $linha);
+   $string .= str_replace("$linha_n", "define('MAIL_HOST', '". trim($host)."');", $linha);
  }elseif(strcmp(trim($linha_n1), trim($linha)) == 0) {
-   $string .= str_replace("$linha_n1", "define('DB_PASSWORD', '". trim($dbpass)."');", $linha);
+   $string .= str_replace("$linha_n1", "define('MAIL_USERNAME', '". trim($name)."');", $linha);
+ }elseif(strcmp(trim($linha_n2), trim($linha)) == 0) {
+   $string .= str_replace("$linha_n2", "define('MAIL_PASSWORD', '". trim($pass)."');", $linha);
  }elseif(strcmp(trim($linha_n3), trim($linha)) == 0) {
-   $string .= str_replace("$linha_n3", "define('DB_USERNAME', '". trim($dbuser)."');", $linha);
+   $string .= str_replace("$linha_n3", "define('MAIL_PORT', '". trim($port)."');", $linha);
+ } elseif(strcmp(trim($linha_n4), trim($linha)) == 0) {
+   $string .= str_replace("$linha_n4", "define('MAIL_NAME', '". trim($user)."');", $linha);
  } else  {
        $string.= $linha;
      }
