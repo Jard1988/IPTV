@@ -25,7 +25,7 @@ if ($arquivo) {
    if(strcmp(trim($linha_n1), trim($linha)) == 1) {
      $string.= $linha;
    }else {
-     $string .= str_replace("$linha_n1", "define('CAMINHO_URL', '". trim($list_url)."');", $linha);
+     $string .= str_replace("$linha_n1", "define('CAMINHO_URL', '" .ltrim($list_url)."');", $linha);
    }
  }else {
     $string .= str_replace("$linha_n", "define('M3U', '". trim($caminho)."');", $linha);
