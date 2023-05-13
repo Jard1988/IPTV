@@ -23,7 +23,7 @@ define('MAIL_NAME', 'IPTV Planner');
 
 define('M3U', 'http://smart.niceed.xyz/get.php?username=hu0114472&password=N7bjC$qjWh9&type=m3u_plus&output=mpegts');
 
-define('CAMINHO_URL', 'https://localhost/iptv/Listas/');
+define('CAMINHO_URL', 'http://localhost/listas/');
 // define('CAMINHO_URL', 'https://iptvplanner.pt/iptv/Listas/');
 
 // Create connection
