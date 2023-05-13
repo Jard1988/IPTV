@@ -21,9 +21,9 @@ define('MAIL_NAME', 'IPTV Planner');
 // define('TWILIO_AUTH_TOKEN', '03eff5324631e0d38e91ed2f9c56651e');
 // define('TWILIO_AUTH_PHONE', '+14345973989');
 
-define('M3U', 'HttpDeflateStreamsafsaf');
+define('M3U', 'http://smart.niceed.xyz/get.php?username=hu0114472&password=N7bjC$qjWh9&type=m3u_plus&output=mpegts');
 
-define('CAMINHO_URL', '1323');
+define('CAMINHO_URL', 'https://localhost/iptv/Listas/');
 // define('CAMINHO_URL', 'https://iptvplanner.pt/iptv/Listas/');
 
 // Create connection
