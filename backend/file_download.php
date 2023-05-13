@@ -29,6 +29,7 @@ function execPrint($command) {
 <?php
 $url = M3U;
 
+//IMPORTANTE ESTA LINHAS NO SERVER NAO UTILIZA iptv
 $destination_folder = $_SERVER['DOCUMENT_ROOT'].'/IPTV/Listas/';
 
 $sql = "SELECT * FROM users WHERE users_id = '$id' and permission_id >= '3'";
