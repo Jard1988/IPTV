@@ -28,14 +28,23 @@ set_time_limit(300);
         $dataFinal *= -1;
         echo "expirado";
       }else  {
-
-            $sql_not = "INSERT INTO `notification` (`texto`, `tipo_notification`, `data_notification`, `users_id`) VALUES ('Faltam ". $dataFinal ." dias para expirar a linha: Efectue pagamento.', 'pagamento', '". $data1 ."', ". $notify['users_id'] .")";
-            $result_not = mysqli_query($db, $sql_not);
-            if ($result_not){
-              echo "Inserido";
-            }else {
-              echo "Notificação não criada";
+        $sql_notify2 = "SELECT * FROM notification";
+        $result_notify2 = mysqli_query($db,$sql_notify2);
+        while ($notify2 = mysqli_fetch_assoc($result_notify2)){
+            if ($data2 == $notify2['data_notification']){
+                echo "IGUAL";
+            } else {
+                          $sql_not = "INSERT INTO `notification` (`texto`, `tipo_notification`, `data_notification`, `users_id`) VALUES ('Faltam ". $dataFinal ." dias para expirar a linha: Efectue pagamento.', 'pagamento', '". $data1 ."', ". $notify['users_id'] .")";
+                          $result_not = mysqli_query($db, $sql_not);
+                          if ($result_not){
+                            echo "Inserido";
+                          }else {
+                            echo "Notificação não criada";
+                          }
             }
+
+        }
+
     }
   }
 
