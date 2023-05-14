@@ -68,7 +68,25 @@
                 complete: function() { $('#loader').hide(); }
             });
     	}
+
+      $( document ).ready(function() {
+
+        jQuery.ajax({
+            url: "backend/notification.php",
+            type: "post",
+            datatype: "html",
+            contenttype: 'application/html; charset=utf-8',
+            async: true,
+            success:function(data){$('#output').html(data);},
+            beforeSend: function() { $('#loader').show(); },
+            complete: function() { $('#loader').hide(); }
+        });
+      });
 	   </script>
+
+}
+
+
    </head>
    <body>
 
@@ -97,8 +115,13 @@
                                                           <span class="badge">4 </span>&nbsp;&nbsp;
                                                           <!-- <span style="margin-right: 10px;" class="caret"></span> -->
                                                                       <ul class="dropdown-menu">
-                                                                          <li><a href="#">notificacao 1</a></li>
-                                                                          <li><a href="#">notificacao 2</a></li>
+                                                                        <?php
+                                                                        $sql6 = "SELECT * FROM notification where vista=0";
+                                                                        $result6 = mysqli_query($db,$sql6);
+                                                                        while ($notifiy = mysqli_fetch_assoc($result6)){
+                                                                        ?>
+                                                                          <li><a href="#"><?php echo $notifiy['texto']; ?></a></li>
+                                                                        <?php } ?>
                                                                       </ul></a>
                               </div>
                             </li>
@@ -184,6 +207,19 @@
                             </ul>
                         </li>
                         <li>
+                            <a href="#" onClick="#">
+                                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                <span>Pagamentos</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+<!--                                <span class="label label-primary pull-right">4</span>-->
+                            </a>
+                            <ul class="sidebar-submenu" style="display: none;">
+                                <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-reply" aria-hidden="true"></i>Estado</a></li>
+                                <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-reply-all" aria-hidden="true"></i>Expirados</a></li>
+                                <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-reply-all" aria-hidden="true"></i>Visualizar</a></li>
+                            </ul>
+                        </li>
+                        <li>
                             <a href="#" onClick="getPage('send-email');">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                                 <span>Email</span>
@@ -212,7 +248,7 @@
 				<div id="output">
           <div style="font-size: 30px; text-align: left;">
             <div class="col-md-10">
-              <span>Bem Vindo</span> <b><?php echo $users_email; ?></b>
+              <span>Bem Vindo</span> <b><?php echo $users_name . " ". $users_apelido ?></b>
             </div>
           </div>
           <div class="col-md-12" style="margin-bottom: 7%; margin-top: 6%; text-align: center;">

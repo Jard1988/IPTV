@@ -23,7 +23,11 @@ define('MAIL_NAME', 'IPTV Planner');
 
 define('M3U', 'http://smart.niceed.xyz/get.php?username=hu0114472&password=N7bjC$qjWh9&type=m3u_plus&output=mpegts');
 
+<<<<<<< HEAD
 define('CAMINHO_URL', 'http://localhost/listas/');
+=======
+define('CAMINHO_URL', 'http://iptvplanner.pt/Listas/');
+>>>>>>> e0f5717e6d741f3448f15bb18b7093ac7a120c90
 // define('CAMINHO_URL', 'https://iptvplanner.pt/iptv/Listas/');
 
 // Create connection
@@ -32,7 +36,7 @@ $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 // Check connection
 if (!$db){
 	//die("Connection failed: " . mysqli_connect_error());
-	die("Connection failed. Verifique as suas ligações se estão corretas");
+	die("Connection failed. Verifique as suas ligações se estão corretas nas definições do Site");
 }
 
 ?>
