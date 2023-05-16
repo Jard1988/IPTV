@@ -191,7 +191,7 @@ $email_port = explode("'", $linhas[16]);
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example2">Username</label>
-          <input type="text" name="email_name" id="email_name" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
+          <input type="text" name="email_name" id="email_name" class="form-control" value="<?php echo trim($email_user[3]); ?>"/>
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example3">Password</label>
