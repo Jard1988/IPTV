@@ -41,8 +41,12 @@
 
 												Obrigado pelo seu contributo na IPTV Planner!<br><br>
 
-												O seu Pedido foi concluido e validado com sucesso!<br>
-                        Foi redireccionado e já pode iniciar sessão!.<br><br>
+												O seu Pedido foi concluido e validado com sucesso!<br><br>
+
+                        Foi redireccionado e já pode iniciar sessão, com dados anteriormente fornecidos.<br>
+
+                        Com esta funcionalidade podes atualizar os teus dados e atualizar a tua lista quando quiseres<br>
+                        assim como entrar em contacto connosco por qualquer motivo que seja. <br><br>
 
                         Se tiver urgência ou existir algum problema não exite em entrar em contacto por email ou por favor ligar para 22X XXX XXX ou 9XX XXX XXX.<br><br>
 												NOTA: Não responda a este email, trata-se de uma mensagem automática de confirmação de receção do seu pedido.<br>

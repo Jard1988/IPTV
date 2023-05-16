@@ -23,7 +23,9 @@ define('MAIL_NAME', 'IPTV Planner');
 
 define('M3U', 'http://smart.niceed.xyz/get.php?username=hu0114472&password=N7bjC$qjWh9&type=m3u_plus&output=mpegts');
 
-define('CAMINHO_URL', 'http://localhost/listas/');
+define('CAMINHO_URL', 'http://localhost/IPTV/Listas/');
+
+define('RAIZ_CAMINHO', 'http://localhost/IPTV/');
 
 // Create connection
 $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);

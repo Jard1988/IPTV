@@ -107,7 +107,7 @@
 												Estado: <b>Falta confirmação</b><br><br>
 
 												Confirme o seu registo através do link:<br>
-												http://localhost/IPTV/confirm.php?email='.$email.' <br><br>
+												' . RAIZ_CAMINHO .'confirm.php?email='.$email.' <br><br>
 
 												Após a confirmação irá receber um email já pode iniciar a sessão e usufruir dos nossos serviços!
 
