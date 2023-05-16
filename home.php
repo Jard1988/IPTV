@@ -84,9 +84,6 @@
       });
 	   </script>
 
-}
-
-
    </head>
    <body>
 
@@ -116,9 +113,7 @@
                                                          $sql6 = "SELECT * FROM notification where vista=0";
                                                          $result6 = mysqli_query($db,$sql6);
                                                          $contador_notification = mysqli_num_rows($result6);
-
                                                          ?>
-                                                         <span class="badge"><?php echo $contador_notification; ?></span>&nbsp;&nbsp;
                                                           <!-- <span style="margin-right: 10px;" class="caret"></span> -->
                                                                       <ul class="dropdown-menu">
                                                                         <li><a href="#" id="result_notification"></a></li>
@@ -127,7 +122,11 @@
                                                                         ?>
                                                                           <li><a href="#"><?php echo $notifiy['texto']; ?></a></li>
                                                                         <?php } ?>
-                                                                      </ul></a>
+                                                                      </ul>
+                                                                      <span class="badge">
+                                                                        <?php echo $contador_notification + 1; ?>
+                                                                      </span>&nbsp;&nbsp;
+                                                        </a>
                               </div>
                             </li>
 
