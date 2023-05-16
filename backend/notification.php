@@ -10,7 +10,7 @@ set_time_limit(300);
     $data1 = implode('-', array_reverse(explode('/', $data1)));
     $d1 = strtotime($data1);
 
-    $sql_notify = "SELECT * FROM users_linhas";
+    $sql_notify = "SELECT * FROM users_linhas, users where users.users_id = users_linhas.users_id";
     $result_notify = mysqli_query($db,$sql_notify);
 
     while ($notify = mysqli_fetch_assoc($result_notify)){
@@ -26,26 +26,11 @@ set_time_limit(300);
       // caso a data 2 seja menor que a data 1, multiplica o resultado por -1
       if($dataFinal < 0){
         $dataFinal *= -1;
-        echo "expirado";
+        echo "Expirou para <b>". $notify['email'] ."</b><br>";
       }else  {
-        $sql_notify2 = "SELECT * FROM notification";
-        $result_notify2 = mysqli_query($db,$sql_notify2);
-        while ($notify2 = mysqli_fetch_assoc($result_notify2)){
-            if ($data2 == $notify2['data_notification']){
-                echo "IGUAL";
-            } else {
-                          $sql_not = "INSERT INTO `notification` (`texto`, `tipo_notification`, `data_notification`, `users_id`) VALUES ('Faltam ". $dataFinal ." dias para expirar a linha: Efectue pagamento.', 'pagamento', '". $data1 ."', ". $notify['users_id'] .")";
-                          $result_not = mysqli_query($db, $sql_not);
-                          if ($result_not){
-                            echo "Inserido";
-                          }else {
-                            echo "Notificação não criada";
-                          }
-            }
-
+        if ($dataFinal < 5) {
+          echo "<b>". $notify['email'] ."</b> Faltam ". $dataFinal ." dias para expirar a linha: Efectue pagamento.<br>";
         }
-
+      }
     }
-  }
-
-?>
+  ?>
