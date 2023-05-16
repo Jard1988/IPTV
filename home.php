@@ -77,7 +77,7 @@
             datatype: "html",
             contenttype: 'application/html; charset=utf-8',
             async: true,
-            success:function(data){$('#output').html(data);},
+            success:function(data){$('#result_notification').html(data);},
             beforeSend: function() { $('#loader').show(); },
             complete: function() { $('#loader').hide(); }
         });
@@ -112,12 +112,17 @@
 
                                                        <a class="dropdown-toggle" type="button" data-toggle="dropdown">
                                                          <img style="margin-right: -20px; border-radius: 50%;" width="40px" height="40px" src="images/notification.jpg">
-                                                          <span class="badge">4 </span>&nbsp;&nbsp;
+                                                         <?php
+                                                         $sql6 = "SELECT * FROM notification where vista=0";
+                                                         $result6 = mysqli_query($db,$sql6);
+                                                         $contador_notification = mysqli_num_rows($result6);
+
+                                                         ?>
+                                                         <span class="badge"><?php echo $contador_notification; ?></span>&nbsp;&nbsp;
                                                           <!-- <span style="margin-right: 10px;" class="caret"></span> -->
                                                                       <ul class="dropdown-menu">
+                                                                        <li><a href="#" id="result_notification"></a></li>
                                                                         <?php
-                                                                        $sql6 = "SELECT * FROM notification where vista=0";
-                                                                        $result6 = mysqli_query($db,$sql6);
                                                                         while ($notifiy = mysqli_fetch_assoc($result6)){
                                                                         ?>
                                                                           <li><a href="#"><?php echo $notifiy['texto']; ?></a></li>
