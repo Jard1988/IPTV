@@ -55,7 +55,7 @@
 			$result_lines = mysqli_query($db,$sql6);
 			$table_lines = mysqli_fetch_assoc($result_lines);
 
-			$sql4 = "INSERT INTO `iptvplanner`.`users_linhas` (`users_id`, `linhas_id`, `data_ini`, `data_fim`) VALUES ('".$table_users['users_id']."', '".$table_lines['linhas_id']."', '".date("Y/m/d")."', '');";
+			$sql4 = "INSERT INTO `users_linhas` (`users_id`, `linhas_id`, `data_ini`, `data_fim`) VALUES ('".$table_users['users_id']."', '".$table_lines['linhas_id']."', '".date("Y/m/d")."', '');";
 			$result4 = mysqli_query($db, $sql4);
 
 			if ($result3 && $result4 && $result_users && $result_lines){
@@ -63,7 +63,7 @@
 						//$mail->SMTPDebug = SMTP::DEBUG_SERVER; // apresenta o DEBUG
 						$mail->isSMTP();
 
-						$mail->Host = 'smtp.gmail.com';
+						$mail->Host = MAIL_HOST;
 						$mail->SMTPAuth = true;
 
 						$mail->Username = MAIL_USERNAME;
@@ -74,8 +74,8 @@
 						$mail->addAddress($email); // emails to
 
 						$mail->isHTML(true);
-						$mail->Subject = 'Linha';
-						$mail->Body = 'Registo com Sucesso <strong>IPTV Planner</strong><br>
+						$mail->Subject = utf8_decode('Linha da IPTV');
+						$mail->Body = utf8_decode('Registo com Sucesso <strong>IPTV Planner</strong><br>
 												<br><br>
 
 												Obrigado pelo sua Compra na IPTV Planner!<br><br>
@@ -93,7 +93,8 @@
 <br>
 												Declaração de consentimento sobre campanhas:
 <br>
-												PROTEÇÃO DE DADOS PESSOAIS: A segurança e a privacidade de seus dados pessoais são importantes para nós. A IPTV Planner está em conformidade com o Regulamento Geral de Proteção de Dados em vigor na UE. Quando nos cede os seus dados pessoais, nós só os utilizaremos para o propósito para o qual foram fornecidos. Pode retirar o seu consentimento a qualquer momento. Por favor, veja nossa Política de Privacidade.';
+												PROTEÇÃO DE DADOS PESSOAIS: A segurança e a privacidade de seus dados pessoais são importantes para nós. A IPTV Planner está em conformidade com o Regulamento Geral de Proteção de Dados em vigor na UE. Quando nos cede os seus dados pessoais, nós só os utilizaremos para o propósito para o qual foram fornecidos. Pode retirar o seu consentimento a qualquer momento. Por favor, veja nossa Política de Privacidade.'
+											);
 
 						//$mail->setFrom('system@cksoftwares.com', 'CKSoftwares System'); // From email and name
 						//$mail->addAddress('to@address.com', 'Mr. Brown'); // to email and name

@@ -84,7 +84,7 @@
 						//$mail->SMTPDebug = SMTP::DEBUG_SERVER; // apresenta o DEBUG
 						$mail->isSMTP();
 
-						$mail->Host = 'smtp.gmail.com';
+						$mail->Host = MAIL_HOST;
 						$mail->SMTPAuth = true;
 
 						$mail->Username = MAIL_USERNAME;
@@ -95,8 +95,8 @@
 						$mail->addAddress($email); // emails to
 
 						$mail->isHTML(true);
-						$mail->Subject = 'Registo na IPTV Planner';
-						$mail->Body = 'Registo com Sucesso <strong>IPTV Planner</strong><br>
+						$mail->Subject = utf8_decode('Registo na IPTV Planner');
+						$mail->Body = utf8_decode('Registo com Sucesso <strong>IPTV Planner</strong><br>
 												<br><br>
 
 												Obrigado pelo seu contributo na IPTV Planner!<br><br>
@@ -121,7 +121,8 @@
 <br>
 												Declaração de consentimento sobre campanhas:
 <br>
-												PROTEÇÃO DE DADOS PESSOAIS: A segurança e a privacidade de seus dados pessoais são importantes para nós. A IPTV Planner está em conformidade com o Regulamento Geral de Proteção de Dados em vigor na UE. Quando nos cede os seus dados pessoais, nós só os utilizaremos para o propósito para o qual foram fornecidos. Pode retirar o seu consentimento a qualquer momento. Por favor, veja nossa Política de Privacidade.';
+												PROTEÇÃO DE DADOS PESSOAIS: A segurança e a privacidade de seus dados pessoais são importantes para nós. A IPTV Planner está em conformidade com o Regulamento Geral de Proteção de Dados em vigor na UE. Quando nos cede os seus dados pessoais, nós só os utilizaremos para o propósito para o qual foram fornecidos. Pode retirar o seu consentimento a qualquer momento. Por favor, veja nossa Política de Privacidade.'
+											);
 
 						//$mail->setFrom('system@cksoftwares.com', 'CKSoftwares System'); // From email and name
 						//$mail->addAddress('to@address.com', 'Mr. Brown'); // to email and name
@@ -129,8 +130,10 @@
 						//$mail->msgHTML("test body"); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
 						//$mail->AltBody = ''; // If html emails is not supported by the receiver, show this body
 						// $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
+
 							echo "User Criado. ";
 							if ($mail->send()) {
+
 								echo "Email Enviado ao Utilizador. ";
 							} else {
 									echo "Email não enviado ao Utilizador. ";

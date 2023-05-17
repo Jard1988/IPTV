@@ -82,12 +82,14 @@ $(document).on("click", ".editDB", function () {
 $(document).on("click", ".editURL", function () {
   var caminho = document.getElementById('caminho_m3u').value;
   var list_url = document.getElementById('list_url').value;
+  var site_url = document.getElementById('site_url').value;
 
   $.ajax({
     url: "./backend/editgeral.php",
     type: "post",
     data: {
     caminho: caminho,
+    site_url: site_url,
     list_url: list_url
  },
     datatype: "html",
@@ -117,7 +119,8 @@ $(document).on("click", ".editURL", function () {
 <?php
 $linhas = explode("\n", file_get_contents("../../db.php"));
 $geralm3u = explode("'", $linhas[23]);
-$geralcaminho = explode("'", $linhas[25]);
+$geralsite = explode("'", $linhas[25]);
+$geralcaminho = explode("'", $linhas[27]);
 
 $dbuser = explode("'", $linhas[4]);
 $dbpass = explode("'", $linhas[5]);
@@ -149,6 +152,10 @@ $email_port = explode("'", $linhas[16]);
           <label class="form-label" for="form2Example2">URL M3U:</label>
           <input type="text" name="caminho_m3u" id="caminho_m3u" class="form-control" value=" <?php echo trim($geralm3u[3]); ?>"/>
         </div><p>
+          <div class="form-outline md-4">
+                <label class="form-label" for="form2Example1">URL do Site: </label>
+                <input type="text" name="site_url" id="site_url" class="form-control" value="  <?php echo trim($geralsite[3]); ?>"  />
+          </div><p>
         <div class="form-outline md-4">
               <label class="form-label" for="form2Example1">URL das Listas: </label>
               <input type="text" name="list_url" id="list_url" class="form-control" value="  <?php echo trim($geralcaminho[3]); ?>"  />
@@ -191,7 +198,7 @@ $email_port = explode("'", $linhas[16]);
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example2">Username</label>
-          <input type="text" name="email_name" id="email_name" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
+          <input type="text" name="email_user" id="email_user" class="form-control" value="<?php echo trim($email_user[3]); ?>"/>
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example3">Password</label>
@@ -202,8 +209,8 @@ $email_port = explode("'", $linhas[16]);
           <input type="text" id="email_port" name="email_port" class="form-control" value="<?php echo trim($email_port[3]); ?>"/>
         </div><p>
         <div class="form-outline md-4">
-          <label class="form-label" for="form2Example5">Nome DB</label>
-          <input type="text" id="email_user" name="email_user" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
+          <label class="form-label" for="form2Example5">Titulo do Email</label>
+          <input type="text" id="email_name" name="email_name" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
         </div><p>
             <br><button class="editEmail btn btn-success" style="text-align: center;">Guardar</button><br>
             <div id="outputEditEmail" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
