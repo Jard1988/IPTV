@@ -89,8 +89,9 @@ $(".toggle-password").click(function() {
           <div class="form-outline md-4">
             <label class="form-label" for="form2Example7">Avatar</label>
             <input type="text" id="avatar" name="avatar" class="form-control" value="<?php echo $row['avatar_path']; ?>" readonly />
-            <input id="fileToUpload" type="file" accept="image/*" name="fileToUpload" />
-            <div style="display: none;" id="preview"><img src="<?php echo $row['avatar_path']; ?>" /></div><br>
+            <input id="fileToUpload" type="file" accept="image/*" name="fileToUpload" /><br>
+            <div id="preview" style = "display: none; font-size:11px; color: red;" align="center">><img src="<?php echo $row['avatar_path']; ?>" /></div><br>
+
             <input style="margin: 0 50%; width: 100px; height: 30px;" class="btn btn-primary" type="submit" value="Editar">
           </div>
         </form><br>
