@@ -49,13 +49,7 @@
 			$result_users = mysqli_query($db,$sql);
 			$table_users = mysqli_fetch_assoc($result_users);
 
-			$sql6 = "SELECT linhas_id from linhas where nome_linha='". $novalinha ."'";
-			$result_lines = mysqli_query($db,$sql6);
-			$table_lines = mysqli_fetch_assoc($result_lines);
-
-
-
-			if ($result_users && $result_lines){
+			if ($result_users){
 				try {
 						//$mail->SMTPDebug = SMTP::DEBUG_SERVER; // apresenta o DEBUG
 						$mail->isSMTP();
@@ -102,13 +96,18 @@
 
 							if ($mail->send()) {
 								echo "Email Enviado ao Utilizador. ";
-
+echo "users:" . $table_users['users_id'];
+echo "linha:" . $novalinha;
 								$sql3 = "INSERT INTO `linhas` (`nome_linha`,`pago`, `caminho`) VALUES ('". $novalinha ."','". $pago ."','". $caminho . "')";
 								$result3 = mysqli_query($db, $sql3);
 
-								$sql4 = "INSERT INTO `users_linhas` (`users_id`, `linhas_id`, `data_ini`, `data_fim`) VALUES ('".$table_users['users_id']."', '".$table_lines['linhas_id']."', '".date("Y/m/d")."', '');";
+								$sql5 = "SELECT linhas_id from linhas where nome_linha='". $novalinha ."'";
+								$result_lines5 = mysqli_query($db,$sql5);
+								$table_lines5 = mysqli_fetch_assoc($result_lines5);
+
+								$sql4 = "INSERT INTO `users_linhas` (`users_id`, `linhas_id`, `data_ini`, `data_fim`) VALUES ('".$table_users['users_id']."', '".$table_lines5['linhas_id']."', '".date("Y/m/d")."', '');";
 								$result4 = mysqli_query($db, $sql4);
-								
+
 								if ($result3 && $result4){
 								echo "Linha Criado. ";
 								} else {
