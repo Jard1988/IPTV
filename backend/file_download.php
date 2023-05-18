@@ -30,7 +30,7 @@ function execPrint($command) {
 $url = M3U;
 
 //IMPORTANTE ESTA LINHAS NO SERVER NAO UTILIZA iptv
-$destination_folder = CAMINHO_URL.'Listas/';
+$destination_folder = "../" . RAIZ_CAMINHO;
 
 $sql = "SELECT * FROM users WHERE users_id = '$id' and permission_id >= '3'";
 
@@ -54,9 +54,9 @@ if ($count >= 1){
         if (!unlink($newfname)) {
           echo ("Ficheiro <b> ". $table_lines['nome_linha'] . " </b> não existe. Criado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por ".$users_email."<br>");
 
-
             $newf = fopen ($newfname, "w"); // to overwrite existing file
-
+            if ( $newf == false)
+              die('Não foi possível criar o arquivo.');
             if ($newf)
             while(!feof($file)) {
               fwrite($newf, fread($file, 1024 * 8 ), 1024 * 8 );
@@ -82,7 +82,8 @@ if ($count >= 1){
 
             if ($file) {
               $newf = fopen ($newfname, "w"); // to overwrite existing file
-
+              if ( $newf == false)
+                die('Não foi possível criar o arquivo.');
               if ($newf)
               while(!feof($file)) {
                 fwrite($newf, fread($file, 1024 * 8 ), 1024 * 8 );
@@ -125,6 +126,8 @@ if ($count >= 1){
 
           if ($file) {
             $newf = fopen ($newfname, "w"); // to overwrite existing file
+            if ( $newf == false)
+              die('Não foi possível criar o arquivo.');
 
             if ($newf)
             while(!feof($file)) {
@@ -147,6 +150,8 @@ if ($count >= 1){
 
             if ($file) {
               $newf = fopen ($newfname, "w"); // to overwrite existing file
+              if ( $newf == false)
+                die('Não foi possível criar o arquivo.');
 
               if ($newf)
               while(!feof($file)) {

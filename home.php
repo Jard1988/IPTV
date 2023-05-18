@@ -32,6 +32,20 @@
 
     <script type="text/javascript">
 
+function RemoveUnusedLines(id) {
+  jQuery.ajax({
+      url: "backend/linhas/deleteunused.php",
+      type: "post",
+      datatype: "html",
+      contenttype: 'application/html; charset=utf-8',
+      async: true,
+      success:function(data){$('#output').html(data);},
+      beforeSend: function() { $('#loader').show(); },
+      complete: function() { $('#loader').hide(); }
+  });
+
+}
+
       function refresh(id) {
         jQuery.ajax({
             url: "backend/file_download.php",
@@ -204,6 +218,12 @@
                             <ul class="sidebar-submenu" style="display: none;">
                                 <li><a href="#" onClick="getPage('linhas/search-line');"><i class="fa fa-search" aria-hidden="true"></i>Procurar</a></li>
                                 <li><a href="#" onClick="getPage('linhas/all-lines');"><i class="fa fa-list-alt" aria-hidden="true"></i> Listar Todos</a></li>
+                                <li>
+                                    <a href="#" onClick="RemoveUnusedLines();">
+                                        <i class="fa fa-spinner" aria-hidden="true"></i>
+                                        <span><b>Limpar</b></span>
+                                      </a>
+                                </li>
                                 </li>
                             </ul>
                         </li>
