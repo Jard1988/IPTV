@@ -25,7 +25,7 @@ define('M3U', 'http://smart.niceed.xyz/get.php?username=hu0114472&password=N7bjC
 
 define('CAMINHO_URL', 'http://localhost/IPTV/');
 
-define('RAIZ_CAMINHO', 'Listas/123');
+define('RAIZ_CAMINHO', 'Listas/');
 
 
 // Create connection
