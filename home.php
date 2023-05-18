@@ -222,7 +222,7 @@ function RemoveUnusedLines(id) {
                                 <li><a href="#" onClick="getPage('linhas/all-lines');"><i class="fa fa-list-alt" aria-hidden="true"></i> Listar Todos</a></li>
                                 <li>
                                     <a href="#" onClick="RemoveUnusedLines();">
-                                        <i class="fa fa-spinner" aria-hidden="true"></i>
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
                                         <span><b>Limpar</b></span>
                                       </a>
                                 </li>
