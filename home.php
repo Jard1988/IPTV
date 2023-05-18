@@ -97,10 +97,6 @@ function RemoveUnusedLines(id) {
         });
       });
 	   </script>
-<<<<<<< HEAD
-
-=======
->>>>>>> 1cffbb334264350b3468c04a609fb72598862485
    </head>
    <body>
 
