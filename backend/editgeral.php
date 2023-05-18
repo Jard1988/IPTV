@@ -21,30 +21,19 @@ if ($arquivo) {
 
   //Output lines until EOF is reached
   while(!feof($arquivo)) {
-    $linha = fgets($arquivo);
-
- if(strcmp(trim($linha_n2), trim($linha)) == 1) {
-   if(strcmp(trim($linha_n1), trim($linha)) == 1) {
-     if(strcmp(trim($linha_n), trim($linha)) == 1) {
-       $string.= $linha;
-     }else {
-       $string .= str_replace("$linha_n", "define('M3U', '" .ltrim($caminho)."');", $linha);
-     }
-   }else {
+   $linha = fgets($arquivo);
+   if(strcmp(trim($linha_n), trim($linha)) == 0) {
+     $string .= str_replace("$linha_n", "define('M3U', '" .ltrim($caminho)."');", $linha);
+   }elseif(strcmp(trim($linha_n1), trim($linha)) == 0) {
      $string .= str_replace("$linha_n1", "define('RAIZ_CAMINHO', '" .ltrim($list_url)."');", $linha);
-   }
- }else {
-    $string .= str_replace("$linha_n2", "define('CAMINHO_URL', '". trim($site_url)."');", $linha);
- }
-}
+   }elseif(strcmp(trim($linha_n2), trim($linha)) == 0) {
+     $string .= str_replace("$linha_n2", "define('CAMINHO_URL', '". trim($site_url)."');", $linha);
+   }else  {
+         $string.= $linha;
+       }
+  }
 
-if(strcmp(trim($linha_n1), trim($linha)) == 1) {
-  $string.= $linha;
-}else {
-  $string .= str_replace("$linha_n1", "define('CAMINHO_URL', '" .ltrim($list_url)."');", $linha);
-}
-
-    // move o ponteiro para o inicio do arquivo
+  // move o ponteiro para o inicio do arquivo
     rewind($arquivo);
 
     // Apaga o conteudo

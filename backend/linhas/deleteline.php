@@ -23,9 +23,9 @@
 					echo ("Ficheiro <b> ". $table_lines['nome_linha'] . " </b> apagado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por ".$users_email."<br><br>");
 				}
 			}
-			// $sql4 = "DELETE FROM users_linhas WHERE linhas_id='". $id."';";
-      // $result3 = mysqli_query($db, $sql3);
-			// $result4 = mysqli_query($db, $sql4);
+			$sql4 = "DELETE FROM users_linhas WHERE linhas_id='". $id."';";
+      $result3 = mysqli_query($db, $sql3);
+			$result4 = mysqli_query($db, $sql4);
       echo "Linha Apagada";
     }else {
         echo "Não foi possivel Apagar a Linha. Tente Novamente.";
