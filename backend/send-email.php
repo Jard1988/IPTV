@@ -25,7 +25,7 @@ use PHPMailer\PHPMailer\Exception;
             //        $mail->SMTPDebug = SMTP::DEBUG_SERVER; // apresenta o DEBUG
             $mail->isSMTP();
 
-            $mail->Host = 'smtp.gmail.com';
+            $mail->Host = MAIL_HOST;
             $mail->SMTPAuth = true;
 
             $mail->Username = MAIL_USERNAME;
@@ -36,12 +36,13 @@ use PHPMailer\PHPMailer\Exception;
             $mail->addAddress($email); // emails to
 
             $mail->isHTML(true);
-            $mail->Subject = $assunto;
-            $mail->Body = '<strong>Email: </strong>' . $email . '<br>
+            $mail->Subject = utf8_decode($assunto);
+            $mail->Body = utf8_decode('<strong>Email: </strong>' . $email . '<br>
 
                             <br><br>
 
-                            ' . $mensagem;
+                            ' . $mensagem
+            );
 
             //$mail->setFrom('system@cksoftwares.com', 'CKSoftwares System'); // From email and name
             //$mail->addAddress('to@address.com', 'Mr. Brown'); // to email and name

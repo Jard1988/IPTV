@@ -11,9 +11,9 @@ define('DB_DATABASE', 'iptvplanner');
 // define('DB_PASSWORD', 'AdminAdmin1+');
 // define('DB_DATABASE', 'u615300448_iptvplanner');
 
-define('MAIL_HOST', 'smtp.gmail.com');
-define('MAIL_USERNAME', 'geraliptvplanner@gmail.com');
-define('MAIL_PASSWORD', 'aclphfvgkarllwih');
+define('MAIL_HOST', 'smtp.titan.email');
+define('MAIL_USERNAME', 'geral@iptvplanner.pt');
+define('MAIL_PASSWORD', 'IPTVPlanner1*');
 define('MAIL_PORT', '587');
 define('MAIL_NAME', 'IPTV Planner');
 
@@ -23,7 +23,10 @@ define('MAIL_NAME', 'IPTV Planner');
 
 define('M3U', 'http://smart.niceed.xyz/get.php?username=hu0114472&password=N7bjC$qjWh9&type=m3u_plus&output=mpegts');
 
-define('CAMINHO_URL', 'http://localhost/listas/');
+define('CAMINHO_URL', 'http://localhost/IPTV/');
+
+define('RAIZ_CAMINHO', 'Listas/123');
+
 
 // Create connection
 $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
