@@ -44,8 +44,6 @@
     // If result matched $myusername and $mypassword, table row must be 1 row
 		$caminho = $caminho_git . $novalinha . ".m3u";
 		echo "<b><font color='#FF0000'>  $caminho </font></b><br><br>";
-      $sql3 = "INSERT INTO `linhas` (`nome_linha`,`pago`, `caminho`) VALUES ('". $novalinha ."','". $pago ."','". $caminho . "')";
-			$result3 = mysqli_query($db, $sql3);
 
 			$sql = "SELECT users_id from users where email='". $email ."'";
 			$result_users = mysqli_query($db,$sql);
@@ -55,10 +53,9 @@
 			$result_lines = mysqli_query($db,$sql6);
 			$table_lines = mysqli_fetch_assoc($result_lines);
 
-			$sql4 = "INSERT INTO `users_linhas` (`users_id`, `linhas_id`, `data_ini`, `data_fim`) VALUES ('".$table_users['users_id']."', '".$table_lines['linhas_id']."', '".date("Y/m/d")."', '');";
-			$result4 = mysqli_query($db, $sql4);
 
-			if ($result3 && $result4 && $result_users && $result_lines){
+
+			if ($result_users && $result_lines){
 				try {
 						//$mail->SMTPDebug = SMTP::DEBUG_SERVER; // apresenta o DEBUG
 						$mail->isSMTP();
@@ -102,9 +99,21 @@
 						//$mail->msgHTML("test body"); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
 						//$mail->AltBody = ''; // If html emails is not supported by the receiver, show this body
 						// $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
-							echo "Linha Criado. ";
+
 							if ($mail->send()) {
 								echo "Email Enviado ao Utilizador. ";
+
+								$sql3 = "INSERT INTO `linhas` (`nome_linha`,`pago`, `caminho`) VALUES ('". $novalinha ."','". $pago ."','". $caminho . "')";
+								$result3 = mysqli_query($db, $sql3);
+
+								$sql4 = "INSERT INTO `users_linhas` (`users_id`, `linhas_id`, `data_ini`, `data_fim`) VALUES ('".$table_users['users_id']."', '".$table_lines['linhas_id']."', '".date("Y/m/d")."', '');";
+								$result4 = mysqli_query($db, $sql4);
+								
+								if ($result3 && $result4){
+								echo "Linha Criado. ";
+								} else {
+										echo "Linha não Criada. Tente Novamente.";
+								}
 							} else {
 									echo "Email não enviado ao Utilizador. ";
 							}

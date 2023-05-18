@@ -76,10 +76,7 @@
 					if ($row >=1) {
 						echo "Já Existe esse Utilizador";
 					} else {
-      $sql3 = "INSERT INTO `users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `permission_id`,`avatar_path`) VALUES ('". $email ."','". $novasenha ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "','". $permission . "','". $target_path . "')";
 
-			$result3 = mysqli_query($db, $sql3);
-			if ($result3){
 				try {
 						//$mail->SMTPDebug = SMTP::DEBUG_SERVER; // apresenta o DEBUG
 						$mail->isSMTP();
@@ -107,7 +104,7 @@
 												Estado: <b>Falta confirmação</b><br><br>
 
 												Confirme o seu registo através do link:<br>
-												' . RAIZ_CAMINHO .'confirm.php?email='.$email.' <br><br>
+												' . CAMINHO_URL .'confirm.php?email='.$email.' <br><br>
 
 												Após a confirmação irá receber um email já pode iniciar a sessão e usufruir dos nossos serviços!
 
@@ -124,27 +121,24 @@
 												PROTEÇÃO DE DADOS PESSOAIS: A segurança e a privacidade de seus dados pessoais são importantes para nós. A IPTV Planner está em conformidade com o Regulamento Geral de Proteção de Dados em vigor na UE. Quando nos cede os seus dados pessoais, nós só os utilizaremos para o propósito para o qual foram fornecidos. Pode retirar o seu consentimento a qualquer momento. Por favor, veja nossa Política de Privacidade.'
 											);
 
-						//$mail->setFrom('system@cksoftwares.com', 'CKSoftwares System'); // From email and name
-						//$mail->addAddress('to@address.com', 'Mr. Brown'); // to email and name
-						//$mail->Subject = 'PHPMailer GMail SMTP test';
-						//$mail->msgHTML("test body"); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
-						//$mail->AltBody = ''; // If html emails is not supported by the receiver, show this body
-						// $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
-
-							echo "User Criado. ";
 							if ($mail->send()) {
-
 								echo "Email Enviado ao Utilizador. ";
+
+								$sql3 = "INSERT INTO `users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `permission_id`,`avatar_path`) VALUES ('". $email ."','". sha1($novasenha) ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "','". $permission . "','". $target_path . "')";
+											$result3 = mysqli_query($db, $sql3);
+											if ($result3){
+												echo "User Criado. ";
+										} else {
+				 								echo "Utilizador não Criado. Tente Novamente.";
+										}
+
 							} else {
 									echo "Email não enviado ao Utilizador. ";
 							}
 					} catch (Exception $e) {
 							echo "Ocorreu um erro ao enviar o Email. Enviar Manualmente.";
 					}
-
-			} else{
-				 echo "Utilizador não Criado. Tente Novamente.";
 			 }
 		 }
-		}
+
 ?>

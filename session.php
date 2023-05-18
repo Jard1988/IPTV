@@ -2,6 +2,13 @@
    include('db.php');
    session_start();
 
+   function test_input($data) {
+     $data = trim($data);
+     $data = stripslashes($data);
+     $data = htmlspecialchars($data);
+     return $data;
+   }
+   
    $user_check = $_SESSION['login_user'];
 
    $ses_sql = mysqli_query($db,"select * from users where email = '$user_check' ");

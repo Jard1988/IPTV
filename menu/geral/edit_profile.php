@@ -37,6 +37,17 @@ $(document).ready(function (e) {
   }));
 });
 
+$(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+
 </script>
 <div class="logo">
    <h1><a>Editar Perfil</a></h1>
@@ -56,7 +67,8 @@ $(document).ready(function (e) {
           </div>
           <div class="form-outline md-4">
             <label class="form-label" for="form2Example2">Password</label>
-            <input type="password" name="password" id="password" class="form-control" value="<?php echo $row['password']; ?>"/>
+            <input type="password" name="password" id="password" class="form-control" value="<?php echo $row['password']; ?>">
+            <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span></input>
           </div>
           <div class="form-outline md-4">
             <label class="form-label" for="form2Example3">Nome</label>

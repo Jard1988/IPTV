@@ -150,7 +150,7 @@ $email_port = explode("'", $linhas[16]);
     <p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example2">URL M3U:</label>
-          <input type="text" name="caminho_m3u" id="caminho_m3u" class="form-control" value=" <?php echo trim($geralm3u[3]); ?>"/>
+          <input type="text" name="caminho_m3u" id="caminho_m3u" class="form-control" value=" <?php echo trim($geralm3u[3]); ?>" />
         </div><p>
           <div class="form-outline md-4">
                 <label class="form-label" for="form2Example1">URL do Site: </label>

@@ -29,21 +29,19 @@
     <script type="text/javascript">
       function ForgotPassword() {
         var email = document.getElementById("forgot-email").value;
-        alert(email);
-
-        jQuery.ajax({
-            url: "forgotpassword.php",
-            type: "post",
-            data: {
-              email: email
-            },
-            datatype: "html",
-            contenttype: 'application/html; charset=utf-8',
-            async: true,
-            success:function(data){$('#outputForgotPassword').html(data);},
-            beforeSend: function() { $('#loader').show(); },
-            complete: function() { $('#loader').hide(); }
-        });
+          jQuery.ajax({
+              url: "forgotpassword.php",
+              type: "post",
+              data: {
+                email: email
+              },
+              datatype: "html",
+              contenttype: 'application/html; charset=utf-8',
+              async: true,
+              success:function(data){$('#outputForgotPassword').html(data);},
+              beforeSend: function() { $('#loader').show(); },
+              complete: function() { $('#loader').hide(); }
+          });
       }
     </script>
 <?php
@@ -82,7 +80,7 @@
       $myemail = mysqli_real_escape_string($db,$_POST['email']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']);
 
-      $sql = "SELECT users_id FROM users WHERE email = '$myemail' and password = '$mypassword' and valid='1'";
+      $sql = "SELECT users_id FROM users WHERE email = '$myemail' and password = '". sha1($mypassword)."' and valid='1'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
@@ -115,7 +113,6 @@
    </head>
 
    <body bgcolor = "#FFFFFF">
-
      <div id="loader" style="display: none; margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color: rgb(102, 102, 102); z-index: 30001; opacity: 0.8;">
    <p style="position: absolute; color: White; top: 50%; left: 45%;">
    Loading, please wait...
@@ -138,29 +135,17 @@
                  </div>
                  <div class="modal-body-2">
                    <form action = "" method = "post" style="margin-left: 20%; margin-top: 20px;">
-
                                     <div style="margin-bottom: 25px; width: 80%;" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="forgot-email" required="" type="text" class="form-control" name="email" value="" placeholder="email">
+                                        <input id="forgot-email" type="text" class="form-control" name="Email" value="" placeholder="email"/>
                                     </div>
-
-                                    <!-- <div class="form-group">
-                                        <div class="col-md-12 control">
-                                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                                Don't have an account!
-                                                <a onClick="$('#loginbox').hide(); $('#forgotbox').hide(); $('#signupbox').show()">
-                                                    Sign Up Here
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                     <div id="outputforgot" style = "text-align: center; font-size:11px; color:#cc0000;"></div>
                                 </form>
                  </div>
                  <div class="modal-footer" style="text-align: center;">
                    <div class="form-group">
                        <!-- Button -->
-                       <input onclick="ForgotPassword();" id="forgotbutton" required="" class="btn btn-primary" type = "submit" value = "Recuperar"/>
+                       <input onclick="ForgotPassword();" id="forgotbutton" class="btn btn-primary" type = "submit" value = "Recuperar"/>
                    </div>
                  </div>
                  <div id="outputForgotPassword" style = "font-size:11px; color:#cc0000;" align="center"></div>
@@ -177,8 +162,8 @@
 			            <div class="content-wrap">
 			                <h6>Sign Up</h6>
 			                    <form action = "" method = "post">
-									<input class="form-control" type = "text" name = "email" class = "box"/><br />
-									<input class="form-control" type = "password" name = "password" class = "box" /><br/><br />
+									<input class="form-control" type = "text" name = "email" class = "box" required/><br />
+									<input class="form-control" type = "password" name = "password" class = "box" required/><br/><br />
 									<input class="btn btn-primary signup" type = "submit" value = " Submit "/>
 								</form>
                 <div >
