@@ -97,6 +97,10 @@ function RemoveUnusedLines(id) {
         });
       });
 	   </script>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1cffbb334264350b3468c04a609fb72598862485
    </head>
    <body>
 
@@ -126,9 +130,7 @@ function RemoveUnusedLines(id) {
                                                          $sql6 = "SELECT * FROM notification where vista=0";
                                                          $result6 = mysqli_query($db,$sql6);
                                                          $contador_notification = mysqli_num_rows($result6);
-
                                                          ?>
-                                                         <span class="badge"><?php echo $contador_notification; ?></span>&nbsp;&nbsp;
                                                           <!-- <span style="margin-right: 10px;" class="caret"></span> -->
                                                                       <ul class="dropdown-menu">
                                                                         <li><a href="#" id="result_notification"></a></li>
@@ -137,7 +139,11 @@ function RemoveUnusedLines(id) {
                                                                         ?>
                                                                           <li><a href="#"><?php echo $notifiy['texto']; ?></a></li>
                                                                         <?php } ?>
-                                                                      </ul></a>
+                                                                      </ul>
+                                                                      <span class="badge">
+                                                                        <?php echo $contador_notification + 1; ?>
+                                                                      </span>&nbsp;&nbsp;
+                                                        </a>
                               </div>
                             </li>
 
