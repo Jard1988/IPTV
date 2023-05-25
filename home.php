@@ -113,7 +113,6 @@ function RemoveUnusedLines(id) {
   $row5 = mysqli_fetch_array($result5,MYSQLI_ASSOC);
   ?>
 
-	        <div class="header">
 	              <div class="navbar navbar-inverse" role="banner" style="background-color:#2c3742; top:-5px;  border: 0;">
 	                  <div class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                           <ul class="nav navbar-nav">
@@ -121,7 +120,7 @@ function RemoveUnusedLines(id) {
                               <div class="notification">
 
                                                        <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                                                         <img style="margin-right: -20px; border-radius: 50%;" width="40px" height="40px" src="images/notification.jpg">
+                                                         <img class="img_notification" src="images/notification.jpg">
                                                          <?php
                                                          $sql6 = "SELECT * FROM notification where vista=0";
                                                          $result6 = mysqli_query($db,$sql6);
@@ -147,7 +146,7 @@ function RemoveUnusedLines(id) {
                                 <div class="notification">
 
                                                          <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                                                           <img style="margin-right: 10%; border-radius: 50%;" width="40px" height="40px" src="<?php echo $row['avatar_path']; ?>">
+                                                           <img class="img_notification" src="<?php echo $row['avatar_path']; ?>">
                                                                         <ul class="dropdown-menu">
                                                                             <li><a href="#" onClick="getPage('geral/edit_profile');">Editar Perfil</a></li>
                                                                             <li><a style="color: red;" href="logout.php"><b>Logout</b></a></li>
@@ -156,16 +155,14 @@ function RemoveUnusedLines(id) {
                               </li>
                               <li class="dropdown">
                                 <div class="logo">
-
-                              <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-                      </a>
+                                  <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                                  </a>
                                 </div>
                               </li>
                           </ul>
 	                  </div>
                     <div class="logo">IPTV Planner</div>
 	              </div>
-	        </div>
 
     <div class="page-content" id="page-content">
     	<div class="row">
@@ -272,10 +269,8 @@ function RemoveUnusedLines(id) {
           <div style="font-size: 30px; text-align: left;">
             <div class="col-md-10">
               <span>Bem Vindo</span> <b><?php echo $users_name . " ". $users_apelido ?></b>
+              <img class="home_fundo" src="img/fundo.png">
             </div>
-          </div>
-          <div class="col-md-12" style="margin-bottom: 7%; margin-top: 6%; text-align: center;">
-            <img src="img/fundo.png">
           </div>
 		  </div>
 		</div>
