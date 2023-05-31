@@ -28,13 +28,13 @@ if ($arquivo) {
  if(strcmp(trim($linha_n), trim($linha)) == 0) {
    $string .= str_replace("$linha_n", "define('MAIL_HOST', '". trim($host)."');", $linha);
  }elseif(strcmp(trim($linha_n1), trim($linha)) == 0) {
-   $string .= str_replace("$linha_n1", "define('MAIL_USERNAME', '". trim($name)."');", $linha);
+   $string .= str_replace("$linha_n1", "define('MAIL_USERNAME', '". trim($user)."');", $linha);
  }elseif(strcmp(trim($linha_n2), trim($linha)) == 0) {
    $string .= str_replace("$linha_n2", "define('MAIL_PASSWORD', '". trim($pass)."');", $linha);
  }elseif(strcmp(trim($linha_n3), trim($linha)) == 0) {
    $string .= str_replace("$linha_n3", "define('MAIL_PORT', '". trim($port)."');", $linha);
  } elseif(strcmp(trim($linha_n4), trim($linha)) == 0) {
-   $string .= str_replace("$linha_n4", "define('MAIL_NAME', '". trim($user)."');", $linha);
+   $string .= str_replace("$linha_n4", "define('MAIL_NAME', '". trim($name)."');", $linha);
  } else  {
        $string.= $linha;
      }

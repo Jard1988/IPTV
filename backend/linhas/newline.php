@@ -96,8 +96,7 @@
 
 							if ($mail->send()) {
 								echo "Email Enviado ao Utilizador. ";
-echo "users:" . $table_users['users_id'];
-echo "linha:" . $novalinha;
+
 								$sql3 = "INSERT INTO `linhas` (`nome_linha`,`pago`, `caminho`) VALUES ('". $novalinha ."','". $pago ."','". $caminho . "')";
 								$result3 = mysqli_query($db, $sql3);
 

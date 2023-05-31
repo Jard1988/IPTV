@@ -214,7 +214,8 @@ $email_port = explode("'", $linhas[16]);
           <label class="form-label" for="form2Example5">Titulo do Email</label>
           <input type="text" id="email_name" name="email_name" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
         </div><p>
-            <br><button class="editEmail btn btn-success" style="text-align: center;">Guardar</button><br>
+            <br><button class="editEmail btn btn-success" style="text-align: center;">Guardar</button><br>        
+      <br>
     </p>
   </div>
 </div>

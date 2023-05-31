@@ -46,11 +46,11 @@ $(document).on("click", ".editModal", function () {
     success : function(response) {
       if (response == 1){
         showAlert(response);
-        $('#closemodal').click ();
+        $('#closemodal1').click ();
         $('#outputMSG').fadeOut(5000);
       }else {
         showAlert(response);
-        $('#closemodal').click ();
+        $('#closemodal1').click ();
         $('#outputMSG').fadeOut(5000);
       }
         //$('#outputlogin').html(response);
@@ -67,7 +67,7 @@ $(document).on("click", ".editModal", function () {
   $(document).on("click", ".deleteModal", function () {
      var Id = $(this).data('id');
 
-     var modalBody = $('<div id="modalContent" style="margin-left: 30px;">Deseja apagar o Linha <input id="deleteID" style="border: none;" value="' + Id + '" disabled="disabled" /></div>');
+     var modalBody = $('<div id="modalContent1" style="margin-left: 30px;">Deseja apagar o Linha <input id="deleteID" style="border: none;" value="' + Id + '" disabled="disabled" /></div>');
      $('.modal-body-1').html(modalBody);
    });
 
@@ -86,13 +86,13 @@ $(document).on("click", ".editModal", function () {
     success : function(response) {
       if (response == 1){
         showAlert(response);
-        $('#closemodal').click ();
-        $('#closemodal1').click ();
+        $('#closemodal2').click ();
+
         $('#outputMSG').fadeOut(5000);
       }else {
         showAlert(response);
-        $('#closemodal').click ();
-        $('#closemodal1').click ();
+        $('#closemodal2').click ();
+
         $('#outputMSG').fadeOut(5000);
       }
         //$('#outputlogin').html(response);
@@ -180,7 +180,7 @@ $(document).on("click", ".editModal", function () {
 
       var modalBody = $('<div id="modalContent" style="margin-left: 30px;">Deseja Apagar o(s) Linha(as)seleccionados?</div>');
       $('.modal-body-all-delete').html(modalBody);
-      
+
       $('.modal-footer .btn-dark').click(function() {
         var selected_values = employee.join(",");
         const myArray = selected_values.split(",");
@@ -199,11 +199,11 @@ $(document).on("click", ".editModal", function () {
           success : function(response) {
             if (response == 1){
               showAlert(response);
-
+              $('#closemodal3').click ();
               $('#outputMSG').fadeOut(5000);
             }else {
               showAlert(response);
-
+              $('#closemodal3').click ();
               $('#outputMSG').fadeOut(5000);
             }
               //$('#outputlogin').html(response);
@@ -333,7 +333,7 @@ $('.btn-light').click(function() {
               ';
 
              echo '<td scope="row"></td>';
-             echo '<td scope="row"> <button class="editModal btn btn-success" data-id="'. $table_geral['linhas_id'].'" data-toggle="modal" data-target="#editModal">
+             echo '<td scope="row"> <button id="closemodal1" class="editModal btn btn-success" data-id="'. $table_geral['linhas_id'].'" data-toggle="modal" data-target="#editModal">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </button></td>
               <td scope="row"> <button id="closemodal1" class="deleteModal btn btn-danger" data-id="'. $table_geral['linhas_id'].'" data-toggle="modal" data-target="#deleteModal">
@@ -400,7 +400,7 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
             <h4 class="modal-title" id="myModalLabel">Editar Linha</h4>
-                <button type="button" class="close" id="closemodal" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" class="close" id="closemodal1" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -452,7 +452,7 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Apagar Linha</h4>
-                <button type="button" id="closemodal" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" id="closemodal2" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body-1"></div>
@@ -476,7 +476,7 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Apagar Linha(as)</h4>
-                <button type="button" id="closemodal" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" id="closemodal3" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body-all-delete"></div>
