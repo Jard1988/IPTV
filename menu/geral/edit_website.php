@@ -28,10 +28,12 @@ $(document).on("click", ".editEmail", function () {
     async: true,
   success : function(response) {
       if (response == 1){
-           $('#outputEditEmail').html(response);
-      }else {
-          $('#outputEditEmail').html(response);
+        showAlert(response);
+        $('#outputMSG').fadeOut(5000);
 
+      }else {
+        showAlert(response);
+        $('#outputMSG').fadeOut(5000);
       }
       //$('#outputlogin').html(response);
   },
@@ -63,9 +65,11 @@ $(document).on("click", ".editDB", function () {
     async: true,
   success : function(response) {
       if (response == 1){
-           $('#outputEditDB').html(response);
+        showAlert(response);
+        $('#outputMSG').fadeOut(5000);
       }else {
-          $('#outputEditDB').html(response);
+        showAlert(response);
+        $('#outputMSG').fadeOut(5000);
 
       }
       //$('#outputlogin').html(response);
@@ -96,12 +100,13 @@ $(document).on("click", ".editURL", function () {
     contenttype: 'application/html; charset=utf-8',
     async: true,
   success : function(response) {
-      if (response == 1){
-           $('#outputEditGeral').html(response);
-      }else {
-          $('#outputEditGeral').html(response);
-
-      }
+        if (response == 1){
+          showAlert(response);
+          $('#outputMSG').fadeOut(5000);
+        }else {
+          showAlert(response);
+          $('#outputMSG').fadeOut(5000);
+        }
       //$('#outputlogin').html(response);
   },
   beforeSend: function () {
@@ -150,7 +155,7 @@ $email_port = explode("'", $linhas[16]);
     <p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example2">URL M3U:</label>
-          <input type="text" name="caminho_m3u" id="caminho_m3u" class="form-control" value=" <?php echo trim($geralm3u[3]); ?>"/>
+          <input type="text" name="caminho_m3u" id="caminho_m3u" class="form-control" value=" <?php echo trim($geralm3u[3]); ?>" />
         </div><p>
           <div class="form-outline md-4">
                 <label class="form-label" for="form2Example1">URL do Site: </label>
@@ -161,7 +166,6 @@ $email_port = explode("'", $linhas[16]);
               <input type="text" name="list_url" id="list_url" class="form-control" value="  <?php echo trim($geralcaminho[3]); ?>"  />
         </div><p>
         <br><button class="editURL btn btn-success" style="text-align: center;">Guardar</button><br>
-        <div id="outputEditGeral" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div><br>
         <br>
     </p>
   </div>
@@ -184,8 +188,6 @@ $email_port = explode("'", $linhas[16]);
           <input type="text" id="name_db" name="name_db" class="form-control" value="<?php echo trim($dbname[3]); ?>"/>
         </div><p>
         <br><button class="editDB btn btn-success" style="text-align: center;">Guardar</button><br>
-        <div id="outputEditDB" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
-        <br>
       <br>
     </p>
   </div>
@@ -198,11 +200,7 @@ $email_port = explode("'", $linhas[16]);
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example2">Username</label>
-<<<<<<< HEAD
-          <input type="text" name="email_name" id="email_name" class="form-control" value="<?php echo trim($email_user[3]); ?>"/>
-=======
           <input type="text" name="email_user" id="email_user" class="form-control" value="<?php echo trim($email_user[3]); ?>"/>
->>>>>>> 1cffbb334264350b3468c04a609fb72598862485
         </div><p>
         <div class="form-outline md-4">
           <label class="form-label" for="form2Example3">Password</label>
@@ -217,8 +215,6 @@ $email_port = explode("'", $linhas[16]);
           <input type="text" id="email_name" name="email_name" class="form-control" value="<?php echo trim($email_name[3]); ?>"/>
         </div><p>
             <br><button class="editEmail btn btn-success" style="text-align: center;">Guardar</button><br>
-            <div id="outputEditEmail" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
-      <br>
     </p>
   </div>
 </div>

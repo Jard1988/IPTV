@@ -26,15 +26,28 @@ $(document).ready(function (e) {
      success: function(data){
       if(data=='invalid'){
        // invalid file format.
-       $("#output").html("Invalid File !").fadeIn();
+       showAlert(data);
+       $('#outputMSG').fadeOut(5000);
       }
       else{
        // view uploaded file.
-       $("#preview").html(data).fadeIn();
+       showAlert(data);
+       $('#outputMSG').fadeOut(5000);
       }
       }
     });
   }));
+});
+
+$(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
 });
 
 </script>
@@ -56,7 +69,8 @@ $(document).ready(function (e) {
           </div>
           <div class="form-outline md-4">
             <label class="form-label" for="form2Example2">Password</label>
-            <input type="password" name="password" id="password" class="form-control" value="<?php echo $row['password']; ?>"/>
+            <input type="password" name="password" id="password" class="form-control" value="<?php echo $row['password']; ?>">
+            <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span></input>
           </div>
           <div class="form-outline md-4">
             <label class="form-label" for="form2Example3">Nome</label>
@@ -67,7 +81,7 @@ $(document).ready(function (e) {
             <input type="text" id="apelido" name="apelido" class="form-control" value="<?php echo $row['apelido']; ?>"/>
           </div>
           <div class="form-outline md-4">
-            <label class="form-label" for="form2Example5">Data de Nscimento</label>
+            <label class="form-label" for="form2Example5">Data de Nascimento</label>
             <input type="date" id="data" name="data" class="form-control" value="<?php echo $row['data_nascimento']; ?>"/>
           </div>
           <div class="form-outline md-4">
@@ -77,8 +91,9 @@ $(document).ready(function (e) {
           <div class="form-outline md-4">
             <label class="form-label" for="form2Example7">Avatar</label>
             <input type="text" id="avatar" name="avatar" class="form-control" value="<?php echo $row['avatar_path']; ?>" readonly />
-            <input id="fileToUpload" type="file" accept="image/*" name="fileToUpload" />
-            <div style="display: none;" id="preview"><img src="<?php echo $row['avatar_path']; ?>" /></div><br>
+            <input id="fileToUpload" type="file" accept="image/*" name="fileToUpload" /><br>
+            <!-- <div id="preview" style = "display: none; font-size:11px; color: red;" align="center">><img src="<?php echo $row['avatar_path']; ?>" /></div><br> -->
+
             <input style="margin: 0 50%; width: 100px; height: 30px;" class="btn btn-primary" type="submit" value="Editar">
           </div>
         </form><br>
