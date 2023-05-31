@@ -9,7 +9,7 @@ $name = mysqli_real_escape_string($db,$_POST['email_name']);
 $pass = mysqli_real_escape_string($db,$_POST['email_pass']);
 $port = mysqli_real_escape_string($db,$_POST['email_port']);
 $user = mysqli_real_escape_string($db,$_POST['email_user']);
- 
+
 $linhas = explode("\n", file_get_contents("../db.php"));
 
 //Ler somente o conteudo da linha [0]do array ou seja linha 1 do texto
@@ -49,7 +49,7 @@ if ($arquivo) {
 
     // reescreve o conteudo dentro do arquivo
     if (!fwrite($arquivo, $string)) die('Não foi possível atualizar o arquivo.');
-    echo 'Arquivo atualizado com sucesso';
+    echo 'Dados do Email atualizado com sucesso';
     fclose($arquivo);
 
 ?>

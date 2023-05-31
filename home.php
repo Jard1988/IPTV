@@ -31,6 +31,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
+    function showAlert(id) {
+      $('#outputMSG').show();
+      $('#outputMSG').html('<div class="alert alert-warning" role="alert">' + id + '<button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+    }
 
 function RemoveUnusedLines(id) {
   jQuery.ajax({
@@ -97,10 +101,14 @@ function RemoveUnusedLines(id) {
         });
       });
 	   </script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 14a258789d039a8e7062f845b5c95d390f0d4696
    </head>
    <body>
 
-  	<div id="loader" style="display: none; margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color: rgb(102, 102, 102); z-index: 30001; opacity: 0.8;">
+	<div id="loader" style="display: none; margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color: rgb(102, 102, 102); z-index: 30001; opacity: 0.8;">
 	<p style="position: absolute; color: White; top: 50%; left: 45%;">
 	Loading, please wait...
 	<img src="img/ajax-loader.gif">
@@ -265,6 +273,7 @@ function RemoveUnusedLines(id) {
                 </section>
 		  </div>
 		  <div class="col-md-10">
+        <div id="outputMSG" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
 				<div id="output">
           <div style="font-size: 30px; text-align: left;">
             <div class="col-md-10">

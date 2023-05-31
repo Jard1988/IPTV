@@ -11,8 +11,8 @@ define('DB_DATABASE', 'iptvplanner');
 // define('DB_PASSWORD', 'AdminAdmin1+');
 // define('DB_DATABASE', 'u615300448_iptvplanner');
 
-define('MAIL_HOST', 'smtp.titan.email');
-define('MAIL_USERNAME', 'geral@iptvplanner.pt');
+define('MAIL_HOST', 'smtp.titan.emailklh');
+define('MAIL_USERNAME', 'IPTV Planner');
 define('MAIL_PASSWORD', 'IPTVPlanner1*');
 define('MAIL_PORT', '587');
 define('MAIL_NAME', 'IPTV Planner');

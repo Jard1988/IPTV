@@ -41,7 +41,7 @@ if ($arquivo) {
 
     // reescreve o conteudo dentro do arquivo
     if (!fwrite($arquivo, $string)) die('Não foi possível atualizar o arquivo.');
-    echo 'Arquivo atualizado com sucesso';
+    echo 'Dados da Base de Dados atualizado com sucesso';
     fclose($arquivo);
 
 ?>

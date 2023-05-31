@@ -24,8 +24,12 @@ if ($file == ""){
   // If result matched $myusername and $mypassword, table row must be 1 row
 
   if($row1 >=1) {
+<<<<<<< HEAD
     $sql3 = "UPDATE users SET email = '". $email . "', nome = '". $nome . "', password = '". sha1($password) . "', apelido = '". $apelido . "',  telefone = '". $telefone . "', data_nascimento = '". $data_nascimento . "',
      avatar_path = 'images/". $avatar . "' 
+=======
+    $sql3 = "UPDATE users SET email = '". $email . "', nome = '". $nome . "', password = '". $password . "', apelido = '". $apelido . "',  telefone = '". $telefone . "', data_nascimento = '". $data_nascimento . "'
+>>>>>>> 14a258789d039a8e7062f845b5c95d390f0d4696
      WHERE email='". $email."'";
     $result3 = mysqli_query($db, $sql3);
     echo "User Alterado";
