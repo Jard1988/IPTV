@@ -7,15 +7,13 @@ $result_users = mysqli_query($db,$sql);
 ?>
 <script type="text/javascript">
 $('.modal-footer .btn-primary').click(function() {
-  var email = document.getElementById("input-datalist").value;
   var assunto = document.getElementById("input-assunto").value;
   var texto = document.getElementById("exampleFormControlTextarea1").value;
 
   $.ajax({
-    url: "./backend/send-email.php",
+    url: "./backend/mass-email.php",
     type: "post",
     data: {
-      email: email,
       assunto: assunto,
       texto: texto
  },
@@ -73,17 +71,6 @@ $('.modal-footer .btn-primary').click(function() {
 
 <form action="" style="width: 80%; margin-left:5%;">
   <div class="form-group">
-    <label for="exampleFormControlInput1">Email</label>
-    <input type="text" class="form-control" list="list-timezone" id="input-datalist">
-    <datalist id="list-timezone">
-      <?php while ($table_geral = mysqli_fetch_assoc($result_users)){  ?>
-        <option><?php echo $table_geral['email']; ?></option>
-        <?php
-        }
-        ?>
-    </datalist>
-  </div>
-  <div class="form-group">
     <label for="exampleFormControlInput2">Assunto</label>
     <input type="text" class="form-control" id="input-assunto">
   </div>
@@ -95,9 +82,3 @@ $('.modal-footer .btn-primary').click(function() {
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Enviar</button>
   </div>
 </form>
-<div id="outputEmail" style = "font-size:11px; color:#cc0000; left:-10px" align="center"></div>
-<script>
-    document.addEventListener('DOMContentLoaded', e => {
-        $('#input-datalist').autocomplete()
-    }, false);
-</script>

@@ -95,7 +95,6 @@ $('.modal-footer .btn-primary').click(function() {
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Enviar</button>
   </div>
 </form>
-<div id="outputEmail" style = "font-size:11px; color:#cc0000; left:-10px" align="center"></div>
 <script>
     document.addEventListener('DOMContentLoaded', e => {
         $('#input-datalist').autocomplete()

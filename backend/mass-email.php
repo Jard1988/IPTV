@@ -13,15 +13,15 @@ use PHPMailer\PHPMailer\Exception;
 
     //Variaveis de POST, Alterar somente se necessário
     //====================================================
-    $email = $_REQUEST['email'];
     $assunto = $_REQUEST['assunto'];
     $mensagem = $_REQUEST['texto'];
 
-    $sql = "SELECT users_id FROM users WHERE email = '$email'";
+    $sql = "SELECT * FROM users";
     $result = mysqli_query($db, $sql);
-    $count = mysqli_num_rows($result);
-    if ($count == 1) {
+    while ($row = mysqli_fetch_array($result)){
         try {
+          echo $row[1];
+          $email = $row[1];
             //        $mail->SMTPDebug = SMTP::DEBUG_SERVER; // apresenta o DEBUG
             $mail->isSMTP();
 
@@ -59,10 +59,6 @@ use PHPMailer\PHPMailer\Exception;
         } catch (Exception $e) {
             echo "Ocorreu um erro. Tente Novamente.";
         }
-    }else {
-        echo "Ocorreu um erro. Tente Novamente.";
     }
-
-
 exit;
 ?>
