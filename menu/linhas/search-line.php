@@ -44,13 +44,15 @@ $(document).on("click", ".editModal", function () {
       contenttype: 'application/html; charset=utf-8',
       async: true,
     success : function(response) {
-        if (response == 1){
-
-             $('#outputEditLine').html(response);
-        }else {
-            $('#outputEditLine').html(response);
-
-        }
+      if (response == 1){
+        showAlert(response);
+        $('#closemodal').click ();
+        $('#outputMSG').fadeOut(5000);
+      }else {
+        showAlert(response);
+        $('#closemodal').click ();
+        $('#outputMSG').fadeOut(5000);
+      }
         //$('#outputlogin').html(response);
     },
     beforeSend: function () {
@@ -82,12 +84,15 @@ $(document).on("click", ".editModal", function () {
       contenttype: 'application/html; charset=utf-8',
       async: true,
     success : function(response) {
-        if (response == 1){
-             $('#outputDeleteUser').html(response);
-        }else {
-            $('#outputDeleteUser').html(response);
-
-        }
+      if (response == 1){
+        showAlert(response);
+        $('#closemodal1').click ();
+        $('#outputMSG').fadeOut(5000);
+      }else {
+        showAlert(response);
+        $('#closemodal1').click ();
+        $('#outputMSG').fadeOut(5000);
+      }
         //$('#outputlogin').html(response);
     },
     beforeSend: function () {
@@ -117,12 +122,15 @@ $(document).on("click", ".editModal", function () {
        contenttype: 'application/html; charset=utf-8',
        async: true,
      success : function(response) {
-         if (response == 1){
-              $('#outputNewUser').html(response);
-         }else {
-             $('#outputNewUser').html(response);
-
-         }
+       if (response == 1){
+         showAlert(response);
+         $('#closemodal3').click ();
+         $('#outputMSG').fadeOut(5000);
+       }else {
+         showAlert(response);
+         $('#closemodal3').click ();
+         $('#outputMSG').fadeOut(5000);
+       }
          //$('#outputlogin').html(response);
      },
      beforeSend: function () {
@@ -153,57 +161,6 @@ $(document).on("click", ".editModal", function () {
        $("#select_count").html($("input.emp_checkbox:checked").length+" Selected");
     });
 
-    $('#delete_records').on('click',
-    function(e) {
-
-        var employee = [];
-        $(".emp_checkbox:checked").each (
-            function() {
-                employee.push($(this).data('emp-id'));
-            });
-
-    if(employee.length <=0) {
-      var modalBody = $('<div id="modalContent" style="margin-left: 30px;">Selecione alguma linha...</div>');
-    $('.modal-body-all-delete').html(modalBody);
-    } else {
-
-      var modalBody = $('<div id="modalContent" style="margin-left: 30px;">Deseja Apagar o(s) Linha(as)seleccionados?</div>');
-      $('.modal-body-all-delete').html(modalBody);
-      $('.modal-footer .btn-dark').click(function() {
-        var selected_values = employee.join(",");
-        const myArray = selected_values.split(",");
-
-        for (let i = 0; i < myArray.length; i++) {
-
-          $.ajax({
-            url: "./backend/linhas/deletelinebyemail.php",
-            type: "post",
-            data: {
-              id: myArray[i]
-         },
-            datatype: "html",
-            contenttype: 'application/html; charset=utf-8',
-            async: true,
-          success : function(response) {
-              if (response == 1){
-                   $('#outputDeleteAllUser').html(response);
-              }else {
-                  $('#outputDeleteAllUser').html(response);
-
-              }
-              //$('#outputlogin').html(response);
-          },
-          beforeSend: function () {
-              $('#loader').show();
-          },
-          complete: function () {
-              $('#loader').hide();
-          }
-          });
-        }
-      });
-    }
-  });
 });
 
 $('.btn-light').click(function() {
@@ -309,7 +266,7 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Criar Linha</h4>
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" id="closemodal3" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body-2">
@@ -343,7 +300,6 @@ $('.btn-light').click(function() {
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Guardar</button>
             </div>
-            <div id="outputNewUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
     </div>
 </div>
@@ -354,7 +310,7 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
             <h4 class="modal-title" id="myModalLabel">Editar Linha</h4>
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" id="closemodal" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -395,7 +351,6 @@ $('.btn-light').click(function() {
             <div class="modal-footer">
                 <button type="button" class="btn btn-success">Guardar</button>
             </div>
-            <div id="outputEditLine" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
     </div>
 </div>
@@ -407,43 +362,18 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Apagar Linha</h4>
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" id="closemodal1" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body-1"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger">OK</button>
             </div>
-            <div id="outputDeleteUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
     </div>
 </div>
 <!-- End Delete Modal -->
 
-<!-- DeleteAll Modal -->
-<div class="modal fade" id="deleteAllModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content"></div>
-    </div>
-    <div class="modal-dialog">
-        <div class="modal-content"></div>
-    </div>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Apagar Linha(as)</h4>
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
-                </button>
-            </div>
-            <div class="modal-body-all-delete"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark">OK</button>
-            </div>
-            <div id="outputDeleteAllUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
-        </div>
-    </div>
-</div>
-<!-- End ReminderAll Modal -->
 
 <script>
 function sortTable(n) {

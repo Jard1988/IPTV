@@ -33,7 +33,7 @@
     <script type="text/javascript">
     function showAlert(id) {
       $('#outputMSG').show();
-      $('#outputMSG').html('<div class="alert alert-warning" role="alert">' + id + '<button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+      $('#outputMSG').html('<div class="alert alert-warning" style="color: black;" role="alert">' + id + '<button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
     }
 
 function RemoveUnusedLines(id) {
@@ -252,7 +252,7 @@ function RemoveUnusedLines(id) {
                             </a>
                             <ul class="sidebar-submenu" style="display: none;">
                                 <li><a href="#" onClick="getPage('send-email');"><i class="fa fa-reply" aria-hidden="true"></i>Enviar Email</a></li>
-                                <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-reply-all" aria-hidden="true"></i>Mass Email</a></li>
+                                <li><a href="#" onClick="getPage('mass-email');"><i class="fa fa-reply-all" aria-hidden="true"></i>Mass Email</a></li>
                             </ul>
                         </li>
                         <?php

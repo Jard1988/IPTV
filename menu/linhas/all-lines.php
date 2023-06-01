@@ -87,12 +87,10 @@ $(document).on("click", ".editModal", function () {
       if (response == 1){
         showAlert(response);
         $('#closemodal2').click ();
-
         $('#outputMSG').fadeOut(5000);
       }else {
         showAlert(response);
         $('#closemodal2').click ();
-
         $('#outputMSG').fadeOut(5000);
       }
         //$('#outputlogin').html(response);
@@ -199,11 +197,11 @@ $(document).on("click", ".editModal", function () {
           success : function(response) {
             if (response == 1){
               showAlert(response);
-              $('#closemodal3').click ();
+              $('#closemodal4').click ();
               $('#outputMSG').fadeOut(5000);
             }else {
               showAlert(response);
-              $('#closemodal3').click ();
+              $('#closemodal4').click ();
               $('#outputMSG').fadeOut(5000);
             }
               //$('#outputlogin').html(response);
@@ -221,67 +219,6 @@ $(document).on("click", ".editModal", function () {
   });
 });
 
-$('.btn-light').click(function() {
-  var email = $('#input-datalist').val();
-  if(email == ""){
-    $.ajax({
-      url: "./backend/users/all-users.php",
-      type: "post",
-      data: {
-        email: ""
-   },
-      datatype: "html",
-      contenttype: 'application/html; charset=utf-8',
-      async: true,
-    success : function(response) {
-      if (response == 1){
-        showAlert(response);
-        $('#closemodal').click ();
-        $('#outputMSG').fadeOut(5000);
-      }else {
-        showAlert(response);
-        $('#closemodal').click ();
-        $('#outputMSG').fadeOut(5000);
-      }
-        //$('#outputlogin').html(response);
-    },
-    beforeSend: function () {
-        $('#loader').show();
-    },
-    complete: function () {
-        $('#loader').hide();
-    }
-    });
-  }else {
-    $.ajax({
-      url: "./backend/users/search-user.php",
-      type: "post",
-      data: {
-        email: email
-   },
-      datatype: "html",
-      contenttype: 'application/html; charset=utf-8',
-      async: true,
-    success : function(response) {
-      if (response == 1){
-        showAlert(response);
-        $('#closemodal').click ();
-        $('#outputMSG').fadeOut(5000);
-      }else {
-        showAlert(response);
-        $('#closemodal').click ();
-        $('#outputMSG').fadeOut(5000);
-      }
-        //$('#outputlogin').html(response);
-    },
-    beforeSend: function () {
-        $('#loader').show();
-    },
-    complete: function () {
-        $('#loader').hide();
-    }
-    });
-  }
 })
 </script>
 <div class="logo">
@@ -476,7 +413,7 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Apagar Linha(as)</h4>
-                <button type="button" id="closemodal3" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" id="closemodal4" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body-all-delete"></div>

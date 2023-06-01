@@ -23,12 +23,13 @@ $('.modal-footer .btn-primary').click(function() {
     contenttype: 'application/html; charset=utf-8',
     async: true,
   success : function(response) {
-      if (response == 1){
-           $('#outputEmail').html(response);
-      }else {
-          $('#outputEmail').html(response);
-
-      }
+    if (response == 1){
+      showAlert(response);
+      $('#outputMSG').fadeOut(5000);
+    }else {
+      showAlert(response);
+      $('#outputMSG').fadeOut(5000);
+    }
       //$('#outputlogin').html(response);
   },
   beforeSend: function () {

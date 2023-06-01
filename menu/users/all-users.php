@@ -52,12 +52,15 @@ $(document).on("click", ".editModal", function () {
       contenttype: 'application/html; charset=utf-8',
       async: true,
     success : function(response) {
-        if (response == 1){
-             $('#outputEditUser').html(response);
-        }else {
-            $('#outputEditUser').html(response);
-
-        }
+      if (response == 1){
+        showAlert(response);
+        $('#closemodal1').click ();
+        $('#outputMSG').fadeOut(5000);
+      }else {
+        showAlert(response);
+        $('#closemodal1').click ();
+        $('#outputMSG').fadeOut(5000);
+      }
         //$('#outputlogin').html(response);
     },
     beforeSend: function () {
@@ -89,12 +92,15 @@ $(document).on("click", ".editModal", function () {
       contenttype: 'application/html; charset=utf-8',
       async: true,
     success : function(response) {
-        if (response == 1){
-             $('#outputDeleteUser').html(response);
-        }else {
-            $('#outputDeleteUser').html(response);
-
-        }
+      if (response == 1){
+        showAlert(response);
+        $('#closemodal2').click ();
+        $('#outputMSG').fadeOut(5000);
+      }else {
+        showAlert(response);
+        $('#closemodal2').click ();
+        $('#outputMSG').fadeOut(5000);
+      }
         //$('#outputlogin').html(response);
     },
     beforeSend: function () {
@@ -130,12 +136,15 @@ $(document).on("click", ".editModal", function () {
        contenttype: 'application/html; charset=utf-8',
        async: true,
      success : function(response) {
-         if (response == 1){
-              $('#outputNewUser').html(response);
-         }else {
-             $('#outputNewUser').html(response);
-
-         }
+       if (response == 1){
+         showAlert(response);
+         $('#closemodal').click ();
+         $('#outputMSG').fadeOut(5000);
+       }else {
+         showAlert(response);
+         $('#closemodal').click ();
+         $('#outputMSG').fadeOut(5000);
+       }
          //$('#outputlogin').html(response);
      },
      beforeSend: function () {
@@ -198,12 +207,15 @@ $(document).on("click", ".editModal", function () {
             contenttype: 'application/html; charset=utf-8',
             async: true,
           success : function(response) {
-              if (response == 1){
-                   $('#outputDeleteAllUser').html(response);
-              }else {
-                  $('#outputDeleteAllUser').html(response);
-
-              }
+            if (response == 1){
+              showAlert(response);
+              $('#closemodal3').click ();
+              $('#outputMSG').fadeOut(5000);
+            }else {
+              showAlert(response);
+              $('#closemodal3').click ();
+              $('#outputMSG').fadeOut(5000);
+            }
               //$('#outputlogin').html(response);
           },
           beforeSend: function () {
@@ -219,62 +231,6 @@ $(document).on("click", ".editModal", function () {
   });
 });
 
-$('.btn-light').click(function() {
-  var email = $('#input-datalist').val();
-  if(email == ""){
-    $.ajax({
-      url: "./backend/users/all-users.php",
-      type: "post",
-      data: {
-        email: ""
-   },
-      datatype: "html",
-      contenttype: 'application/html; charset=utf-8',
-      async: true,
-    success : function(response) {
-        if (response == 1){
-             $('#outputSearchUser').html(response);
-        }else {
-            $('#outputSearchUser').html(response);
-
-        }
-        //$('#outputlogin').html(response);
-    },
-    beforeSend: function () {
-        $('#loader').show();
-    },
-    complete: function () {
-        $('#loader').hide();
-    }
-    });
-  }else {
-    $.ajax({
-      url: "./backend/users/search-user.php",
-      type: "post",
-      data: {
-        email: email
-   },
-      datatype: "html",
-      contenttype: 'application/html; charset=utf-8',
-      async: true,
-    success : function(response) {
-        if (response == 1){
-             $('#outputSearchUser').html(response);
-        }else {
-            $('#outputSearchUser').html(response);
-
-        }
-        //$('#outputlogin').html(response);
-    },
-    beforeSend: function () {
-        $('#loader').show();
-    },
-    complete: function () {
-        $('#loader').hide();
-    }
-    });
-  }
-})
 </script>
 
 <div class="logo">
@@ -338,7 +294,7 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Criar Utilizador</h4>
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" id="closemodal" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body-2">
@@ -380,7 +336,6 @@ $('.btn-light').click(function() {
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Guardar</button>
             </div>
-            <div id="outputNewUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
     </div>
 </div>
@@ -392,7 +347,7 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
             <h4 class="modal-title" id="myModalLabel">Editar Utilizador</h4>
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" id="closemodal1" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -438,7 +393,6 @@ $('.btn-light').click(function() {
             <div class="modal-footer">
                 <button type="button" class="btn btn-success">Guardar</button>
             </div>
-            <div id="outputEditUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
     </div>
 </div>
@@ -450,14 +404,13 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Apagar Utilizador</h4>
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" id="closemodal2" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body-1"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger">OK</button>
             </div>
-            <div id="outputDeleteUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
     </div>
 </div>
@@ -475,14 +428,13 @@ $('.btn-light').click(function() {
         <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Apagar Utilizador(es)</h4>
-                <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+                <button type="button" id="closemodal3" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
                 </button>
             </div>
             <div class="modal-body-all-delete"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark">OK</button>
             </div>
-            <div id="outputDeleteAllUser" style = "font-size:11px; color:#cc0000; margin-top:10px" align="center"></div>
         </div>
     </div>
 </div>

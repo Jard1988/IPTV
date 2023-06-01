@@ -106,7 +106,8 @@
 												Confirme o seu registo através do link:<br>
 												' . CAMINHO_URL .'confirm.php?email='.$email.' <br><br>
 
-												Após a confirmação irá receber um email já pode iniciar a sessão e usufruir dos nossos serviços!
+												Após a confirmação irá receber um email já pode inicia e já pode inciar sessão no site e usufruir dos nossos serviços!<br>
+												Pode e deve alterar os seus dados no menu <b>Editar Perfil</b>.<br><br>
 
 												Se tiver urgência ou existir algum problema não exite em entrar em contacto por email ou por favor ligar para 22X XXX XXX ou 9XX XXX XXX.<br><br>
 												NOTA: Não responda a este email, trata-se de uma mensagem automática de confirmação de receção do seu pedido.<br>
@@ -122,12 +123,10 @@
 											);
 
 							if ($mail->send()) {
-								echo "Email Enviado ao Utilizador. ";
-
 								$sql3 = "INSERT INTO `users` (`email`,`password`, `nome`, `apelido`,`telefone`, `data_nascimento`, `permission_id`,`avatar_path`) VALUES ('". $email ."','". sha1($novasenha) ."', '". $nome . "', '". $apelido . "', '". $telefone . "','". $nascimento . "','". $permission . "','". $target_path . "')";
 											$result3 = mysqli_query($db, $sql3);
 											if ($result3){
-												echo "User Criado. ";
+												echo "Email Enviado ao Utilizador.";
 										} else {
 				 								echo "Utilizador não Criado. Tente Novamente.";
 										}

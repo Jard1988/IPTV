@@ -43,7 +43,6 @@
 		$novalinha = gerar_linha(10, true, true, true);
     // If result matched $myusername and $mypassword, table row must be 1 row
 		$caminho = $caminho_git . $novalinha . ".m3u";
-		echo "<b><font color='#FF0000'>  $caminho </font></b><br><br>";
 
 			$sql = "SELECT users_id from users where email='". $email ."'";
 			$result_users = mysqli_query($db,$sql);
@@ -95,7 +94,6 @@
 						// $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
 
 							if ($mail->send()) {
-								echo "Email Enviado ao Utilizador. ";
 
 								$sql3 = "INSERT INTO `linhas` (`nome_linha`,`pago`, `caminho`) VALUES ('". $novalinha ."','". $pago ."','". $caminho . "')";
 								$result3 = mysqli_query($db, $sql3);
@@ -108,12 +106,12 @@
 								$result4 = mysqli_query($db, $sql4);
 
 								if ($result3 && $result4){
-								echo "Linha Criado. ";
+								echo "Email enviado ao Utilizador com as informações. ";
 								} else {
 										echo "Linha não Criada. Tente Novamente.";
 								}
 							} else {
-									echo "Email não enviado ao Utilizador. ";
+									echo "Erro ao criar a Linha. ";
 							}
 					} catch (Exception $e) {
 							echo "Ocorreu um erro ao enviar o Email. Enviar Manualmente.";
