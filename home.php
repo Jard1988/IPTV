@@ -252,7 +252,7 @@ function RemoveUnusedLines(id) {
                             </a>
                             <ul class="sidebar-submenu" style="display: none;">
                                 <li><a href="#" onClick="getPage('send-email');"><i class="fa fa-reply" aria-hidden="true"></i>Enviar Email</a></li>
-                                <li><a href="#" onClick="getPage('mass-email');"><i class="fa fa-reply-all" aria-hidden="true"></i>Mass Email</a></li>
+                                <li><a href="#" onClick="getPage('mass_email');"><i class="fa fa-reply-all" aria-hidden="true"></i>Mass Email</a></li>
                             </ul>
                         </li>
                         <?php

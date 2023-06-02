@@ -17,7 +17,11 @@ $(document).on("click", ".editModal", function () {
     $('#inputEditEmail').val(email);
     $('#inputEditDateIni').val(inicio);
     $('#inputEditDateFim').val(fim);
-    $('#inputEditPago').val(pago);
+    if (pago == 'Sim'){
+      $('#inputEditPago').val(1);
+    }else {
+      $('#inputEditPago').val(0);
+    }
     $('#inputEditCaminho').val(caminho);
  });
 
@@ -166,31 +170,8 @@ $(document).on("click", ".editModal", function () {
 $('.btn-light').click(function() {
   var linha = $('#input-datalist').val();
   if(linha == ""){
-    $.ajax({
-      url: "./backend/linhas/all-lines.php",
-      type: "post",
-      data: {
-        linhas: ""
-   },
-      datatype: "html",
-      contenttype: 'application/html; charset=utf-8',
-      async: true,
-    success : function(response) {
-        if (response == 1){
-             $('#outputSearchUser').html(response);
-        }else {
-            $('#outputSearchUser').html(response);
-
-        }
-        //$('#outputlogin').html(response);
-    },
-    beforeSend: function () {
-        $('#loader').show();
-    },
-    complete: function () {
-        $('#loader').hide();
-    }
-    });
+    showAlert("Insira alguma Linha.")
+    $('#outputMSG').fadeOut(5000);
   }else {
     $.ajax({
       url: "./backend/linhas/search-line.php",
@@ -317,7 +298,7 @@ $('.btn-light').click(function() {
               <table class="table table-hover">
                 <tbody>
                   <tr>
-                    <td>ID</td>
+                    <td>ID Linha</td>
                     <td><input type="text" class="form-control" id="inputEditID" value="" readonly></td>
                   </tr>
                 <tr>
@@ -337,7 +318,7 @@ $('.btn-light').click(function() {
                   <td>
                     <select id="inputEditPago" name="inputEditPago" class="form-control">
                       <option value="1">Sim</option>
-                      <option value="2">Não</option>
+                      <option value="0">Não</option>
                     </select>
                   </td>
                 </tr>

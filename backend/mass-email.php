@@ -9,19 +9,16 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-    $mail = new PHPMailer(true);
-
     //Variaveis de POST, Alterar somente se necessário
     //====================================================
-    $email = $_REQUEST['email'];
     $assunto = $_REQUEST['assunto'];
     $mensagem = $_REQUEST['texto'];
 
-    $sql = "SELECT users_id FROM users WHERE email = '$email'";
+    $sql = "SELECT * FROM users";
     $result = mysqli_query($db, $sql);
-    $count = mysqli_num_rows($result);
-    if ($count == 1) {
+    while ($row = mysqli_fetch_array($result)){
         try {
+            $mail = new PHPMailer(true);
             //        $mail->SMTPDebug = SMTP::DEBUG_SERVER; // apresenta o DEBUG
             $mail->isSMTP();
 
@@ -33,11 +30,11 @@ use PHPMailer\PHPMailer\Exception;
             $mail->Port = MAIL_PORT;
 
             $mail->setFrom(MAIL_USERNAME,MAIL_NAME); //nosso email from
-            $mail->addAddress($email); // emails to
+            $mail->addAddress($row['email']); // emails to
 
             $mail->isHTML(true);
             $mail->Subject = utf8_decode($assunto);
-            $mail->Body = utf8_decode('<strong>Email: </strong>' . $email . '<br>
+            $mail->Body = utf8_decode('<strong>Email: </strong>' . $row['email'] . '<br>
 
                             <br><br>
 
@@ -59,10 +56,6 @@ use PHPMailer\PHPMailer\Exception;
         } catch (Exception $e) {
             echo "Ocorreu um erro. Tente Novamente.";
         }
-    }else {
-        echo "Ocorreu um erro. Tente Novamente.";
     }
 
-
-exit;
 ?>

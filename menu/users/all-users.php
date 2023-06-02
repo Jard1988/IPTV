@@ -5,8 +5,6 @@ include('../../session.php');
 
 <script type="text/javascript">
 
-
-
 $(document).on("click", ".editModal", function () {
    var Id = $(this).data('id');
    var email = $("#myTable").find(".email"+Id+":first").text().trim();
@@ -325,7 +323,7 @@ $(document).on("click", ".editModal", function () {
                   <td>
                     <select id="inputItemPermission" name="cars" class="form-control">
                       <option selected value="1">User</option>
-                      <option value="2">Team</option>
+                      <option value="2">Moderator</option>
                       <option value="3">Admin</option>
                     </select>
                   </td>
@@ -354,7 +352,7 @@ $(document).on("click", ".editModal", function () {
               <table class="table table-hover">
                 <tbody>
                   <tr>
-                    <td>ID</td>
+                    <td>ID Utilizador</td>
                     <td><input type="text" class="form-control" id="inputEditID" value="" readonly></td>
                   </tr>
                   <td>Email</td>
@@ -382,7 +380,7 @@ $(document).on("click", ".editModal", function () {
                   <td>
                     <select id="inputEditPermission" name="inputEditPermission" class="form-control">
                       <option value="1">User</option>
-                      <option value="2">Team</option>
+                      <option value="2">Moderator</option>
                       <option value="3">Admin</option>
                     </select>
                   </td>

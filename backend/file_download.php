@@ -69,7 +69,7 @@ if ($count >= 1){
           if ($newf) {
             fclose($newf);
           }
-          echo ("<b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por ". $users_email ." <br>");
+          echo ("Linha: <b>" . $table_lines['nome_linha'] . "</b> Atualizado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por ". $users_email ." <br>");
           // execPrint("git add ../Listas/" . $table_lines['nome_linha'] . ".m3u");
           // execPrint("git commit -m 'teste'");
           // execPrint("git push dest");
