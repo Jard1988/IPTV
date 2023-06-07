@@ -43,7 +43,39 @@ function RemoveUnusedLines(id) {
       datatype: "html",
       contenttype: 'application/html; charset=utf-8',
       async: true,
-      success:function(data){$('#output').html(data);},
+      success:function(data){
+        if (data.value=""){
+          showAlert("Não Existem Linhas não utilizadas.");
+          $('#outputMSG').fadeOut(5000);
+          $('#output').html('<img class="center_img" src="./img/sucess.png"/>');
+        }else {
+          $('#output').html('<img class="center_img" src="./img/error.png"/>');
+        }
+      },
+      beforeSend: function() { $('#loader').show(); },
+      complete: function() { $('#loader').hide(); }
+  });
+
+}
+
+function RemoveUnusedUsers(id) {
+  jQuery.ajax({
+      url: "backend/users/deleteunused.php",
+      type: "post",
+      datatype: "html",
+      contenttype: 'application/html; charset=utf-8',
+      async: true,
+      success:function(data){
+        if (data.value=""){
+          showAlert(data);
+          $('#outputMSG').fadeOut(5000);
+          $('#output').html('<img class="center_img" src="./img/sucess.png"/>');
+        }else {
+          showAlert("Não Existem Utilizador Inativos.");
+          $('#outputMSG').fadeOut(5000);
+          $('#output').html('<img class="center_img" src="./img/error.png"/>');
+        }
+      },
       beforeSend: function() { $('#loader').show(); },
       complete: function() { $('#loader').hide(); }
   });
@@ -165,7 +197,7 @@ function RemoveUnusedLines(id) {
                               </li>
                           </ul>
 	                  </div>
-                    <div class="logo">IPTV Planner</div>
+                    <div class="logo"><a href="home.php"><img class="img_notification" style="margin-right: 10px;" src="./img/home.png"/></a>IPTV Planner</div>
 	              </div>
 
     <div class="page-content" id="page-content">
@@ -208,6 +240,12 @@ function RemoveUnusedLines(id) {
                             <ul class="sidebar-submenu" style="display: none;">
                                 <li><a href="#" onClick="getPage('users/search-user');"><i class="fa fa-search" aria-hidden="true"></i>Procurar</a></li>
                                 <li><a href="#" onClick="getPage('users/all-users');"><i class="fa fa-list" aria-hidden="true"></i> Listar Todos</a></li>
+                                </li>
+                                <li>
+                                    <a href="#" onClick="RemoveUnusedUsers();">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        <span><b>Limpar</b></span>
+                                      </a>
                                 </li>
                             </ul>
                         </li>
@@ -259,12 +297,12 @@ function RemoveUnusedLines(id) {
                         }
                         ?>
                         <li>
-                            <a href="#" onClick="getPageRaiz('404');">
+                            <a href="#" onClick="getPage('widget');">
                                 <i class="fa fa-th"></i> <span>Widgets</span>
                                 <small class="label pull-right label-info">new</small>
                             </a>
                         </li>
-                        <li><a href="#" onClick="getPage('teste');"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+                        <li><a href="#" onClick="getPageRaiz('404');"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
                     </ul>
                 </section>
 		  </div>

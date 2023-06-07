@@ -15,9 +15,10 @@
 						echo "fname:" . $fname;//set your file ext
 						if (unlink($fname)) {
 							echo ("Ficheiro <b> ". $table_lines['nome_linha'] . " </b> apagado a ". date("d/m/Y") ." ás ". date("h:i:sa") ." por ".$users_email."<br><br>");
-							$sql3 = "DELETE FROM linhas WHERE linhas_id='". $table_lines['linhas_id'] ."';";
+							$sql3 = "DELETE FROM linhas WHERE linhas.linhas_id='". $table_lines['linhas_id'] ."';";
+							echo $sql3;
 							$result3 = mysqli_query($db,$sql3);
-							$sql4 = "DELETE FROM users_linhas WHERE linhas_id='". $table_lines['linhas_id'] ."';";
+							$sql4 = "DELETE FROM users_linhas WHERE linhas.linhas_id='". $table_lines['linhas_id'] ."';";
 							$result4 = mysqli_query($db,$sql4);
 							if($result3 > 0 && $result4 > 0) {
 								echo "Linhas Apagadas";

@@ -4,6 +4,22 @@
     width: 100%;
 }
 
+.center_img {
+  margin: auto;
+  display: block;
+  width: 50%;
+}
+
+.widget {
+text-align: center;
+width: 100%;
+}
+
+.widget_img {
+  width: 25%;
+
+}
+
 .field-icon {
   float: right;
   margin-left: -25px;
@@ -12,7 +28,7 @@
   z-index: 2;
 }
 
-.logo{flex: 1;margin-left: 50px; margin-top: 20px; color: #eee;font-size: 25px; font-family: monospace}
+.logo{color: blue; flex: 1;margin-left: 50px; margin-top: 20px; color: #eee;font-size: 25px; font-family: monospace}
 
 .notification {
   color: white;
@@ -49,6 +65,7 @@ body {
   font-size: 12px;
   padding: 0px;
 }
+
 
 .page-content > .row {
   margin-left: 0px !important;
