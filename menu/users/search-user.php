@@ -178,31 +178,8 @@ $(document).on("click", ".editModal", function () {
 $('.btn-light').click(function() {
   var email = $('#input-datalist').val();
   if(email == ""){
-    $.ajax({
-      url: "./backend/users/all-users.php",
-      type: "post",
-      data: {
-        email: ""
-   },
-      datatype: "html",
-      contenttype: 'application/html; charset=utf-8',
-      async: true,
-    success : function(response) {
-        if (response == 1){
-             $('#outputSearchUser').html(response);
-        }else {
-            $('#outputSearchUser').html(response);
-
-        }
-        //$('#outputlogin').html(response);
-    },
-    beforeSend: function () {
-        $('#loader').show();
-    },
-    complete: function () {
-        $('#loader').hide();
-    }
-    });
+    showAlert("Insira algum Utilizador.")
+    $('#outputMSG').fadeOut(5000);
   }else {
     $.ajax({
       url: "./backend/users/search-user.php",
@@ -339,7 +316,7 @@ $('.btn-light').click(function() {
               <table class="table table-hover">
                 <tbody>
                   <tr>
-                    <td>ID</td>
+                    <td>ID Utilizador</td>
                     <td><input type="text" class="form-control" id="inputEditID" value="" readonly></td>
                   </tr>
                   <td>Email</td>

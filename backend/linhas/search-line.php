@@ -36,9 +36,13 @@
 							<td scope="row" class="email'. $table_geral['linhas_id'].'" value="'. $table_geral['email'].'"> '. $table_geral['email'].' </td>
 							<td scope="row" class="linha'. $table_geral['linhas_id'].'" > '. $table_geral['nome_linha'].' </td>
 							<td scope="row" class="data_ini'. $table_geral['linhas_id'].'" > '. $table_geral['data_ini'].' </td>
-							<td scope="row" class="data_fim'. $table_geral['linhas_id'].'" > '. $table_geral['data_fim'].' </td>
-							<td scope="row" class="pago'. $table_geral['linhas_id'].'"> '. $table_geral['pago'].' </td>
-							<td scope="row" class="caminho'. $table_geral['linhas_id'].'"> '. $table_geral['caminho'].' </td>';
+							<td scope="row" class="data_fim'. $table_geral['linhas_id'].'" > '. $table_geral['data_fim'].' </td>';
+							if ($table_geral['pago'] == 1) {
+								echo '<td scope="row" class="pago'. $table_geral['linhas_id'].'" value="1">Sim</td>';
+							}else {
+									echo '<td scope="row" class="pago'. $table_geral['linhas_id'].' "value="0">Não</td>';
+							}
+							echo '<td scope="row" class="caminho'. $table_geral['linhas_id'].'"> '. $table_geral['caminho'].' </td>';
 							echo '<td scope="row"></td>';
               echo '<td scope="row"> <button class="editModal btn btn-success" data-id="'. $table_geral['linhas_id'].'" data-toggle="modal" data-target="#editModal">
                  <i class="fa fa-pencil" aria-hidden="true"></i>

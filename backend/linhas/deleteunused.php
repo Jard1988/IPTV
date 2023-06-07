@@ -16,10 +16,8 @@
     if($row1 >=1 && $row2 >=1) {
 			while ($table_lines = mysqli_fetch_assoc($result1)){
 				while ($table_lines2 = mysqli_fetch_assoc($result2)){
-					echo "USER_LINHAS_ID:" .$table_lines['linhas_id'];
-					echo "LINHAS_ID:" .$table_lines2['linhas_id'];
 					if ($table_lines['linhas_id'] == $table_lines2['linhas_id']){
-echo "asdasfLinha Não Apagada";
+							echo "Linha Não Apagada";
 					}else {
 
 						$fname = $destination_folder . $table_lines2['nome_linha']. ".m3u";
