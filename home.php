@@ -47,9 +47,11 @@ function RemoveUnusedLines(id) {
         if (data.value=""){
           showAlert("Não Existem Linhas não utilizadas.");
           $('#outputMSG').fadeOut(5000);
-          $('#output').html('<img class="center_img" src="./img/sucess.png"/>');
-        }else {
           $('#output').html('<img class="center_img" src="./img/error.png"/>');
+        }else {
+          showAlert(data);
+          $('#outputMSG').fadeOut(5000);
+          $('#output').html('<img class="center_img" src="./img/sucess.png"/>');
         }
       },
       beforeSend: function() { $('#loader').show(); },
@@ -71,7 +73,7 @@ function RemoveUnusedUsers(id) {
           $('#outputMSG').fadeOut(5000);
           $('#output').html('<img class="center_img" src="./img/sucess.png"/>');
         }else {
-          showAlert("Não Existem Utilizador Inativos.");
+          showAlert(data);
           $('#outputMSG').fadeOut(5000);
           $('#output').html('<img class="center_img" src="./img/error.png"/>');
         }

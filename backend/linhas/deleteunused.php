@@ -9,7 +9,8 @@
 		// If result matched $myusername and $mypassword, table row must be 1 row
 		$destination_folder = "../../" . RAIZ_CAMINHO;
 
-    if($row1 >=1) {
+    if($row1 >=0) {
+
 			while ($table_lines = mysqli_fetch_assoc($result1)){
 						$fname = $destination_folder . $table_lines['nome_linha']. ".m3u";
 						echo "fname:" . $fname;//set your file ext

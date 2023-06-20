@@ -21,8 +21,8 @@
 								echo "User's Não Apagadas";
 							}
 					}
+			}else {
+				echo "AQUI"
 			}
-    }else {
-        echo "Não existem linhas por Apagar.";
     }
 ?>
