@@ -44,22 +44,12 @@ function RemoveUnusedLines(id) {
       contenttype: 'application/html; charset=utf-8',
       async: true,
       success:function(data){
-<<<<<<< HEAD
-        if (data.value=""){
-          showAlert("Não Existem Linhas não utilizadas.");
-          $('#outputMSG').fadeOut(5000);
-          $('#output').html('<img class="center_img" src="./img/error.png"/>');
-        }else {
-          showAlert(data);
-          $('#outputMSG').fadeOut(5000);
-          $('#output').html('<img class="center_img" src="./img/sucess.png"/>');
-        }
-=======
+
         $('#output').html(data);
           //showAlert(data);
           //$('#outputMSG').fadeOut(5000);
           //$('#output').html('<img class="center_img" src="./img/sucess.png"/>');
->>>>>>> 2f055640b9f7f9e35f4dbc7f2ef12654b1d85e90
+
       },
       beforeSend: function() { $('#loader').show(); },
       complete: function() { $('#loader').hide(); }
