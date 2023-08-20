@@ -42,7 +42,8 @@
 		$data_fim = mysqli_real_escape_string($db,$_POST['data_fim']);
 		$novalinha = gerar_linha(10, true, true, true);
     // If result matched $myusername and $mypassword, table row must be 1 row
-		$caminho = $caminho_git . $novalinha . ".m3u";
+		$caminho = CAMINHO_URL . RAIZ_CAMINHO. $novalinha . ".m3u";
+		echo $caminho;
 
 			$sql = "SELECT users_id from users where email='". $email ."'";
 			$result_users = mysqli_query($db,$sql);

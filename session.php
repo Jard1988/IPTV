@@ -8,7 +8,7 @@
      $data = htmlspecialchars($data);
      return $data;
    }
-   
+
    $user_check = $_SESSION['login_user'];
 
    $ses_sql = mysqli_query($db,"select * from users where email = '$user_check' ");
@@ -25,7 +25,6 @@
    $users_name = $row['nome'];
    $users_apelido = $row['apelido'];
    // $caminho_git = "https://raw.githubusercontent.com/Jard1988/IPTV/main/Listas/";
-   $caminho_git = CAMINHO_URL;
 
 
    if(!isset($_SESSION['login_user'])){
